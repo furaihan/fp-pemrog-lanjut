@@ -1,0 +1,16 @@
+﻿<Application x:Class="PinusPengger.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PinusPengger"
+             StartupUri="/View/LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Style/RoundButton.xaml"/>
+                <ResourceDictionary Source="/Style/Icons/CloseAppIcon.xaml"/>
+                <ResourceDictionary Source="/Style/Icons/LoginIcon.xaml"/>
+                <ResourceDictionary Source="/Style/Icons/MinimizeIcon.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
