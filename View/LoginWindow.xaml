@@ -54,11 +54,11 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Label Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" FontFamily="Dubai">User Login</Label>
                 <Label Grid.Row="1" Margin="0,0,0,0" FontWeight="Bold">Username</Label>
                 <Label Grid.Row="3" Margin="0,0,0,0" FontWeight="Bold" >Password</Label>
-                <Label Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" FontFamily="Dubai">User Login</Label>
-                <TextBox Grid.Row="2" Height="25" Width="275" Text="Username"/>
-                <TextBox Grid.Row="4" Height="25" Width="275" Text="Password"/>
+                <TextBox Grid.Row="2" Height="25" Width="275" Text="Admin"/>
+                <TextBox Grid.Row="4" Height="25" Width="275" Text="Admin"/>
                 <Button Grid.Row="5" Height="20" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" BorderThickness="0"
                         Background="ForestGreen">
                     <Grid Height="20" Width="75">
