@@ -10,9 +10,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PinusPengger.View
+namespace WpfApp2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,18 +24,15 @@ namespace PinusPengger.View
         {
             InitializeComponent();
         }
-        private void CloseApp(object sender, RoutedEventArgs e)
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Close();
-        }
-        private void MinimizeApp(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
+
         }
 
-        private void DragApp(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.DragMove();
+
         }
     }
 }

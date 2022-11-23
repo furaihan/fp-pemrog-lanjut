@@ -1,0 +1,20 @@
+﻿<Window x:Class="UTS_Final_Proje.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UTS_Final_Proje"
+        mc:Ignorable="d"
+        Title="BookingVIP" Height="450" Width="800">
+    <Grid>
+        <Label Content="K.4.1" HorizontalAlignment="Left" Height="30" Margin="40,35,0,0" VerticalAlignment="Top" Width="45" FontWeight="Bold" FontSize="14"/>
+        <Image HorizontalAlignment="Left" Height="195" Margin="40,80,0,0" VerticalAlignment="Top" Width="300" Source="/VIP YGY.jpg" Stretch="Fill">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/VIP YGY.jpg" Stretch="UniformToFill"/>
+            </Image.OpacityMask>
+        </Image>
+        <Label Content="Deskripsi" HorizontalAlignment="Left" Height="26" Margin="380,39,0,0" VerticalAlignment="Top" Width="70" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Height="300" Margin="400,80,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="351"/>
+
+    </Grid>
+</Window>
