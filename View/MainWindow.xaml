@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Hotel Jaya Abadi" Height="540" Width="960" ResizeMode="CanMinimize"
+        WindowStyle="None">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="125"/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="21" FontFamily="Leelawadee" Grid.Column="0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Hotel Jaya Abadi</Label>
+                <Label FontSize="14" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Home</Label>
+                <Label FontSize="14" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">Reservations</Label>
+                <Label FontSize="14" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">History</Label>
+                <Button Grid.Column="5" Background="Transparent" BorderThickness="0">
+                    <Grid Height="50" Width="125">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Data="{StaticResource CircleUserIcon}" Grid.Column="0" Stretch="Uniform" Fill="Black"
+                              HorizontalAlignment="Right" VerticalAlignment="Center"
+                              Width="30" Height="30" RenderTransformOrigin="0.5,0.5"></Path>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   FontSize="21">User</TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

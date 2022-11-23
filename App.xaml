@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Style/Icons/CloseAppIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/LoginIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/MinimizeIcon.xaml"/>
+                <ResourceDictionary Source="/Style/Icons/CircleUserIcon.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

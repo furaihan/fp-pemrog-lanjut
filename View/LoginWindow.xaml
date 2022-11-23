@@ -67,15 +67,15 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" HorizontalAlignment="Center"
-                                   FontWeight="Bold" Foreground="WhiteSmoke">Login</TextBlock>
+                                   FontWeight="Bold" Foreground="WhiteSmoke" Margin="5,0,0,0">Login</TextBlock>
                         <Path Data="{StaticResource LoginIcon}" Grid.Column="1" Stretch="Uniform"
                               Fill="WhiteSmoke" Width="15" Height="15" 
-                              HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                              HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,1" />
                     </Grid>
                 </Button>
             </Grid>
-        </Border>
+        </Border> 
         <Label FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.Row="1" 
-               HorizontalAlignment="Center" VerticalAlignment="Center">Hotel Jaya Abadi</Label>
+               HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Leelawadee">Hotel Jaya Abadi</Label>
     </Grid>
 </Window>
