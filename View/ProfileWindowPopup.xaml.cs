@@ -15,26 +15,13 @@ using System.Windows.Shapes;
 namespace PinusPengger.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProfileWindowPopup.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProfileWindowPopup : Window
     {
-        public MainWindow()
+        public ProfileWindowPopup()
         {
             InitializeComponent();
-        }
-        private void CloseApp(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-        private void MinimizeApp(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void DragApp(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
         }
     }
 }
