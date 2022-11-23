@@ -1,0 +1,56 @@
+﻿<Window x:Class="PinusPengger.View.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PinusPengger.View"
+        mc:Ignorable="d"
+        Title="HomeWindow" Height="1080" Width="1920" ResizeMode="CanMinimize"
+        WindowStyle="None">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"
+                    VerticalAlignment="Top" Margin="0,5,5,0"
+                    Orientation="Horizontal" FlowDirection="LeftToRight">
+            <Button Width="18" Height="18" Style="{StaticResource RoundedButton}"
+                    Background="Gold" Margin="0,0,5,0" BorderThickness="0" >
+                <Grid>
+                    <Path Data="{StaticResource MinimizeIcon}" Stretch="Uniform"
+                          Fill="Black" Width="10" Height="10"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5" Margin="1,0,0,0"></Path>
+                </Grid>
+            </Button>
+            <Button Width="18" Height="18" Style="{StaticResource RoundedButton}"
+                    Background="Red" BorderThickness="0" >
+                <Grid>
+                    <Path Data="{StaticResource CloseAppIcon}" Stretch="Uniform"
+                          Fill="Black" Width="10" Height="10"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5" Margin="2,0,0,0"></Path>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <Label x:Name="HotelJayaAbadi" Content="Hotel Jaya Abadi" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,100,0,0" VerticalAlignment="Top" Height="91" Width="366" FontSize="40" FontWeight="Bold"/>
+        <Label x:Name="Home" Content="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="555,119,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="72" Width="91"/>
+        <Label x:Name="Reservasion" Content="Reservasion" Grid.Column="1" HorizontalAlignment="Left" Margin="724,116,0,0" VerticalAlignment="Top" FontSize="24" Height="75" Width="176"/>
+        <Label x:Name="History" Content="History" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="950,119,0,0" VerticalAlignment="Top" FontSize="24" Height="72" Width="108"/>
+
+        <Label x:Name="CariKode" Content="Cari Kode Pemesanan" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,345,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Height="44" Width="269"/>
+        <TextBox x:Name="Search" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,390,0,0" Text="Masukan Kode Pemesanan" TextWrapping="Wrap" VerticalAlignment="Top" Height="50"  Width="500" FontStyle="Italic" FontSize="24" Opacity="0.3"/>
+        <Button Content="Button" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="590,390,0,0" VerticalAlignment="Top" Height="50" Width="100"/>
+
+        <Label x:Name="kuning" Content="" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,489,0,0" VerticalAlignment="Top" Background="#FFFFE500" Height="10" Width="49"/>
+        <Label x:Name="Terpesan" Content="Terpesan" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="164,483,0,0" VerticalAlignment="Top" Height="32" Width="95" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
+        <Label x:Name="Hijau" Content="Label" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="265,489,0,0" VerticalAlignment="Top" Background="#FF03A400" Height="10" Width="49"/>
+        <Label x:Name="Terpakai" Content="Terpakai" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="335,483,0,0" VerticalAlignment="Top" Height="32" Width="72" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
+        <Label x:Name="user" Content="User" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="1690,105,0,0" VerticalAlignment="Top" Height="50" Width="142" FontWeight="Bold" FontSize="40"/>
+       
+
+
+    </Grid>
+</Window>
