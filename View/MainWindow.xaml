@@ -11,25 +11,23 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="275"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="125"/>
                 </Grid.ColumnDefinitions>
                 <Label FontSize="21" FontFamily="Leelawadee" Grid.Column="0"
                        HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Hotel Jaya Abadi</Label>
-                <Label FontSize="14" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Home</Label>
-                <Label FontSize="14" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">Reservations</Label>
-                <Label FontSize="14" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">History</Label>
+                <StackPanel Grid.Column="1">
+                    <RadioButton Height="40" Width="100" Style="{StaticResource NavbarButton}"
+                                 Content="Home" IsChecked="True"/>
+                </StackPanel>
                 <Button Grid.Column="5" Background="Transparent" BorderThickness="0">
                     <Grid Height="50" Width="125">
                         <Grid.ColumnDefinitions>
@@ -45,5 +43,27 @@
                 </Button>
             </Grid>
         </Border>
+        <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"
+                    VerticalAlignment="Top" Margin="0,5,5,0"
+                    Orientation="Horizontal" FlowDirection="LeftToRight">
+            <Button Width="18" Height="18" Style="{StaticResource RoundedButton}"
+                    Background="Gold" Margin="0,0,5,0" BorderThickness="0" Click="MinimizeApp">
+                <Grid>
+                    <Path Data="{StaticResource MinimizeIcon}" Stretch="Uniform"
+                          Fill="Black" Width="10" Height="10"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5" Margin="1,0,0,0"></Path>
+                </Grid>
+            </Button>
+            <Button Width="18" Height="18" Style="{StaticResource RoundedButton}"
+                    Background="Red" BorderThickness="0" Click="CloseApp">
+                <Grid>
+                    <Path Data="{StaticResource CloseAppIcon}" Stretch="Uniform"
+                          Fill="Black" Width="10" Height="10"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5" Margin="2,0,0,0"></Path>
+                </Grid>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

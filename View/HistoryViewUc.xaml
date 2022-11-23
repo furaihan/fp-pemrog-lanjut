@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="PinusPengger.View.HistoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PinusPengger.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Tgl Sekarang</Label>
+                <Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Jam Sekarang</Label>
+            </Grid>
+        </Border>
+        <Label Grid.Row="2" FontWeight="Bold" VerticalAlignment="Top">Cari Kode Pemesanan</Label>
+        <TextBox Grid.Row="2" Width="200" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBox>
+        <DataGrid Grid.Row="3" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kode Pemesanan"/>
+                <DataGridTextColumn Header="Nama" Width="200" />
+                <DataGridTextColumn Header="Nomor Kamar" Width="*" />
+                <DataGridTextColumn Header="Tanggal Checkin" Width="*" />
+                <DataGridTextColumn Header="Tanggal Checkout" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
