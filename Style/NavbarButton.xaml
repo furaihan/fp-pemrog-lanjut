@@ -12,7 +12,7 @@
                                 <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
-                                       Foreground="White"
+                                       Foreground="{TemplateBinding Foreground}"
                                        FontSize="16"/>
                             </Border>
                         </Grid>

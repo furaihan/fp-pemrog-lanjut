@@ -8,9 +8,9 @@ namespace PinusPengger.Model
 {
     class Reservation
     {
-        public int Id { get; set; }
+        public int KodePemesanan { get; set; }
         public Room Room { get; set; }
-        public string Name { get; set; }
+        public Person Person { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
     }

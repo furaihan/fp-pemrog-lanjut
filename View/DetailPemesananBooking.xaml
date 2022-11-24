@@ -18,7 +18,7 @@
             </Grid>
         </Button>
         <TextBox x:Name="Detail" HorizontalAlignment="Left" Height="562.34" Margin="33,144,0,0" Text="Text box"  TextWrapping="Wrap" VerticalAlignment="Top" Width="700"/>
-        <Label x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="483,770,0,0" VerticalAlignment="Top" Height="50" Width="100" FontWeight="Bold" FontSize="14" FontStyle="Normal" FontStretch="Normal" Background="#FFAE0000" FontFamily="Segoe UI Black" Foreground="White"/>
-        <Label x:Name="CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="633,769,0,0" VerticalAlignment="Top" Height="50" Width="100" FontWeight="Bold" FontSize="14" FontStyle="Normal" FontStretch="Normal" Background="#FF03A400" FontFamily="Segoe UI Black" Foreground="White"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="483,770,0,0" VerticalAlignment="Top" Height="50" Width="100" FontWeight="Bold" FontSize="14" FontStyle="Normal" FontStretch="Normal" Background="#FFAE0000" FontFamily="Segoe UI Black" Foreground="White"/>
+        <Button x:Name="CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="633,769,0,0" VerticalAlignment="Top" Height="50" Width="100" FontWeight="Bold" FontSize="14" FontStyle="Normal" FontStretch="Normal" Background="#FF03A400" FontFamily="Segoe UI Black" Foreground="White"/>
     </Grid>
 </Window>

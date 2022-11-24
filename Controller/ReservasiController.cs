@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PinusPengger.Controller
 {
-    internal class BasicController
+    class ReservasiController
     {
     }
 }

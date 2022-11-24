@@ -1,9 +1,10 @@
-﻿<Window x:Class="PinusPengger.View.LoginWindow"
+﻿<Window x:Class="PinusPengger.Controller.LoginWindowController"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PinusPengger.View"
+        xmlns:view="clr-namespace:PinusPengger.View"
+        xmlns:controller="clr-namespace:PinusPengger.Controller"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi - Login Page" Height="540" Width="960" ResizeMode="CanMinimize"
         WindowStyle="None" MouseDown="DragApp">
@@ -57,10 +58,10 @@
                 <Label Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" FontFamily="Dubai">User Login</Label>
                 <Label Grid.Row="1" Margin="0,0,0,0" FontWeight="Bold">Username</Label>
                 <Label Grid.Row="3" Margin="0,0,0,0" FontWeight="Bold" >Password</Label>
-                <TextBox Grid.Row="2" Height="25" Width="275" Text="Admin"/>
-                <TextBox Grid.Row="4" Height="25" Width="275" Text="Admin"/>
+                <TextBox x:Name="usernameBox" Grid.Row="2" Height="25" Width="275" Text="Admin"/>
+                <TextBox x:Name="passwdBox" Grid.Row="4" Height="25" Width="275" Text="Admin"/>
                 <Button Grid.Row="5" Height="20" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" BorderThickness="0"
-                        Background="ForestGreen">
+                        Background="ForestGreen" Click="LoginClick">
                     <Grid Height="20" Width="75">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
