@@ -16,9 +16,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="Gray" MouseDown="DragApp">
             <Grid.ColumnDefinitions>
@@ -83,7 +82,9 @@
                 </Button>
             </Grid>
         </Border>
-        <UserControl Grid.Row="3" Content="{Binding CurrentView}">
+        <UserControl Grid.Row="2" Content="{Binding CurrentView}"
+                     HorizontalAlignment="Center" VerticalAlignment="Top"
+                     Height="420">
             
         </UserControl>
     </Grid>

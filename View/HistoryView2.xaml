@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:PinusPengger.View"
              xmlns:model="clr-namespace:PinusPengger.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="330" d:DesignWidth="920">
+             d:DesignHeight="420" d:DesignWidth="920">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="290"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1">
             <Grid>
@@ -39,14 +39,16 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <DataGrid Grid.Row="3" Margin="10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Kode Pemesanan" Binding="{Binding KodePemesanan}"/>
-                <DataGridTextColumn Header="Nama" Width="200" />
-                <DataGridTextColumn Header="Nomor Kamar" Width="*" />
-                <DataGridTextColumn Header="Tanggal Checkin" Width="*" />
-                <DataGridTextColumn Header="Tanggal Checkout" Width="*" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ScrollViewer Grid.Row="3" Height="290">
+            <DataGrid Margin="10" Height="680">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Kode Pemesanan"/>
+                    <DataGridTextColumn Header="Nama" Width="200" />
+                    <DataGridTextColumn Header="Nomor Kamar" Width="*" />
+                    <DataGridTextColumn Header="Tanggal Checkin" Width="*" />
+                    <DataGridTextColumn Header="Tanggal Checkout" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
