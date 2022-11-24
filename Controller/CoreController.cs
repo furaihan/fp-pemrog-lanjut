@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PinusPengger.View;
+
 
 namespace PinusPengger.Controller
 {
@@ -13,22 +13,22 @@ namespace PinusPengger.Controller
         public RelayCommand ReservasiViewCommand { get; set; }
         public RelayCommand HistoryViewCommand { get; set; }
 
-        private HomeView _homeView;
-        private ReservasiView _reservasiView;
-        private  HistoryView _historyView;
+        private HomeController _homeView;
+        private ReservasiController _reservasiView;
+        private  HistoryController _historyView;
         private object _currentView;
 
-        public HomeView HomeView
+        public HomeController HomeView
         {
             get => _homeView;
             set => _homeView = value;
         }
-        public ReservasiView ReservasiView
+        public ReservasiController ReservasiView
         {
             get => _reservasiView;
             set => _reservasiView = value;
         }
-        public HistoryView HistoryView
+        public HistoryController HistoryView
         {
             get => _historyView;
             set => _historyView = value;
@@ -45,7 +45,16 @@ namespace PinusPengger.Controller
         }
         public CoreController()
         {
-            
+            HomeView = new HomeController();
+            ReservasiView = new ReservasiController();
+            HistoryView = new HistoryController();
+
+
+            CurrentView = HistoryView;
+
+            HistoryViewCommand = new RelayCommand(o => CurrentView = HistoryView);
+            ReservasiViewCommand = new RelayCommand(o => CurrentView = ReservasiView);
+            HomeViewCommand = new RelayCommand(o => CurrentView = HomeView);
         }
     }
 }

@@ -17,8 +17,7 @@
                 <ResourceDictionary Source="/Style/Icons/CircleUserIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/MagnifyingGlassIcon.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
-            
+
             
         </ResourceDictionary>
     </Application.Resources>

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Remove="View\BookingVIP.xaml.cs" />
+    <Compile Remove="View\Customer_data.xaml.cs" />
     <Compile Remove="View\DetailPemesananBooking.xaml.cs" />
     <Compile Remove="View\DetailPemesananCheckIn.xaml.cs" />
     <Compile Remove="View\Kamar_reguler.xaml.cs" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <Page Remove="View\BookingVIP.xaml" />
+    <Page Remove="View\Customer_data.xaml" />
     <Page Remove="View\DetailPemesananBooking.xaml" />
     <Page Remove="View\DetailPemesananCheckIn.xaml" />
     <Page Remove="View\Kamar_reguler.xaml" />

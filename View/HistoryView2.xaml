@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:PinusPengger.View"
              xmlns:model="clr-namespace:PinusPengger.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="330" d:DesignWidth="920">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1">
@@ -28,8 +28,17 @@
                 <Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Jam Sekarang</Label>
             </Grid>
         </Border>
-        <Label Grid.Row="2" FontWeight="Bold" VerticalAlignment="Top">Cari Kode Pemesanan</Label>
-        <TextBox Grid.Row="2" Width="200" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBox>
+        <StackPanel Grid.Row="2" Margin="5,0,0,0">
+            <TextBlock Text="Masukkan Kode:" FontWeight="Bold"></TextBlock>
+            <StackPanel Height="30" Orientation="Horizontal">
+                <TextBox Width="200" Height="25" FontSize="20" Text="Kode"></TextBox>
+                <Button Height="25" Width="40">
+                    <Path Data="{StaticResource MagnifyingGlassIcon}" Grid.Column="1" Stretch="Uniform"
+                      Fill="Black" Width="15" Height="15" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,1" />
+                </Button>
+            </StackPanel>
+        </StackPanel>
         <DataGrid Grid.Row="3" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kode Pemesanan" Binding="{Binding KodePemesanan}"/>
