@@ -4,10 +4,10 @@ Final Project Kelompok 5 (21-Informatika-8) Mata Kuliah Pemrograman Lanjut Progr
 ### Anggota Kelompok
 |**No**| **Nama** | **NIM** |
 |---|------|-----|
-| 1 | Aviva Pradasyah | 21.11.4335 |
-| 2 | Amalina Nur Sabrina | 21.11.4334 |
+| 1 | Amalina Nur Sabrina | 21.11.4334 |
+| 2 | Aviva Pradasyah | 21.11.4335 |
 | 3 | Jessica Vega Nainggolan | 21.11.4356 |
-| 4 | Nadhira Aurel | 21.11.4399 |
+| 4 | Pijar Pahlawan Qolbu | 21.11.4368 |
 | 5 | Tifani Dea Shafira | 21.11.4372 |
-| 6 | Pijar Pahlawan Qolbu | 21.11.4368 |
-| 7 | Muhammad Zhafar Al Fathi | 21.11.4374 |
+| 6 | Muhammad Zhafar Al Fathi | 21.11.4374 |
+| 7 | Nadhira Aurel | 21.11.4399 |
