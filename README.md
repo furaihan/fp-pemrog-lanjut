@@ -10,4 +10,4 @@ Final Project Kelompok 5 (21-Informatika-8) Mata Kuliah Pemrograman Lanjut Progr
 | 4 | Pijar Pahlawan Qolbu | 21.11.4368 |
 | 5 | Tifani Dea Shafira | 21.11.4372 |
 | 6 | Muhammad Zhafar Al Fathi | 21.11.4374 |
-| 7 | Nadhira Aurel | 21.11.4399 |
+| 7 | Nadhira Aurell Puspitaningrum  | 21.11.4399 |
