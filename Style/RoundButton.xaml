@@ -6,5 +6,8 @@
                 <Setter Property="CornerRadius" Value="32" />
             </Style>
         </Style.Resources>
+        <Style.Triggers>
+            
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

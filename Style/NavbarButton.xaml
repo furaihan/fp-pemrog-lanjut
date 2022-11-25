@@ -8,27 +8,24 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
                         <Grid>
-                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <Border CornerRadius="20" Background="Black">
                                 <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
-                                       Foreground="{TemplateBinding Foreground}"
+                                       Foreground="White"
                                        FontSize="16"/>
                             </Border>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="DarkGray"/>
-
             </Trigger>
         </Style.Triggers>
     </Style>

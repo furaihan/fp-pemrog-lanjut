@@ -4,13 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
-        mc:Ignorable="d"
+        mc:Ignorable="d"      
         Title="ProfileWindowPopup" 
-        Height="200" Width="150" ResizeMode="NoResize"
+        Height="120" 
+        Width="150"      
+        ResizeMode="NoResize"
+        Background="Transparent"
         WindowStyle="None">
-    <Border CornerRadius="20">
+    <Border CornerRadius="10" Background="WhiteSmoke" Opacity="90">
         <Grid>
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" 
+                           FontFamily="Dubai"
+                           Text="User Profile"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Background="Red"
+                            Grid.Row="2"
+                            Height="15"
+                            Width="50">
+                    
+                </StackPanel>
+            </Grid>
+            <Border Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Height="30"
+                    Panel.ZIndex="-2"
+                    VerticalAlignment="Top"
+                    CornerRadius="10,10,0,0"
+                    Background="Tomato"/>
+            <Border x:Name="profileBorder"
+                    Grid.Row="1"
+                    Height="40"
+                    Width="40"
+                    CornerRadius="32"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0">
+                <Border.Background>
+                    <ImageBrush ImageSource="\Images\userProfile.png" 
+                                RenderOptions.BitmapScalingMode="Fant"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="1"
+                    Height="43"
+                    Width="43"
+                    CornerRadius="32"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Background="WhiteSmoke"
+                    Panel.ZIndex="-1"
+                    Margin="0,5,0,0"/>
         </Grid>
     </Border>
 </Window>
+
+    
+    
