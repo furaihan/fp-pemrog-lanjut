@@ -36,15 +36,15 @@ namespace PinusPengger.Controller
         private void FillContext()
         {
             Random rnd = new();
-            for (int i = 1; i <= 60; i++)
+            for (int i = 1; i <= rnd.Next(30, 123); i++)
             {
-                byte roomFloor = (byte)((i / 10) % 10);
+                byte roomFloor = (byte)((i / 10 % 10) + 1);
                 Person person = new((ulong)((81287387 + i) * rnd.Next(3)),
                                     $"Cristiano Ronaldo SIUU {i * 2}",
                                     "112312312",
                                     DateTime.Now);
-                Room room = new(new RoomNumbering(roomFloor, (byte)(i % 100)),
-                                RoomType.Reguler,
+                Room room = new(new RoomNumbering(roomFloor, (byte)(i % 10)),
+                                rnd.Next() % 2 == 0 ? RoomType.Reguler : RoomType.VIP,
                                 RoomFeature.DoubleBed);
                 Reservation reservation = new(i,
                                               room,

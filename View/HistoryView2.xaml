@@ -6,6 +6,7 @@
              xmlns:controller="clr-namespace:PinusPengger.Controller"
              xmlns:model="clr-namespace:PinusPengger.Model"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:converter="clr-namespace:PinusPengger.Controller.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="420" 
              d:DesignWidth="920"
@@ -68,13 +69,17 @@
                   AutoGenerateColumns="False"
                   Grid.Row="3"
                   CanUserAddRows="True">
+            <DataGrid.Resources>
+                <converter:PersonConverter x:Key="PersonConverter"/>
+                <converter:RoomConverter x:Key="RoomConverter"/>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kode Pemesanan" 
                                     Binding="{Binding KodePemesanan}"/>
                 <DataGridTextColumn Header="Nama" Width="200" 
-                                    Binding="{Binding Person}"/>
+                                    Binding="{Binding Person,Converter={StaticResource PersonConverter}}"/>
                 <DataGridTextColumn Header="Nomor Kamar" Width="*"  
-                                    Binding="{Binding Room}"/>
+                                    Binding="{Binding Room, Converter={StaticResource RoomConverter}}"/>
                 <DataGridTextColumn Header="Tanggal Checkin" Width="*" 
                                     Binding="{Binding CheckIn, StringFormat='dd/MM/yyyy'}"/>
                 <DataGridTextColumn Header="Tanggal Checkout" Width="*"  
