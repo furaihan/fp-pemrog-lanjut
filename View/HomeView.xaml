@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:PinusPengger.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            
+        </Grid.RowDefinitions>
             
     </Grid>
 </UserControl>

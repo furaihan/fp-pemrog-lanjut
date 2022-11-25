@@ -65,7 +65,7 @@
                     <Grid Height="20" Width="75">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>    
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" HorizontalAlignment="Center"
                                    FontWeight="Bold" Foreground="WhiteSmoke" Margin="5,0,0,0">Login</TextBlock>

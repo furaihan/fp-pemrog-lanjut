@@ -10,7 +10,7 @@ namespace PinusPengger.Controller
     internal class CoreController : ObservableObject
     {
         public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand ReservasiViewCommand { get; set; }
+        public RelayCommand ReservationViewCommand { get; set; }
         public RelayCommand HistoryViewCommand { get; set; }
 
         private HomeController _homeView;
@@ -53,7 +53,7 @@ namespace PinusPengger.Controller
             CurrentView = HistoryView;
 
             HistoryViewCommand = new RelayCommand(o => CurrentView = HistoryView);
-            ReservasiViewCommand = new RelayCommand(o => CurrentView = ReservasiView);
+            ReservationViewCommand = new RelayCommand(o => CurrentView = ReservasiView);
             HomeViewCommand = new RelayCommand(o => CurrentView = HomeView);
         }
     }

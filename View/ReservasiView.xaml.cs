@@ -24,5 +24,10 @@ namespace PinusPengger.View
         {
             InitializeComponent();
         }
+
+        private void tess(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

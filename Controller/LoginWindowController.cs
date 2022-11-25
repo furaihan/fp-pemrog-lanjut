@@ -8,7 +8,7 @@ namespace PinusPengger.Controller
     /// <summary>
     /// Interaction logic for HistoryView2.xaml
     /// </summary>
-    public partial class LoginWindowController : Window, INotifyPropertyChanged
+    public partial class LoginWindowController : Window
     {
         public LoginWindowController()
         {
@@ -37,11 +37,6 @@ namespace PinusPengger.Controller
                 mainWindow.Show();
                 this.Close();
             }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }
