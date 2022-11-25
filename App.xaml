@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="/Style/StylishScrollBar.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/CloseAppIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/LoginIcon.xaml"/>
+                <ResourceDictionary Source="/Style/Icons/LogoutIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/MinimizeIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/CircleUserIcon.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/MagnifyingGlassIcon.xaml"/>

@@ -29,11 +29,51 @@
                            Text="User Profile"
                            FontSize="12"
                            HorizontalAlignment="Center"/>
-                <StackPanel Background="Red"
-                            Grid.Row="2"
-                            Height="15"
-                            Width="50">
-                    
+                <StackPanel Grid.Row="2">
+                    <Button Height="15"
+                            Width="60">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="3"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </Style>
+                                </Style.Resources>
+                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="PaleVioletRed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel Height="15"
+                                    Width="60"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Path Data="{StaticResource LogutIcon}"
+                                  Grid.Column="1"
+                                  Width="10"
+                                  Height="10"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Stretch="Uniform" 
+                                  Margin="0,0,0,0"
+                                  Fill="White"/>
+                            <TextBlock Grid.Column="0"
+                                       Text="Logout"
+                                       FontSize="10"
+                                       FontFamily="Leelawadee"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
             <Border Grid.Row="0"

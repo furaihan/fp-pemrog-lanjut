@@ -6,8 +6,12 @@
         xmlns:view="clr-namespace:PinusPengger.View"
         xmlns:controller="clr-namespace:PinusPengger.Controller"
         mc:Ignorable="d"
-        Title="Hotel Jaya Abadi - Login Page" Height="540" Width="960" ResizeMode="CanMinimize"
-        WindowStyle="None" MouseDown="DragApp">
+        Title="Hotel Jaya Abadi - Login Page" 
+        Height="540" 
+        Width="960"
+        ResizeMode="CanMinimize"
+        WindowStyle="None" 
+        MouseDown="DragApp">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -92,8 +96,14 @@
                 </Button.Style>
             </Button>
         </StackPanel>
-        <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness="1" 
-                HorizontalAlignment="Center" Height="190" VerticalAlignment="Center" Width="290"
+        <Border Grid.Column="2" 
+                Grid.Row="2" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                HorizontalAlignment="Center" 
+                Height="190" 
+                VerticalAlignment="Center" 
+                Width="290"
                 Background="#FFF3F3F3">
             <Grid >
                 <Grid.RowDefinitions>
@@ -104,28 +114,68 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" FontFamily="Dubai">User Login</Label>
-                <Label Grid.Row="1" Margin="0,0,0,0" FontWeight="Bold">Username</Label>
-                <Label Grid.Row="3" Margin="0,0,0,0" FontWeight="Bold" >Password</Label>
-                <TextBox x:Name="usernameBox" Grid.Row="2" Height="25" Width="275" Text="Admin"/>
-                <TextBox x:Name="passwdBox" Grid.Row="4" Height="25" Width="275" Text="Admin"/>
-                <Button Grid.Row="5" Height="20" Width="75" HorizontalAlignment="Right" Margin="0,0,10,0" BorderThickness="0"
-                        Background="ForestGreen" Click="LoginClick">
+                <TextBlock Grid.Row="0" 
+                       Margin="0,0,0,0" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Bottom" 
+                       FontWeight="Bold" FontSize="16" 
+                       FontFamily="Dubai"
+                       Text="User Login"/>
+                <TextBlock Grid.Row="1"  
+                       Margin="5,0,0,0" 
+                       FontWeight="Bold"
+                       Text="Username"/>
+                <TextBlock Grid.Row="3"
+                       Margin="5,0,0,0" 
+                       FontWeight="Bold"
+                       Text="Password"/>
+                <TextBox x:Name="usernameBox"
+                         Grid.Row="2" 
+                         Height="25" 
+                         Width="275" 
+                         Text="Admin"/>
+                <TextBox x:Name="passwdBox" 
+                         Grid.Row="4"
+                         Height="25"
+                         Width="275"
+                         Text="Admin"/>
+                <Button Grid.Row="5"
+                        Height="20"
+                        Width="75" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0" 
+                        BorderThickness="0"
+                        Background="ForestGreen" 
+                        Click="LoginClick">
                     <Grid Height="20" Width="75">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" HorizontalAlignment="Center"
-                                   FontWeight="Bold" Foreground="WhiteSmoke" Margin="5,0,0,0">Login</TextBlock>
-                        <Path Data="{StaticResource LoginIcon}" Grid.Column="1" Stretch="Uniform"
-                              Fill="WhiteSmoke" Width="15" Height="15" 
-                              HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,1" />
+                        <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   FontWeight="Bold" 
+                                   Foreground="WhiteSmoke" 
+                                   Margin="5,0,0,0">Login</TextBlock>
+                        <Path Data="{StaticResource LoginIcon}" 
+                              Grid.Column="1" 
+                              Stretch="Uniform"
+                              Fill="WhiteSmoke"
+                              Width="15" Height="15" 
+                              HorizontalAlignment="Center" 
+                              VerticalAlignment="Center" 
+                              Margin="0,0,0,1" />
                     </Grid>
                 </Button>
             </Grid>
-        </Border> 
-        <Label FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.Row="1" 
-               HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Leelawadee">Hotel Jaya Abadi</Label>
+        </Border>
+        <TextBlock FontSize="30" 
+               FontWeight="Bold" 
+               Grid.Column="2" 
+               Grid.Row="1" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               FontFamily="Leelawadee"
+               Text="Hotel Jaya Abadi"/>
     </Grid>
 </Window>
