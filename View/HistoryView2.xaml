@@ -62,16 +62,19 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <ScrollViewer Grid.Row="3" Height="290">
-            <DataGrid x:Name="tabelHistori" Margin="10" Height="680">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Kode Pemesanan"/>
-                    <DataGridTextColumn Header="Nama" Width="200" />
-                    <DataGridTextColumn Header="Nomor Kamar" Width="*" />
-                    <DataGridTextColumn Header="Tanggal Checkin" Width="*" />
-                    <DataGridTextColumn Header="Tanggal Checkout" Width="*" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
+        <DataGrid x:Name="tabelHistori"
+                  Margin="10"
+                  Height="290"
+                  AutoGenerateColumns="False"
+                  Grid.Row="3"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kode Pemesanan" Binding="{Binding KodePemesanan}"/>
+                <DataGridTextColumn Header="Nama" Width="200" Binding="{Binding Person}"/>
+                <DataGridTextColumn Header="Nomor Kamar" Width="*"  Binding="{Binding Room}"/>
+                <DataGridTextColumn Header="Tanggal Checkin" Width="*" Binding="{Binding CheckIn}"/>
+                <DataGridTextColumn Header="Tanggal Checkout" Width="*"  Binding="{Binding CheckOut}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

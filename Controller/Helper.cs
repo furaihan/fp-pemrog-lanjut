@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinusPengger.Controller
 {
@@ -29,7 +27,7 @@ namespace PinusPengger.Controller
 
         public static T GetRandomElement<T>(this IEnumerable<T> enumarable, bool shuffle = false)
         {
-            if (enumarable == null || enumarable.Count() <= 0)
+            if (enumarable == null || !enumarable.Any())
                 return default;
 
             T[] array = enumarable.ToArray();

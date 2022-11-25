@@ -12,6 +12,14 @@ namespace PinusPengger.Model
         private DateTime? checkIn;
         private DateTime? checkOut;
 
+        public Reservation(int kodePemesanan, Room room, Person person, DateTime? checkIn, DateTime? checkOut)
+        {
+            KodePemesanan = kodePemesanan;
+            Room = room;
+            Person = person;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
+        }
 
         public int KodePemesanan
         {
