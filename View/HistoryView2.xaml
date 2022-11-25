@@ -67,13 +67,18 @@
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
-                  CanUserAddRows="False">
+                  CanUserAddRows="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Kode Pemesanan" Binding="{Binding KodePemesanan}"/>
-                <DataGridTextColumn Header="Nama" Width="200" Binding="{Binding Person}"/>
-                <DataGridTextColumn Header="Nomor Kamar" Width="*"  Binding="{Binding Room}"/>
-                <DataGridTextColumn Header="Tanggal Checkin" Width="*" Binding="{Binding CheckIn}"/>
-                <DataGridTextColumn Header="Tanggal Checkout" Width="*"  Binding="{Binding CheckOut}"/>
+                <DataGridTextColumn Header="Kode Pemesanan" 
+                                    Binding="{Binding KodePemesanan}"/>
+                <DataGridTextColumn Header="Nama" Width="200" 
+                                    Binding="{Binding Person}"/>
+                <DataGridTextColumn Header="Nomor Kamar" Width="*"  
+                                    Binding="{Binding Room}"/>
+                <DataGridTextColumn Header="Tanggal Checkin" Width="*" 
+                                    Binding="{Binding CheckIn, StringFormat='dd/MM/yyyy'}"/>
+                <DataGridTextColumn Header="Tanggal Checkout" Width="*"  
+                                    Binding="{Binding CheckOut, StringFormat='dd/MM/yyyy'}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

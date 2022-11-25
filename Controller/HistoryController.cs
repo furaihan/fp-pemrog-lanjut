@@ -46,8 +46,11 @@ namespace PinusPengger.Controller
                 Room room = new(new RoomNumbering(roomFloor, (byte)(i % 100)),
                                 RoomType.Reguler,
                                 RoomFeature.DoubleBed);
-                Reservation reservation = new(i, room, person, DateTime.Now - TimeSpan.FromDays(rnd.Next(3)),
-                    DateTime.Now + TimeSpan.FromDays(rnd.Next(2, 8)));
+                Reservation reservation = new(i,
+                                              room,
+                                              person,
+                                              DateTime.Now - TimeSpan.FromDays(rnd.Next(3)),
+                                              DateTime.Now + TimeSpan.FromDays(rnd.Next(2, 8)));
                 tabelHistori.Items.Add(reservation);
             }
         }
