@@ -51,6 +51,7 @@ namespace PinusPengger.Controller
                                               person,
                                               DateTime.Now - TimeSpan.FromDays(rnd.Next(3)),
                                               DateTime.Now + TimeSpan.FromDays(rnd.Next(2, 8)));
+                reservation.Status = ReservationStatus.CheckedOut;
                 tabelHistori.Items.Add(reservation);
             }
         }

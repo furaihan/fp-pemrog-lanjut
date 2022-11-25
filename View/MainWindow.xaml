@@ -37,8 +37,7 @@
                         FlowDirection="LeftToRight">
                 <Button Width="18"
                         Height="18"
-                        Style="{StaticResource RoundedButton}"
-                        Background="Gold"
+                        Background="LimeGreen"
                         Margin="0,0,5,0"
                         BorderThickness="0"
                         Click="MinimizeApp">
@@ -53,15 +52,30 @@
                               RenderTransformOrigin="0.5,0.5" 
                               Margin="1,0,0,0"></Path>
                     </Grid>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="32" />
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Lime"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
                 <Button Width="18"
                         Height="18"
-                        Style="{StaticResource RoundedButton}"
                         Background="Red"
                         BorderThickness="0"
                         Click="CloseApp">
                     <Grid>
-                        <Path Data="{StaticResource CloseAppIcon}" Stretch="Uniform"
+                        <Path Data="{StaticResource CloseAppIcon}" 
+                              Stretch="Uniform"
                               Fill="Black"
                               Width="10" 
                               Height="10"
@@ -70,6 +84,20 @@
                               RenderTransformOrigin="0.5,0.5"
                               Margin="2,0,0,0"></Path>
                     </Grid>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="32" />
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Tomato"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
             </StackPanel>
         </Grid>

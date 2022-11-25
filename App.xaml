@@ -9,7 +9,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Style/RoundButton.xaml"/>
                 <ResourceDictionary Source="/Style/NavbarButton.xaml"/>
                 <ResourceDictionary Source="/Style/StylishScrollBar.xaml"/>
                 <ResourceDictionary Source="/Style/Icons/CloseAppIcon.xaml"/>

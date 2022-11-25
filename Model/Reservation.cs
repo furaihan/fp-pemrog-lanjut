@@ -4,6 +4,12 @@ using System.Runtime.CompilerServices;
 
 namespace PinusPengger.Model
 {
+    public enum ReservationStatus
+    {
+        Booked = 0,
+        CheckedIn = 1,
+        CheckedOut = 2,
+    }
     public class Reservation : INotifyPropertyChanged
     {
         private int _kodePemesanan;
@@ -11,6 +17,7 @@ namespace PinusPengger.Model
         private Person _person;
         private DateTime? checkIn;
         private DateTime? checkOut;
+        private ReservationStatus status;
 
         public Reservation(int kodePemesanan, Room room, Person person, DateTime? checkIn, DateTime? checkOut)
         {
@@ -64,6 +71,15 @@ namespace PinusPengger.Model
             set
             {
                 checkOut = value;
+                OnPropertyChanged();
+            }
+        }
+        public ReservationStatus Status
+        {
+            get => status;
+            set
+            {
+                status = value;
                 OnPropertyChanged();
             }
         }
