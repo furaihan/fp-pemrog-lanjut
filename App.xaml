@@ -9,14 +9,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Style/NavbarButton.xaml"/>
-                <ResourceDictionary Source="/Style/StylishScrollBar.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/CloseAppIcon.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/LoginIcon.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/LogoutIcon.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/MinimizeIcon.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/CircleUserIcon.xaml"/>
-                <ResourceDictionary Source="/Style/Icons/MagnifyingGlassIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/NavbarButton.xaml"/>
+                <ResourceDictionary Source="/UserControls/StylishScrollBar.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/CloseAppIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/LoginIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/LogoutIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/MinimizeIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/CircleUserIcon.xaml"/>
+                <ResourceDictionary Source="/UserControls/Icons/MagnifyingGlassIcon.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             

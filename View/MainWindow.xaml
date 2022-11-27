@@ -35,69 +35,81 @@
                         Margin="0,5,5,0"
                         Orientation="Horizontal" 
                         FlowDirection="LeftToRight">
-                <Button Width="18"
-                        Height="18"
-                        Background="LimeGreen"
-                        Margin="0,0,5,0"
-                        BorderThickness="0"
-                        Click="MinimizeApp">
-                    <Grid>
-                        <Path Data="{StaticResource MinimizeIcon}"
-                              Stretch="Uniform"
-                              Fill="Black"
-                              Width="10" 
-                              Height="10"
-                              HorizontalAlignment="Center" 
-                              VerticalAlignment="Center"
-                              RenderTransformOrigin="0.5,0.5" 
-                              Margin="1,0,0,0"></Path>
-                    </Grid>
+                <Button x:Name="btnMinimize"                    
+                    BorderThickness="0"
+                    Foreground="White"
+                    Cursor="Hand"
+                    Click="MinimizeApp">
+                    <Button.Content>
+                        <Path Data="{StaticResource MinimizeIcon}" 
+                          Stretch="Uniform"
+                          Fill="Black"
+                          Width="10" 
+                          Height="10"
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5"
+                          Margin="1,0,0,0"/>
+                    </Button.Content>
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Style.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="32" />
-                                </Style>
-                            </Style.Resources>
-                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Background" Value="#d8e041"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Lime"/>
+                                    <Setter Property="Background" Value="#e9f50c"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
-                <Button Width="18"
-                        Height="18"
-                        Background="Red"
-                        BorderThickness="0"
-                        Click="CloseApp">
-                    <Grid>
+                <Button x:Name="btnClose"                    
+                    BorderThickness="0"
+                    Foreground="White"
+                    Cursor="Hand"
+                    Click="MinimizeApp"
+                    Margin="5">
+                    <Button.Content>
                         <Path Data="{StaticResource CloseAppIcon}" 
-                              Stretch="Uniform"
-                              Fill="Black"
-                              Width="10" 
-                              Height="10"
-                              HorizontalAlignment="Center" 
-                              VerticalAlignment="Center"
-                              RenderTransformOrigin="0.5,0.5"
-                              Margin="2,0,0,0"></Path>
-                    </Grid>
+                          Stretch="Uniform"
+                          Fill="Black"
+                          Width="10" 
+                          Height="10"
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"
+                          RenderTransformOrigin="0.5,0.5"
+                          Margin="1,0,0,0"/>
+                    </Button.Content>
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Style.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="32" />
-                                </Style>
-                            </Style.Resources>
+                            <Setter Property="Background" Value="Red"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Tomato"/>
+                                    <Setter Property="Background" Value="IndianRed"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
             </StackPanel>
         </Grid>
