@@ -1,0 +1,33 @@
+name: FinalProject Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v2.5.0
+
+      - name: Setup MS Build
+        uses: microsoft/setup-msbuild@v1.1.3
+        
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.1.1
+     
+      - name: Restore NuGet Packages
+        run: nuget restore PinusPengger.sln
+      
+      - name: Build Release Library
+        run:  msbuild PinusPengger.sln /p:Configuration=Release
+
+      - name: Setting Date Variable
+        id: date
+        run: echo "::set-output name=today::$(date +'%d%m%y-%H%M%S')"
+                
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: FinalProject_${{ steps.date.outputs.today }}
+          path: PinusPengger/bin/Release/net6.0-windows
+          retention-days: 10
