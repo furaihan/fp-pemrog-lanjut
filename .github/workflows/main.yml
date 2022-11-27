@@ -29,5 +29,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.1
         with:
           name: FinalProject_${{ steps.date.outputs.today }}
-          path: PinusPengger/bin/Release/net6.0-windows
+          path: fp-pemrog-lanjut/bin/Release/net6.0-windows
           retention-days: 10
