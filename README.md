@@ -1,3 +1,8 @@
+![Made with love in Indonesia](https://madewithlove.now.sh/id?heart=true&template=for-the-badge)
+
+
+
+[![Build status](https://github.com/furaihan/fp-pemrog-lanjut/actions/workflows/main.yml/badge.svg)](https://github.com/furaihan/fp-pemrog-lanjut/actions)
 # Final Project
 Final Project Kelompok 5 (21-Informatika-8) Mata Kuliah Pemrograman Lanjut Program Studi Informatika Universitas Amikom Yogyakarta
 
