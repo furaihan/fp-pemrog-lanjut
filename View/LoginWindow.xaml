@@ -73,7 +73,7 @@
                     BorderThickness="0"
                     Foreground="White"
                     Cursor="Hand"
-                    Click="MinimizeApp"
+                    Click="CloseApp"
                     Margin="5">
                 <Button.Content>
                     <Path Data="{StaticResource CloseAppIcon}" 

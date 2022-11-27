@@ -30,14 +30,9 @@
                            FontSize="12"
                            HorizontalAlignment="Center"/>
                 <Button x:Name="btnLogout"                           
-                            BorderThickness="0"
                             Foreground="White"
-                            FontSize="16"
-                            FontFamily="Montserrat"
                             Cursor="Hand"
-                            Grid.Row="2"
-                            Click="btnMinimize_Click">
-
+                            Grid.Row="2">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Red"/>
