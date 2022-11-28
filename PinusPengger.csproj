@@ -32,4 +32,8 @@
     <Page Remove="View\reservasi_reguler.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+  </ItemGroup>
+
 </Project>
