@@ -113,7 +113,7 @@
                 BorderBrush="Black" 
                 BorderThickness="1" 
                 HorizontalAlignment="Center" 
-                Height="190" 
+                Height="200" 
                 VerticalAlignment="Center" 
                 Width="290"
                 Background="#FFF3F3F3">
@@ -168,7 +168,8 @@
                                    HorizontalAlignment="Center"
                                    FontWeight="Bold" 
                                    Foreground="WhiteSmoke" 
-                                   Margin="5,0,0,0">Login</TextBlock>
+                                   Margin="5,0,0,0"
+                                   Text="Login"/>
                         <Path Data="{StaticResource LoginIcon}" 
                               Grid.Column="1" 
                               Stretch="Uniform"

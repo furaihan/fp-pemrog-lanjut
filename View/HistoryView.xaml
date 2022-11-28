@@ -46,7 +46,7 @@
                         Orientation="Horizontal">
                 <TextBox Width="200"
                          Height="25"
-                         FontSize="18"
+                         FontSize="14"
                          Foreground="DarkGray"
                          Text="Kode"/>
                 <Button Height="25"
