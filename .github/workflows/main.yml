@@ -23,7 +23,7 @@ jobs:
 
       - name: Setting Date Variable
         id: date
-        run: echo "::set-output name=today::$(date +'%d%m%y-%H%M%S')"
+        run: echo "{today}={$(date +'%d%m%y-%H%M%S')}" >> $GITHUB_OUTPUT
                 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3.1.1
