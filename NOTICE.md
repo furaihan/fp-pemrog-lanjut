@@ -1,4 +1,4 @@
-#THIRD PARTY LICENSES
+# THIRD PARTY LICENSES
 
 ## [Costura](https://github.com/Fody/Costura)
 ```
