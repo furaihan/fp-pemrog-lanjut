@@ -1,37 +1,18 @@
-﻿
-using PinusPengger.Model;
+﻿using PinusPengger.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Timers;
-using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
-    /// <summary>
-    /// Interaction logic for HistoryView2.xaml
-    /// </summary>
-    public partial class HistoryController : UserControl
+    public partial class HomeController : UserControl
     {
-        public HistoryController()
+        public HomeController()
         {
             InitializeComponent();
-            FillContext();
-        }
-        public void OnLoaded(object sender, RoutedEventArgs e)
-        {
         }
         private void FillContext()
         {
@@ -40,8 +21,8 @@ namespace PinusPengger.Controller
             {
                 byte roomFloor = (byte)((i / 10 % 10) + 1);
                 Person person = new((ulong)((81287387 + i) * rnd.Next(3)),
-                                    $"Cristiano Ronaldo SIUU {i * 2}",
-                                    "112312312",
+                                    $"Ngolo Kante {rnd.Next(100, 999)}",
+                                    rnd.Next(1000000, 9999999).ToString(),
                                     DateTime.Now);
                 Room room = new(new RoomNumbering(roomFloor, (byte)(i % 10)),
                                 rnd.Next() % 2 == 0 ? RoomType.Reguler : RoomType.VIP,
@@ -51,11 +32,9 @@ namespace PinusPengger.Controller
                                               person,
                                               DateTime.Now - TimeSpan.FromDays(rnd.Next(3)),
                                               DateTime.Now + TimeSpan.FromDays(rnd.Next(2, 8)));
-                reservation.Status = ReservationStatus.CheckedOut;
+                reservation.Status = rnd.Next() % 3 == 1 ? ReservationStatus.CheckedIn : ReservationStatus.Booked;
                 tabelHistori.Items.Add(reservation);
             }
         }
     }
-
 }
-

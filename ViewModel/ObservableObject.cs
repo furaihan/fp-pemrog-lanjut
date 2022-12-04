@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
     internal class ObservableObject : INotifyPropertyChanged
     {

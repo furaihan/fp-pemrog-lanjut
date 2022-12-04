@@ -1,21 +1,22 @@
-﻿using System;
+﻿using PinusPengger.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
-    internal class CoreController : ObservableObject
+    internal class CoreViewModel : ObservableObject
     {
-        public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand ReservationViewCommand { get; set; }
-        public RelayCommand HistoryViewCommand { get; set; }
+        public ViewModelCommand HomeViewCommand { get; set; }
+        public ViewModelCommand ReservationViewCommand { get; set; }
+        public ViewModelCommand HistoryViewCommand { get; set; }
 
         private HomeController _homeView;
         private ReservasiController _reservasiView;
-        private  HistoryController _historyView;
+        private HistoryViewModel _historyView;
         private object _currentView;
 
         public HomeController HomeView
@@ -28,7 +29,7 @@ namespace PinusPengger.Controller
             get => _reservasiView;
             set => _reservasiView = value;
         }
-        public HistoryController HistoryView
+        public HistoryViewModel HistoryView
         {
             get => _historyView;
             set => _historyView = value;
@@ -39,22 +40,21 @@ namespace PinusPengger.Controller
             get => _currentView;
             set
             {
-                _currentView= value;
+                _currentView = value;
                 OnPropertyChanged();
             }
         }
-        public CoreController()
+        public CoreViewModel()
         {
             HomeView = new HomeController();
             ReservasiView = new ReservasiController();
-            HistoryView = new HistoryController();
-
+            HistoryView = new HistoryViewModel();
 
             CurrentView = HistoryView;
 
-            HistoryViewCommand = new RelayCommand(o => CurrentView = HistoryView);
-            ReservationViewCommand = new RelayCommand(o => CurrentView = ReservasiView);
-            HomeViewCommand = new RelayCommand(o => CurrentView = HomeView);
+            HistoryViewCommand = new ViewModelCommand(o => CurrentView = HistoryView);
+            ReservationViewCommand = new ViewModelCommand(o => CurrentView = ReservasiView);
+            HomeViewCommand = new ViewModelCommand(o => CurrentView = HomeView);
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:PinusPengger"
              xmlns:model="clr-namespace:PinusPengger.Model"
              xmlns:view="clr-namespace:PinusPengger.View"
-             xmlns:controller="clr-namespace:PinusPengger.Controller"
+             xmlns:controller="clr-namespace:PinusPengger.ViewModel"
              StartupUri="/View/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

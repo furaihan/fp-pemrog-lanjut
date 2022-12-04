@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
-    internal class RelayCommand : ICommand
+    internal class ViewModelCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public ViewModelCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;

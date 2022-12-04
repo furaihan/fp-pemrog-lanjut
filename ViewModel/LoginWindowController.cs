@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
     /// <summary>
     /// Interaction logic for HistoryView2.xaml
