@@ -23,10 +23,17 @@ jobs:
       
       - name: Build Release Library
         run:  msbuild PinusPengger.sln /p:Configuration=Release
+        
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD-HHmmss
+          utcOffset: "+07:00"
                 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: FinalProject_${{ github.event.repository.updated_at }}
+          name: FinalProject_${{ steps.current-time.outputs.formattedTime }}
           path: ./bin/Release/net6.0-windows
           retention-days: 10
