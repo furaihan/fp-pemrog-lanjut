@@ -68,7 +68,7 @@
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
-                  CanUserAddRows="True">
+                  CanUserAddRows="False">
             <DataGrid.Resources>
                 <converter:PersonConverter x:Key="PersonConverter"/>
                 <converter:RoomConverter x:Key="RoomConverter"/>

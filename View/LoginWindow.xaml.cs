@@ -1,4 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,17 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PinusPengger.ViewModel
+namespace PinusPengger.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindowController : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindowController()
+        public LoginWindow()
         {
             InitializeComponent();
         }
+
+
         private void CloseApp(object sender, RoutedEventArgs e)
         {
             Close();
@@ -30,9 +36,15 @@ namespace PinusPengger.ViewModel
 
         private void DragApp(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton== MouseButtonState.Pressed)
+            this.DragMove();
+        }
+        private void LoginClick(object sender, RoutedEventArgs e)
+        {
+            if (usernameBox.Text.ToLower() == "admin" && passwdBox.Text.ToLower() == "admin")
             {
-                this.DragMove();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
         }
     }

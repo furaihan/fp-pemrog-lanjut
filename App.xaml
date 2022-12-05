@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:PinusPengger.Model"
              xmlns:view="clr-namespace:PinusPengger.View"
              xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="/View/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -17,10 +18,8 @@
                 <ResourceDictionary Source="/UserControls/Icons/MinimizeIcon.xaml"/>
                 <ResourceDictionary Source="/UserControls/Icons/CircleUserIcon.xaml"/>
                 <ResourceDictionary Source="/UserControls/Icons/MagnifyingGlassIcon.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Cyan" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Yellow.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
