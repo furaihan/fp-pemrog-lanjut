@@ -1,6 +1,9 @@
 name: FinalProject Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
   build:
@@ -20,14 +23,17 @@ jobs:
       
       - name: Build Release Library
         run:  msbuild PinusPengger.sln /p:Configuration=Release
-
-      - name: Setting Date Variable
-        id: date
-        run: echo "{today}={$(date +'%d%m%y-%H%M%S')}" >> $GITHUB_OUTPUT
+        
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD-HHmmss
+          utcOffset: "+07:00"
                 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: FinalProject_${{ steps.date.outputs.today }}
+          name: FinalProject_${{ steps.current-time.outputs.formattedTime }}
           path: ./bin/Release/net6.0-windows
           retention-days: 10
