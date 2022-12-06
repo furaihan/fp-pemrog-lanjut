@@ -22,14 +22,14 @@ namespace PinusPengger.Repository
 
         public override void InsertRecord(Customer customer)
         {
-            const string query = "INSERT INTO pelanggan(nik, nama, tanggal_lahir, telp) VALUES(@nik, @name, @birthDate, @phoneNumber)";
+            const string query = "INSERT INTO pelanggan(nik, nama, tanggal_lahir, telp) VALUES(@nik, @nama, @tanggal_lahir, @telp)";
 
             var args = new Dictionary<string, object>
             {
                 {"@nik", customer.NIK },
-                {"@name", customer.Name },
-                {"@birthDate", customer.BirthDate },
-                {"@phoneNumber", customer.PhoneNumber }
+                {"@nama", customer.Name },
+                {"@tanggal_lahir", customer.BirthDate },
+                {"@telp", customer.PhoneNumber }
             };
 
             ExecuteWrite(query, args);
@@ -64,15 +64,15 @@ namespace PinusPengger.Repository
 
         public override void UpdateRecord(Customer customer)
         {
-            const string query = "UPDATE pelanggan SET nik = @nik, nama = @name, tanggal_lahir = @birthDate, telp = @phoneNumber WHERE id = @id";
+            const string query = "UPDATE pelanggan SET nik = @nik, nama = @nama, tanggal_lahir = @tanggal_lahir, telp = @telp WHERE id = @id";
 
             var args = new Dictionary<string, object>
             {
                 {"@id", customer.ID },
                 {"@nik", customer.NIK },
-                {"@name", customer.Name },
-                {"@birthDate", customer.BirthDate },
-                {"@phoneNumber", customer.PhoneNumber }
+                {"@nama", customer.Name },
+                {"@tanggal_lahir", customer.BirthDate },
+                {"@telp", customer.PhoneNumber }
             };
 
             ExecuteWrite(query, args);
