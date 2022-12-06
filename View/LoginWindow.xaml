@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:PinusPengger.View"
-        xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+        xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi - Login Page" 
         Height="540" 
@@ -12,6 +12,9 @@
         ResizeMode="CanMinimize"
         WindowStyle="None" 
         MouseDown="DragApp">
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -145,12 +148,12 @@
                          Grid.Row="2" 
                          Height="25" 
                          Width="275" 
-                         Text="Admin"/>
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="passwdBox" 
                          Grid.Row="4"
                          Height="25"
                          Width="275"
-                         Text="Admin"/>
+                         Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Grid.Row="5"
                         Height="20"
                         Width="75" 
@@ -186,9 +189,8 @@
                         <ColumnDefinition Width="90"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Foreground="Red"
-                               Text="Invalid Password"
                                Margin="10,0,0,0"
-                               Visibility="Hidden"
+                               Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}"
                                />
                 </Grid>
             </Grid>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PinusPengger.ViewModel
 {
-    internal class CoreViewModel : ObservableObject
+    internal class MainViewModel : ViewModelBase
     {
         public ViewModelCommand HomeViewCommand { get; set; }
         public ViewModelCommand ReservationViewCommand { get; set; }
@@ -44,7 +44,7 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public CoreViewModel()
+        public MainViewModel()
         {
             HomeView = new HomeController();
             ReservasiView = new ReservasiController();

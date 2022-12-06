@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace PinusPengger.ViewModel
 {
-    internal class ObservableObject : INotifyPropertyChanged
+    internal class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

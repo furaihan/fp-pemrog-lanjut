@@ -13,7 +13,7 @@
         ResizeMode="CanMinimize"
         WindowStyle="None">
     <Window.DataContext>
-        <controller:CoreViewModel/>
+        <controller:MainViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
