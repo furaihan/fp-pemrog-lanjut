@@ -1,62 +1,59 @@
 ﻿using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace PinusPengger.Model
 {
-    public class Room : INotifyPropertyChanged
+    public class Customer : INotifyPropertyChanged
     {
-        // private RoomNumbering roomNumber;
         private int _id;
-        private string _code;
-        private Int16 _number;
-        private Int16 _floor;
-        private RoomType _type;
+        private string _nik;
+        private string _name;
+        private string _phoneNumber;
+        private DateOnly _birthDate;
 
         public int ID 
         { 
-            get => _id;
+            get => _id; 
             set
             {
                 _id = value;
                 OnPropertyChanged();
             }
         }
-        public string Code 
+        public string NIK
         {
-            //get => $"{_type.ToString().ToUpper()[0]}.{_floor}.{_number}";
-            get => _code;
-            set 
-            {
-                _code = value;
-                OnPropertyChanged();
-            }
-        }
-        public Int16 Number
-        { 
-            get => _number;
+            get => _nik;
             set
             {
-                _number = value;
+                _nik = value;
                 OnPropertyChanged();
             }
         }
-        public Int16 Floor 
-        { 
-            get => _floor;
-            set
-            {
-                _floor = value;
-                OnPropertyChanged();
-            }
-        }
-        public RoomType Type
+        public string Name
         {
-            get => _type;
+            get => _name;
             set
             {
-                _type = value;
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set
+            {
+                _phoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
+        public DateOnly BirthDate
+        {
+            get => _birthDate;
+            set
+            {
+                _birthDate = value;
                 OnPropertyChanged();
             }
         }
@@ -68,12 +65,4 @@ namespace PinusPengger.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
-
-    [Flags]
-    public enum RoomType
-    {
-        Reguler = 0,
-        VIP = 1
-    }
-
 }

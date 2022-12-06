@@ -4,91 +4,91 @@ using System.Runtime.CompilerServices;
 
 namespace PinusPengger.Model
 {
-    public enum ReservationStatus
-    {
-        Booked = 0,
-        CheckedIn = 1,
-        CheckedOut = 2,
-    }
     public class Reservation : INotifyPropertyChanged
     {
-        private int _kodePemesanan;
-        private Room _room;
-        private Person _person;
-        private DateTime? checkIn;
-        private DateTime? checkOut;
-        private ReservationStatus status;
+        private int _id;
+        private string _code;
+        private DateTime? _checkIn;
+        private DateTime? _checkOut;
+        private ReservationStatus _status;
+        private int _idRoom;
+        private int _idCustomer;
 
-        public Reservation(int kodePemesanan, Room room, Person person, DateTime? checkIn, DateTime? checkOut)
+        public int ID
         {
-            KodePemesanan = kodePemesanan;
-            Room = room;
-            Person = person;
-            CheckIn = checkIn;
-            CheckOut = checkOut;
-        }
-
-        public int KodePemesanan
-        {
-            get => _kodePemesanan;
+            get => _id;
             set
             {
-                _kodePemesanan = value;
+                _id = value;
                 OnPropertyChanged();
             }
         }
-
-        public Room Room
+        public string Code
         {
-            get => _room;
+            get => _code;
             set
             {
-                _room = value;
-                OnPropertyChanged();
-            }
-        }
-        public Person Person
-        {
-            get => _person;
-            set
-            {
-                _person = value;
+                _code = value;
                 OnPropertyChanged();
             }
         }
         public DateTime? CheckIn
         {
-            get => checkIn;
+            get => _checkIn;
             set
             {
-                checkIn = value;
+                _checkIn = value;
                 OnPropertyChanged();
             }
         }
         public DateTime? CheckOut
         {
-            get => checkOut;
+            get => _checkOut;
             set
             {
-                checkOut = value;
+                _checkOut = value;
                 OnPropertyChanged();
             }
         }
         public ReservationStatus Status
         {
-            get => status;
+            get => _status;
             set
             {
-                status = value;
+                _status = value;
                 OnPropertyChanged();
             }
         }
-
+        public int IDRoom
+        {
+            get => _idRoom;
+            set
+            {
+                _idRoom = value;
+                OnPropertyChanged();
+            }
+        }
+        public int IDCustomer
+        {
+            get => _idCustomer;
+            set
+            {
+                _idCustomer = value;
+                OnPropertyChanged();
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+    }
+
+    [Flags]
+    public enum ReservationStatus
+    {
+        Booked = 0,
+        CheckedIn = 1,
+        CheckedOut = 2,
     }
 }
