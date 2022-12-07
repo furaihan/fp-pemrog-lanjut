@@ -1,19 +1,18 @@
-﻿<UserControl x:Class="PinusPengger.ViewModel.HistoryViewModel"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:controller="clr-namespace:PinusPengger.ViewModel"
-             xmlns:model="clr-namespace:PinusPengger.Model"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:converter="clr-namespace:PinusPengger.ViewModel.Converter"
-             mc:Ignorable="d" 
-             d:DesignHeight="420" 
-             d:DesignWidth="920"
-             Loaded="OnLoaded">
-    <UserControl.Resources>
+﻿<Page x:Class="PinusPengger.View.HistoryPage"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+      xmlns:model="clr-namespace:PinusPengger.Model"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:converter="clr-namespace:PinusPengger.ViewModel.Converter"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" 
+      d:DesignWidth="920">
+    <Page.Resources>
         <controller:Ticker x:Key="ticker"/>
-    </UserControl.Resources>
+    </Page.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -68,7 +67,7 @@
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
-                  CanUserAddRows="False">
+                  CanUserAddRows="True">
             <DataGrid.Resources>
                 <converter:PersonConverter x:Key="PersonConverter"/>
                 <converter:RoomConverter x:Key="RoomConverter"/>
@@ -87,4 +86,4 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</UserControl>
+</Page>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
     internal static class Helper
     {
@@ -31,7 +31,7 @@ namespace PinusPengger.Controller
                 return default;
 
             T[] array = enumarable.ToArray();
-            return GetRandomElement(array, shuffle);
+            return array.GetRandomElement(shuffle);
         }
 
         public static T GetRandomElement<T>(this Enum items)
@@ -39,7 +39,7 @@ namespace PinusPengger.Controller
             if (typeof(T).BaseType != typeof(Enum))
                 throw new InvalidCastException();
             Array types = Enum.GetValues(typeof(T));
-            return GetRandomElement(types.Cast<T>());
+            return types.Cast<T>().GetRandomElement();
         }
         public static T GetRandomElement<T>(this IEnumerable<T> items, Predicate<T> predicate, bool shuffle = false)
         {

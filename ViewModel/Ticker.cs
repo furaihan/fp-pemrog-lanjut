@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
     public class Ticker : INotifyPropertyChanged
     {

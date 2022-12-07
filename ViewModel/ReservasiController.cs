@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace PinusPengger.Controller
+namespace PinusPengger.ViewModel
 {
     public partial class ReservasiController : UserControl
     {
