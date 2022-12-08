@@ -1,7 +1,6 @@
 ﻿using PinusPengger.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
@@ -35,7 +34,7 @@ namespace PinusPengger.Repository
             ExecuteWrite(query, args);
         }
 
-        public override ObservableCollection<Customer> ReadData()
+        public override List<Customer> ReadData()
         {
             var result = new List<Customer>();
 
@@ -56,10 +55,7 @@ namespace PinusPengger.Repository
                 result.Add(customer);
             }
 
-            var oc = new ObservableCollection<Customer>();
-            result.ForEach(x => oc.Add(x));
-
-            return oc;
+            return result;
         }
 
         public override void UpdateRecord(Customer customer)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
@@ -54,7 +53,7 @@ namespace PinusPengger.Repository
         }
         public abstract void DeleteRecord(T obj);
         public abstract void InsertRecord(T obj);
-        public abstract ObservableCollection<T> ReadData();
+        public abstract List<T> ReadData();
         public abstract void UpdateRecord(T obj);
     }
 }

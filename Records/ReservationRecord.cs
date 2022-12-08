@@ -1,4 +1,5 @@
-﻿using PinusPengger.ViewModel;
+﻿using PinusPengger.Model;
+using PinusPengger.ViewModel;
 using System;
 
 namespace PinusPengger.Records
@@ -76,12 +77,5 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-    }
-
-    [Flags]
-    enum ReservationStatus
-    {
-        Booking = 0,
-        Checkin = 1,
     }
 }

@@ -1,5 +1,5 @@
-﻿using PinusPengger.ViewModel;
-using System;
+﻿using PinusPengger.Model;
+using PinusPengger.ViewModel;
 
 namespace PinusPengger.Records
 {
@@ -58,12 +58,4 @@ namespace PinusPengger.Records
             }
         }
     }
-
-    [Flags]
-    enum RoomType
-    {
-        Reg = 0,
-        VIP = 1
-    }
-
 }
