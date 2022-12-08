@@ -5,13 +5,13 @@ namespace PinusPengger.Records
 {
     internal class RoomRecord : ViewModelBase
     {
-        private int _id;
+        private int? _id;
         private string _code;
-        private short _number;
-        private short _floor;
-        private RoomType _type;
+        private short? _number;
+        private short? _floor;
+        private RoomType? _type;
 
-        public int ID
+        public int? ID
         {
             get => _id;
             set
@@ -30,7 +30,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public short Number
+        public short? Number
         {
             get => _number;
             set
@@ -39,7 +39,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public short Floor
+        public short? Floor
         {
             get => _floor;
             set
@@ -48,7 +48,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public RoomType Type
+        public RoomType? Type
         {
             get => _type;
             set
