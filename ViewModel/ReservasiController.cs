@@ -11,11 +11,9 @@ namespace PinusPengger.ViewModel
 {
     public partial class ReservasiController : UserControl
     {
-        public ObservableCollection<Room> RoomContext { get; set; }
         public ReservasiController()
         {
             InitializeComponent();
-            RoomContext = new ObservableCollection<Room>();
         }
         private void FillRoom()
         {
