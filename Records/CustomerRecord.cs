@@ -1,7 +1,5 @@
 ﻿using PinusPengger.ViewModel;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace PinusPengger.Records
 {
@@ -10,8 +8,8 @@ namespace PinusPengger.Records
         private int _id;
         private string _nik;
         private string _name;
-        private string _phone;
         private DateOnly _birthDate;
+        private string _phone;
 
         public int ID
         {
@@ -40,21 +38,21 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public string Phone
-        {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                OnPropertyChanged();
-            }
-        }
         public DateOnly BirthDate
         {
             get => _birthDate;
             set
             {
                 _birthDate = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
                 OnPropertyChanged();
             }
         }

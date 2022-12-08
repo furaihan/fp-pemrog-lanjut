@@ -3,14 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Media3D;
 
 namespace PinusPengger.Repository
 {
-    class RoomCRUD : DatabaseCRUD<Room>
+    internal class RoomCRUD : DatabaseCRUD<Room>
     {
         public override void DeleteRecord(Room room)
         {
@@ -18,7 +14,7 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@id", room.ID}
+                {"@id", room.RoomID}
             };
 
             ExecuteWrite(query, args);
@@ -30,10 +26,10 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@kode", room.Code },
-                {"@lantai", room.Floor },
-                {"@nomor", room.Number },
-                {"@tipe", Convert.ToInt16(room.Type)}
+                {"@kode", room.RoomCode },
+                {"@lantai", room.RoomFloor },
+                {"@nomor", room.RoomNumber },
+                {"@tipe", room.RoomType.ToString()}
             };
 
             ExecuteWrite(query, args);
@@ -47,15 +43,15 @@ namespace PinusPengger.Repository
 
             SqlDataReader rdr = ExecuteRead(query);
 
-            while (rdr.Read()) 
+            while (rdr.Read())
             {
-                var room = new Room()
+                var room = new Room
                 {
-                    ID = Convert.ToInt32(rdr["id"]),
-                    Code = rdr["kode"].ToString(),
-                    Number = Convert.ToInt16(rdr["nomor"]),
-                    Floor = Convert.ToInt16(rdr["lantai"]),
-                    Type = (RoomType)rdr["tipe"]
+                    RoomID = Convert.ToInt32(rdr["id"]),
+                    RoomCode = rdr["kode"].ToString(),
+                    RoomNumber = Convert.ToInt16(rdr["nomor"]),
+                    RoomFloor = Convert.ToInt16(rdr["lantai"]),
+                    RoomType = (RoomType)rdr["tipe"]
                 };
                 result.Add(room);
             }
@@ -72,11 +68,11 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@id", room.ID },
-                {"@kode", room.Code },
-                {"@lantai", room.Floor },
-                {"@nomor", room.Number },
-                {"@tipe", Convert.ToInt16(room.Type) }
+                {"@id", room.RoomID },
+                {"@kode", room.RoomCode },
+                {"@lantai", room.RoomFloor },
+                {"@nomor", room.RoomNumber },
+                {"@tipe", room.RoomType.ToString()}
             };
 
             ExecuteWrite(query, args);

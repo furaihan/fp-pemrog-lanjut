@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinusPengger.Repository
 {
-    abstract class DatabaseCRUD<T>
+    internal abstract class DatabaseCRUD<T>
     {
         protected void ExecuteWrite(string query, Dictionary<string, object> args)
         {
@@ -47,15 +44,17 @@ namespace PinusPengger.Repository
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+
+                // eksekusi kueri
                 var cmd = new SqlCommand(query, conn);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 conn.Close();
                 return rdr;
             }
         }
-        public abstract void InsertRecord(T obj);
-        public abstract void UpdateRecord(T obj);
         public abstract void DeleteRecord(T obj);
+        public abstract void InsertRecord(T obj);
         public abstract ObservableCollection<T> ReadData();
+        public abstract void UpdateRecord(T obj);
     }
 }

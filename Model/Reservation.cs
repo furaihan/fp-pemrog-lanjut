@@ -9,8 +9,8 @@ namespace PinusPengger.Model
         public DateTime? ResCheckIn { get; set; }
         public DateTime? ResCheckOut { get; set; }
         public ReservationStatus ResStatus { get; set; }
-        public int ResIDRoom { get; set; }
         public int ResIDCust { get; set; }
+        public int ResIDRoom { get; set; }
     }
 
     [Flags]

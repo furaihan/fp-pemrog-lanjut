@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
 {
-    class CustomerCRUD : DatabaseCRUD<Customer>
+    internal class CustomerCRUD : DatabaseCRUD<Customer>
     {
         public override void DeleteRecord(Customer customer)
         {
@@ -14,7 +14,7 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@id", customer.ID },
+                {"@id", customer.CustID }
             };
 
             ExecuteWrite(query, args);
@@ -26,10 +26,10 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@nik", customer.NIK },
-                {"@nama", customer.Name },
-                {"@tanggal_lahir", customer.BirthDate },
-                {"@telp", customer.PhoneNumber }
+                {"@nik", customer.CustNIK },
+                {"@nama", customer.CustName },
+                {"@tanggal_lahir", customer.CustBirthDate},
+                {"@telp", customer.CustPhone}
             };
 
             ExecuteWrite(query, args);
@@ -47,11 +47,11 @@ namespace PinusPengger.Repository
             {
                 var customer = new Customer
                 {
-                    ID = Convert.ToInt32(rdr["id"]),
-                    NIK = rdr["nik"].ToString(),
-                    Name = rdr["nama"].ToString(),
-                    BirthDate = DateOnly.FromDateTime(Convert.ToDateTime(rdr["tanggal_lahir"])),
-                    PhoneNumber = rdr["telp"].ToString()
+                    CustID = Convert.ToInt32(rdr["id"]),
+                    CustNIK = rdr["nik"].ToString(),
+                    CustName = rdr["nama"].ToString(),
+                    CustBirthDate = DateOnly.FromDateTime(Convert.ToDateTime(rdr["tanggal_lahir"])),
+                    CustPhone = rdr["telp"].ToString()
                 };
                 result.Add(customer);
             }
@@ -68,11 +68,11 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@id", customer.ID },
-                {"@nik", customer.NIK },
-                {"@nama", customer.Name },
-                {"@tanggal_lahir", customer.BirthDate },
-                {"@telp", customer.PhoneNumber }
+                {"@id", customer.CustID },
+                {"@nik", customer.CustNIK},
+                {"@nama", customer.CustName},
+                {"@tanggal_lahir", customer.CustBirthDate},
+                {"@telp", customer.CustPhone}
             };
 
             ExecuteWrite(query, args);

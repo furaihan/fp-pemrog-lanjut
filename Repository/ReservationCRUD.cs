@@ -3,13 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinusPengger.Repository
 {
-    class ReservationCRUD : DatabaseCRUD<Reservation>
+    internal class ReservationCRUD : DatabaseCRUD<Reservation>
     {
         public override void DeleteRecord(Reservation reservation)
         {
@@ -17,7 +14,7 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@id", reservation.ID },
+                {"@id", reservation.ResID }
             };
 
             ExecuteWrite(query, args);
@@ -29,12 +26,12 @@ namespace PinusPengger.Repository
 
             var args = new Dictionary<string, object>
             {
-                {"@kodeReservasi", reservation.Code },
-                {"@checkin", reservation.CheckIn },
-                {"@checkout", reservation.CheckOut },
-                {"@statusReservasi", Convert.ToInt16(reservation.Status) },
-                {"@id_pelanggan", reservation.IDCustomer },
-                {"@id_kamar", reservation.IDRoom },
+                {"@kodeReservasi", reservation.ResCode },
+                {"@checkin", reservation.ResCheckIn },
+                {"@checkout", reservation.ResCheckOut },
+                {"@statusReservasi", reservation.ResStatus.ToString() },
+                {"@id_pelanggan", reservation.ResIDCust },
+                {"@id_kamar", reservation.ResIDRoom }
             };
 
             ExecuteWrite(query, args);
@@ -52,13 +49,13 @@ namespace PinusPengger.Repository
             {
                 var reservation = new Reservation
                 {
-                    ID = Convert.ToInt32(rdr["id"]),
-                    Code = rdr["kode_reservasi"].ToString(),
-                    CheckIn = Convert.ToDateTime(rdr["checkin"]),
-                    CheckOut = Convert.ToDateTime(rdr["checkout"]),
-                    Status = (ReservationStatus)rdr["status_reservasi"],
-                    IDCustomer = Convert.ToInt32(rdr["pelanggan"]),
-                    IDRoom = Convert.ToInt32(rdr["kamar"])
+                    ResID = Convert.ToInt32(rdr["id"]),
+                    ResCode = rdr["kode_reservasi"].ToString(),
+                    ResCheckIn = Convert.ToDateTime(rdr["checkin"]),
+                    ResCheckOut = Convert.ToDateTime(rdr["checkout"]),
+                    ResStatus = (ReservationStatus)rdr["status_reservasi"],
+                    ResIDCust = Convert.ToInt32(rdr["pelanggan"]),
+                    ResIDRoom = Convert.ToInt32(rdr["kamar"])
                 };
                 result.Add(reservation);
             }
@@ -72,16 +69,16 @@ namespace PinusPengger.Repository
         public override void UpdateRecord(Reservation reservation)
         {
             const string query = "UPDATE reservasi SET kode_reservasi = @kodeReservasi, checkin = @checkin, checkout = @checkout, status_reservasi = @statusReservasi, pelanggan = @id_pelanggan, kamar = @id_kamar WHERE id = @id";
-            
+
             var args = new Dictionary<string, object>
             {
-                {"@id", reservation.ID },
-                {"@kodePemesanan", reservation.Code },
-                {"@checkin", reservation.CheckIn },
-                {"@checkout", reservation.CheckOut },
-                {"@statusPemesanan", Convert.ToInt16(reservation.Status) },
-                {"@id_pelanggan", reservation.IDCustomer },
-                {"@id_kamar", reservation.IDRoom },
+                {"@id", reservation.ResID },
+                {"@kodePemesanan", reservation.ResCode },
+                {"@checkin", reservation.ResCheckIn },
+                {"@checkout", reservation.ResCheckOut },
+                {"@statusPemesanan", reservation.ResStatus.ToString() },
+                {"@id_pelanggan", reservation.ResIDCust },
+                {"@id_kamar", reservation.ResIDRoom }
             };
 
             ExecuteWrite(query, args);
