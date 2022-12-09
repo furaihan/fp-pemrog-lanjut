@@ -28,32 +28,9 @@ namespace PinusPengger.ViewModel
         public HistoryViewModel()
         {
             InitializeComponent();
-            FillContext();
         }
         public void OnLoaded(object sender, RoutedEventArgs e)
         {
-        }
-        private void FillContext()
-        {
-            Random rnd = new();
-            for (int i = 1; i <= rnd.Next(30, 123); i++)
-            {
-                byte roomFloor = (byte)((i / 10 % 10) + 1);
-                Person person = new((ulong)((81287387 + i) * rnd.Next(3)),
-                                    $"Cristiano Ronaldo SIUU {i * 2}",
-                                    "112312312",
-                                    DateTime.Now);
-                Room room = new(new RoomNumbering(roomFloor, (byte)(i % 10)),
-                                rnd.Next() % 2 == 0 ? RoomType.Reguler : RoomType.VIP,
-                                RoomFeature.DoubleBed);
-                Reservation reservation = new(i,
-                                              room,
-                                              person,
-                                              DateTime.Now - TimeSpan.FromDays(rnd.Next(3)),
-                                              DateTime.Now + TimeSpan.FromDays(rnd.Next(2, 8)));
-                reservation.Status = ReservationStatus.CheckedOut;
-                tabelHistori.Items.Add(reservation);
-            }
         }
     }
 
