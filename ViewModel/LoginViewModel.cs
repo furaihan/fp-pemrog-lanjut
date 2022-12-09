@@ -57,5 +57,9 @@ namespace PinusPengger.ViewModel
             }
             return valid;
         }
+        private void ExecuteLoginCommand()
+        {
+
+        }
     }
 }
