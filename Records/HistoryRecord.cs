@@ -1,16 +1,14 @@
-﻿using PinusPengger.Model;
-using PinusPengger.ViewModel;
+﻿using PinusPengger.ViewModel;
 using System;
 
 namespace PinusPengger.Records
 {
-    internal class ReservationRecord : ViewModelBase
+    internal class HistoryRecord : ViewModelBase
     {
         private int _id;
         private string _code;
-        private DateTime? _checkIn;
-        private DateTime? _checkOut;
-        private ReservationStatus _status;
+        private DateTime _checkIn;
+        private DateTime _checkOut;
         private int _idCustomer;
         private int _idRoom;
 
@@ -32,7 +30,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime? CheckIn
+        public DateTime CheckIn
         {
             get => _checkIn;
             set
@@ -41,21 +39,12 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime? CheckOut
+        public DateTime CheckOut
         {
             get => _checkOut;
             set
             {
                 _checkOut = value;
-                OnPropertyChanged();
-            }
-        }
-        public ReservationStatus Status
-        {
-            get => _status;
-            set
-            {
-                _status = value;
                 OnPropertyChanged();
             }
         }
