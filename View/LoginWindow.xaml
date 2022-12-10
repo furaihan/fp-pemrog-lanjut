@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:PinusPengger.View"
         xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
+        xmlns:record="clr-namespace:PinusPengger.Records"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi - Login Page" 
         Height="540" 
@@ -13,7 +14,7 @@
         WindowStyle="None" 
         MouseDown="DragApp">
     <Window.DataContext>
-        <viewModel:LoginViewModel/>
+        <record:UserRecord/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

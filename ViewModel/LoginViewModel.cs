@@ -4,62 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PinusPengger.Records;
 
 namespace PinusPengger.ViewModel
 {
     internal class LoginViewModel : ViewModelBase
     {
-        private string username;
-        private string password;
-        private string errorMessage;
-
-        public string Username
-        {
-            get => username;
-            set
-            {
-                username = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Password
-        {
-            get => password;
-            set
-            {
-                password = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ErrorMessage
-        {
-            get => errorMessage;
-            set
-            {
-                errorMessage = value;
-                OnPropertyChanged();
-            }
-        }
+        private ICommand loginCommand;
+        private ICommand showPasswordCommand;
+        private UserRecord _entity;
 
         //Command
-        public ICommand LoginCommand { get; set; }
-        public ICommand ShowPasswordCommand { get; set; }
+        public ICommand LoginCommand 
+        { 
+            get => loginCommand; 
+            set => loginCommand = value; 
+        }
+        public ICommand ShowPasswordCommand 
+        { 
+            get => showPasswordCommand; 
+            set => showPasswordCommand = value;
+        }
 
+        public LoginViewModel()
+        {
+            _entity = new UserRecord();
+        }
         private bool CanExecuteLoginCommand()
         {
-            bool valid = !string.IsNullOrWhiteSpace(username) &&
-                !string.IsNullOrWhiteSpace(password) &&
-                username.Length > 3 &&
-                password.Length > 3;
+            UserRecord user = new UserRecord();
+            bool valid = !string.IsNullOrWhiteSpace(user.Username) &&
+                !string.IsNullOrWhiteSpace(user.Password) &&
+                user.Username.Length > 3 &&
+                user.Password.Length > 3;
             if (!valid)
             {
-                ErrorMessage = "Invalid username or password";
+                user.ErrorMessage = "Invalid username or password";
             }
             return valid;
         }
         private void ExecuteLoginCommand()
         {
-
         }
     }
 }
