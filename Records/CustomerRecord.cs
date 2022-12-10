@@ -5,13 +5,13 @@ namespace PinusPengger.Records
 {
     internal class CustomerRecord : ViewModelBase
     {
-        private int _id;
+        private int? _id;
         private string _nik;
         private string _name;
-        private DateOnly _birthDate;
+        private DateOnly? _birthDate;
         private string _phone;
 
-        public int ID
+        public int? ID
         {
             get => _id;
             set
@@ -38,7 +38,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateOnly BirthDate
+        public DateOnly? BirthDate
         {
             get => _birthDate;
             set
