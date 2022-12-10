@@ -14,7 +14,7 @@
         WindowStyle="None" 
         MouseDown="DragApp">
     <Window.DataContext>
-        <record:UserRecord/>
+        <viewModel:LoginViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -149,12 +149,12 @@
                          Grid.Row="2" 
                          Height="25" 
                          Width="275" 
-                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding UserRecEntity.Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="passwdBox" 
                          Grid.Row="4"
                          Height="25"
                          Width="275"
-                         Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding UserRecEntity.Password, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Grid.Row="5"
                         Height="20"
                         Width="75" 
