@@ -6,6 +6,7 @@
         xmlns:view="clr-namespace:PinusPengger.View"
         xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
         xmlns:record="clr-namespace:PinusPengger.Records"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi - Login Page" 
         Height="540" 
@@ -121,7 +122,7 @@
                 VerticalAlignment="Center" 
                 Width="290"
                 Background="#FFF3F3F3">
-            <Grid >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -145,44 +146,38 @@
                        Margin="5,0,0,0" 
                        FontWeight="Bold"
                        Text="Password"/>
-                <TextBox x:Name="usernameBox"
+                <TextBox 
                          Grid.Row="2" 
                          Height="25" 
                          Width="275" 
-                         Text="{Binding UserRecEntity.Username, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="passwdBox" 
+                         Text="{Binding UserRecEntity.Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <TextBox 
                          Grid.Row="4"
                          Height="25"
                          Width="275"
-                         Text="{Binding UserRecEntity.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding UserRecEntity.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Button Grid.Row="5"
                         Height="20"
-                        Width="75" 
+                        Width="80" 
                         HorizontalAlignment="Right"
                         Margin="0,0,10,0" 
                         BorderThickness="0"
                         Background="ForestGreen" 
-                        Click="LoginClick">
-                    <Grid Height="20" Width="75">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" 
-                                   HorizontalAlignment="Center"
-                                   FontWeight="Bold" 
-                                   Foreground="WhiteSmoke" 
-                                   Margin="5,0,0,0"
-                                   Text="Login"/>
-                        <Path Data="{StaticResource LoginIcon}" 
-                              Grid.Column="1" 
-                              Stretch="Uniform"
-                              Fill="WhiteSmoke"
-                              Width="15" Height="15" 
-                              HorizontalAlignment="Center" 
-                              VerticalAlignment="Center" 
-                              Margin="0,0,0,1" />
-                    </Grid>
+                        Command="{Binding LoginCommand}">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Stretch">
+                        <TextBlock Text="Login" 
+                                   Margin="0,-6,0,0"
+                                   FontWeight="Bold"
+                                   FontFamily="Dubai"
+                                   Foreground="WhiteSmoke"/>
+                        <icon:PackIconMaterial Kind="Login"
+                                               Width="10"
+                                               Height="10"
+                                               Margin="5,0,0,0"
+                                               Foreground="WhiteSmoke"
+                                               FontWeight="Bold"/>
+                    </StackPanel>
                 </Button>
                 <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
@@ -191,7 +186,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Foreground="Red"
                                Margin="10,0,0,0"
-                               Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}"
+                               Text="{Binding UserRecEntity.ErrorMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                />
                 </Grid>
             </Grid>

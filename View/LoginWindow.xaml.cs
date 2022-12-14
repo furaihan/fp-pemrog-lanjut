@@ -40,12 +40,7 @@ namespace PinusPengger.View
         }
         private void LoginClick(object sender, RoutedEventArgs e)
         {
-            if (usernameBox.Text.ToLower() == "admin" && passwdBox.Text.ToLower() == "admin")
-            {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
-            }
+
         }
     }
 }

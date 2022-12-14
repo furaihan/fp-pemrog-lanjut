@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PinusPengger.Records
 {
-    internal class UserRecord : ViewModelBase
+    public class UserRecord : ViewModelBase
     {
         private string username;
         private string password;
