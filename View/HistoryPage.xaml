@@ -6,6 +6,7 @@
       xmlns:controller="clr-namespace:PinusPengger.ViewModel"
       xmlns:model="clr-namespace:PinusPengger.Model"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
       d:DesignHeight="420" 
       d:DesignWidth="920">
@@ -66,7 +67,7 @@
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
-                  CanUserAddRows="True">
+                  CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kode Pemesanan" 
                                     Binding="{Binding KodePemesanan}"/>

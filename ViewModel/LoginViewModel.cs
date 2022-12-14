@@ -1,5 +1,6 @@
 ﻿using PinusPengger.Records;
 using PinusPengger.View;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -34,14 +35,16 @@ namespace PinusPengger.ViewModel
             get => _showPasswordCommand;
             set => _showPasswordCommand = value;
         }
+        public Action CloseWindow { get; set; }
         #endregion
 
         //Command
 
         public LoginViewModel()
         {
-            UserRecEntity = new UserRecord();
+            userRecEntity = new UserRecord();
             _loginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            Debug.WriteLine($"HOOOI");
         }
         private bool CanExecuteLoginCommand(object obj)
         {
@@ -56,8 +59,17 @@ namespace PinusPengger.ViewModel
         }
         private void ExecuteLoginCommand(object obj)
         {
-            var win = obj as LoginWindow;
-            win?.Close();
+            if (userRecEntity.Password.ToLower() == "admin" && userRecEntity.Username.ToLower() == "admin")
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                CloseWindow();
+            }
+            else
+            {
+                userRecEntity.ErrorMessage = "Invalid username or password";
+            }
+            
         }
     }
 }

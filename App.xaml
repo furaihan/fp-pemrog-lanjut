@@ -21,6 +21,15 @@
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Cyan" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type controller:HomeViewModel}">
+                <view:HomePage/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type controller:ReservationViewModel}">
+                <view:ReservasiPage/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type controller:HistoryViewModel}">
+                <view:HistoryPage/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
