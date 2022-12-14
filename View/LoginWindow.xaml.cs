@@ -1,18 +1,7 @@
 ﻿using PinusPengger.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PinusPengger.View
 {
@@ -25,10 +14,7 @@ namespace PinusPengger.View
         {
             InitializeComponent();
             Debug.WriteLine("AFTER IC");
-            (DataContext as LoginViewModel).CloseWindow = () =>
-            {
-                Close();
-            };
+            (DataContext as LoginViewModel).CloseWindow = () => Close();
         }
 
 
@@ -47,7 +33,7 @@ namespace PinusPengger.View
         }
         private void LoginClick(object sender, RoutedEventArgs e)
         {
-
+            // blank
         }
     }
 }

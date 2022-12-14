@@ -1,15 +1,8 @@
-﻿using PinusPengger.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace PinusPengger.ViewModel
+﻿namespace PinusPengger.ViewModel
 {
     internal class MainViewModel : ViewModelBase
     {
+        /*
         public ViewModelCommand HomeViewCommand { get; set; }
         public ViewModelCommand ReservationViewCommand { get; set; }
         public ViewModelCommand HistoryViewCommand { get; set; }
@@ -56,5 +49,6 @@ namespace PinusPengger.ViewModel
             ReservationViewCommand = new ViewModelCommand(o => CurrentView = ReservasiView);
             HomeViewCommand = new ViewModelCommand(o => CurrentView = HomeView);
         }
+        */
     }
 }

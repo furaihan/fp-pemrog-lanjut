@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:PinusPengger.View" 
         xmlns:model="clr-namespace:PinusPengger.Model"
-        xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+        xmlns:viewModel ="clr-namespace:PinusPengger.ViewModel"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi" 
         Height="540" 
@@ -13,7 +13,7 @@
         ResizeMode="CanMinimize"
         WindowStyle="None">
     <Window.DataContext>
-        <controller:MainViewModel/>
+        <viewModel:MainViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

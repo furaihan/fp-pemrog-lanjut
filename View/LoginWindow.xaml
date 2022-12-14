@@ -150,12 +150,12 @@
                          Grid.Row="2" 
                          Height="25" 
                          Width="275" 
-                         Text="{Binding UserRecEntity.Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                         Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <TextBox 
                          Grid.Row="4"
                          Height="25"
                          Width="275"
-                         Text="{Binding UserRecEntity.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                         Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Button Grid.Row="5"
                         Height="20"
                         Width="80" 
@@ -186,8 +186,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Foreground="Red"
                                Margin="10,0,0,0"
-                               Text="{Binding UserRecEntity.ErrorMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                               />
+                               Text="{Binding Path=ErrorMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </Grid>
             </Grid>
         </Border>
