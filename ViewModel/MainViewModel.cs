@@ -14,17 +14,17 @@ namespace PinusPengger.ViewModel
         public ViewModelCommand ReservationViewCommand { get; set; }
         public ViewModelCommand HistoryViewCommand { get; set; }
 
-        private HomeController _homeView;
-        private ReservasiController _reservasiView;
+        private HomeViewModel _homeView;
+        private ReservationViewModel _reservasiView;
         private HistoryViewModel _historyView;
         private object _currentView;
 
-        public HomeController HomeView
+        public HomeViewModel HomeView
         {
             get => _homeView;
             set => _homeView = value;
         }
-        public ReservasiController ReservasiView
+        public ReservationViewModel ReservasiView
         {
             get => _reservasiView;
             set => _reservasiView = value;
@@ -46,8 +46,8 @@ namespace PinusPengger.ViewModel
         }
         public MainViewModel()
         {
-            HomeView = new HomeController();
-            ReservasiView = new ReservasiController();
+            HomeView = new HomeViewModel();
+            ReservasiView = new ReservationViewModel();
             HistoryView = new HistoryViewModel();
 
             CurrentView = HistoryView;

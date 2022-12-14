@@ -177,10 +177,13 @@
                 </Button>
             </Grid>
         </Border>
-        <UserControl Grid.Row="2" Content="{Binding CurrentView}"
-                     HorizontalAlignment="Center" VerticalAlignment="Top"
-                     Height="420">
+        <Frame Grid.Row="2" 
+               Content="{Binding CurrentView}"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top"
+               Height="420"
+               NavigationUIVisibility="Hidden">
 
-        </UserControl>
+        </Frame>
     </Grid>
 </Window>

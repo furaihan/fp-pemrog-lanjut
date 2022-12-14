@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PinusPengger.ViewModel
 {
-    class HistoryViewModel
+    class ReservationViewModel
     {
     }
 }

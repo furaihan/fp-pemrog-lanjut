@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PinusPengger.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,11 @@ namespace PinusPengger.View
         public LoginWindow()
         {
             InitializeComponent();
+            Debug.WriteLine("AFTER IC");
+            (DataContext as LoginViewModel).CloseWindow = () =>
+            {
+                Close();
+            };
         }
 
 
