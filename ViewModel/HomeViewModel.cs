@@ -26,7 +26,7 @@ namespace PinusPengger.ViewModel
         #region Field
         private string _target;
         private ICommand _searchCommand;
-        private ICommand _cancleOrCheckoutCommand;
+        private ICommand _cancelOrCheckoutCommand;
         private ICommand _checkinCommand;
         private ReservationCRUD _reservationRepo;
         private CustomerCRUD _customerRepo;
@@ -47,12 +47,12 @@ namespace PinusPengger.ViewModel
                 return _searchCommand;
             }
         }
-        public ICommand CancleOrCheckoutCommand
+        public ICommand CancelOrCheckoutCommand
         {
             get
             {
-                _cancleOrCheckoutCommand ??= new ViewModelCommand(CancleOrCheckout);
-                return _cancleOrCheckoutCommand;
+                _cancelOrCheckoutCommand ??= new ViewModelCommand(CancelOrCheckout);
+                return _cancelOrCheckoutCommand;
             }
         }
         public ICommand CheckinCommand
@@ -120,7 +120,7 @@ namespace PinusPengger.ViewModel
                     select x);
             }
         }
-        public void CancleOrCheckout(object target)
+        public void CancelOrCheckout(object target)
         {
             var reservation = ((ReservationJoined)target).ReservationEntity;
 

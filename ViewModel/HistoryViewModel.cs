@@ -85,7 +85,6 @@ namespace PinusPengger.ViewModel
                            CustomerEntity = customer,
                            RoomEntity = room
                        };
-
             if (string.IsNullOrEmpty(target.ToString()) || string.IsNullOrWhiteSpace(target.ToString()))
             {
                 ItemSource = null;
@@ -98,6 +97,7 @@ namespace PinusPengger.ViewModel
                     from x in data
                     where x.HistoryEntity.ResCode == target.ToString()
                     select x);
+                //var tes = data.Where(x => x.HistoryEntity.ResCode == target.ToString()).Select(x => x);
             }
         }
         #endregion
