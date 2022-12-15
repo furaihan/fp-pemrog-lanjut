@@ -1,19 +1,19 @@
 ﻿using PinusPengger.Model;
 
-namespace PinusPengger.ViewModel.Extension
+namespace PinusPengger.ViewModel
 {
-    class ReservationJoined : ViewModelBase
+    class HistoryJoined : ViewModelBase
     {
-        private Reservation _reservationEntity;
+        private History _historyEntity;
         private Customer _customerEntity;
         private Room _roomEntity;
 
-        public Reservation ReservationEntity
+        public History HistoryEntity
         {
-            get => _reservationEntity;
+            get => _historyEntity;
             set
             {
-                _reservationEntity = value;
+                _historyEntity = value;
                 OnPropertyChanged();
             }
         }

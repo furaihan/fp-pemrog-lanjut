@@ -1,6 +1,5 @@
 using PinusPengger.Model;
 using PinusPengger.Repository;
-using PinusPengger.ViewModel.Extension;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -97,9 +96,9 @@ namespace PinusPengger.ViewModel
         #region Method
         private void FetchData()
         {
-            _reservationList.Clear();
-            _customerList.Clear();
-            _roomList.Clear();
+            _reservationList = null;
+            _customerList = null;
+            _roomList = null;
             _reservationRepo.ReadData().ForEach(data => _reservationList.Add(data));
             _customerRepo.ReadData().ForEach(data => _customerList.Add(data));
             _roomRepo.ReadData().ForEach(data => _roomList.Add(data));
@@ -116,7 +115,7 @@ namespace PinusPengger.ViewModel
                            RoomEntity = room
                        };
 
-            if (string.IsNullOrEmpty(target.ToString()))
+            if (string.IsNullOrEmpty(target.ToString()) || string.IsNullOrWhiteSpace(target.ToString()))
             {
                 ItemSource = null;
                 ItemSource = new ObservableCollection<ReservationJoined>(data);
