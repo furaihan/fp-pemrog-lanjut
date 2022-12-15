@@ -23,6 +23,9 @@ namespace PinusPengger.ViewModel
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the username of the user
+        /// </summary>
         public string Username
         {
             get => _username;
@@ -32,6 +35,9 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets the password of the user
+        /// </summary>
         public string Password
         {
             get => _password;
@@ -41,6 +47,9 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets the error message that will be displayed in login view
+        /// </summary>
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -57,14 +66,14 @@ namespace PinusPengger.ViewModel
             set => _loginCommand = value;
         } 
         */
+        /// <summary>
+        /// Gets or sets the login command
+        /// </summary>
         public ICommand LoginCommand
         {
             get
             {
-                if (_loginCommand == null)
-                {
-                    _loginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-                }
+                _loginCommand ??= new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
                 return _loginCommand;
             }
         }
@@ -77,7 +86,11 @@ namespace PinusPengger.ViewModel
         #endregion
 
         //Command
-
+        /// <summary>
+        /// Determines whether the <see cref="ExecuteLoginCommand(object)"/> can be executed
+        /// </summary>
+        /// <param name="obj">CommandParam object</param>
+        /// <returns><c>true</c> if the <see cref="ExecuteLoginCommand(object)"/> can be executed, otherwise <c>false</c></returns>
         private bool CanExecuteLoginCommand(object obj)
         {
             bool valid = !string.IsNullOrWhiteSpace(Username) &&

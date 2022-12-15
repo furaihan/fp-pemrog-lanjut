@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PinusPengger.ViewModel
 {
+    /// <summary>
+    /// A class representation of ReservasiPage in View
+    /// </summary>
     internal class ReservationPageViewModel
     {
     }

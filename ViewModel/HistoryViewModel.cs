@@ -39,10 +39,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                if (_searchCommand == null)
-                {
-                    _searchCommand = new ViewModelCommand(GetData);
-                }
+                _searchCommand ??= new ViewModelCommand(GetData);
                 return _searchCommand;
             }
         }
