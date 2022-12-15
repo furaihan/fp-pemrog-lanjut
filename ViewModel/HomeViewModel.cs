@@ -44,10 +44,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                if (_searchCommand == null)
-                {
-                    _searchCommand = new ViewModelCommand(GetData);
-                }
+                _searchCommand ??= new ViewModelCommand(GetData);
                 return _searchCommand;
             }
         }
@@ -55,10 +52,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                if (_cancleOrCheckoutCommand == null)
-                {
-                    _cancleOrCheckoutCommand = new ViewModelCommand(CancleOrCheckout);
-                }
+                _cancleOrCheckoutCommand ??= new ViewModelCommand(CancleOrCheckout);
                 return _cancleOrCheckoutCommand;
             }
         }
@@ -66,10 +60,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                if (_checkinCommand == null)
-                {
-                    _checkinCommand = new ViewModelCommand(Checkin);
-                }
+                _checkinCommand ??= new ViewModelCommand(Checkin);
                 return _checkinCommand;
             }
         }
