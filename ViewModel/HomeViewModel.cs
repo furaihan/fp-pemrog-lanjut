@@ -10,15 +10,16 @@ namespace PinusPengger.ViewModel
 {
     internal class HomeViewModel : ViewModelBase
     {
-        // KITA JOINAN DI SINI
         public HomeViewModel()
         {
             _reservationRepo = new ReservationCRUD();
             _customerRepo = new CustomerCRUD();
             _roomRepo = new RoomCRUD();
+            _historyRepo = new HistoryCRUD();
             _reservationList = new List<Reservation>();
             _customerList = new List<Customer>();
             _roomList = new List<Room>();
+            SelectedItem = new ReservationJoined();
             FetchData();
             GetData();
         }
@@ -26,24 +27,19 @@ namespace PinusPengger.ViewModel
         #region Field
         private string _target;
         private ICommand _searchCommand;
+        private ICommand _cancleOrCheckoutCommand;
+        private ICommand _checkinCommand;
         private ReservationCRUD _reservationRepo;
         private CustomerCRUD _customerRepo;
         private RoomCRUD _roomRepo;
+        private HistoryCRUD _historyRepo;
         private List<Reservation> _reservationList;
         private List<Customer> _customerList;
         private List<Room> _roomList;
+        private ReservationJoined _selectedItem;
         #endregion
 
         #region Properties
-        public string Target
-        {
-            get => _target;
-            set
-            {
-                _target = value;
-                OnPropertyChanged();
-            }
-        }
         public ICommand SearchCommand
         {
             get
@@ -55,7 +51,47 @@ namespace PinusPengger.ViewModel
                 return _searchCommand;
             }
         }
-        public ObservableCollection<ReservationJoined> Source { get; set; }
+        public ICommand CancleOrCheckoutCommand
+        {
+            get
+            {
+                if (_cancleOrCheckoutCommand == null)
+                {
+                    _cancleOrCheckoutCommand = new ViewModelCommand(CancleOrCheckout);
+                }
+                return _cancleOrCheckoutCommand;
+            }
+        }
+        public ICommand CheckinCommand
+        {
+            get
+            {
+                if (_checkinCommand == null)
+                {
+                    _checkinCommand = new ViewModelCommand(Checkin);
+                }
+                return _checkinCommand;
+            }
+        }
+        public string Target
+        {
+            get => _target;
+            set
+            {
+                _target = value;
+                OnPropertyChanged();
+            }
+        }
+        public ReservationJoined SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<ReservationJoined> ItemSource { get; set; }
         #endregion
 
         #region Method
@@ -79,19 +115,48 @@ namespace PinusPengger.ViewModel
                            CustomerEntity = customer,
                            RoomEntity = room
                        };
+
             if (string.IsNullOrEmpty(target.ToString()))
             {
-                Source = null;
-                Source = new ObservableCollection<ReservationJoined>(data);
+                ItemSource = null;
+                ItemSource = new ObservableCollection<ReservationJoined>(data);
             }
             else
             {
-                Source = null;
-                Source = new ObservableCollection<ReservationJoined>(
+                ItemSource = null;
+                ItemSource = new ObservableCollection<ReservationJoined>(
                     from x in data
                     where x.ReservationEntity.ResCode == target.ToString()
                     select x);
             }
+        }
+        public void CancleOrCheckout(object target)
+        {
+            var reservation = ((ReservationJoined)target).ReservationEntity;
+
+            _reservationRepo.DeleteRecord(reservation);
+            _historyRepo.InsertRecord(
+                new History
+                {
+                    ResCode = reservation.ResCode,
+                    ResCheckIn = reservation.ResCheckIn,
+                    ResCheckOut = reservation.ResCheckOut,
+                    ResIDCust = reservation.ResIDCust,
+                    ResIDRoom = reservation.ResIDRoom,
+                });
+
+            FetchData();
+            GetData();
+        }
+        public void Checkin(object target)
+        {
+            var reservation = ((ReservationJoined)target).ReservationEntity;
+
+            reservation.ResStatus = ReservationStatus.Checkin;
+            _reservationRepo.UpdateRecord(reservation);
+
+            FetchData();
+            GetData();
         }
         #endregion
     }

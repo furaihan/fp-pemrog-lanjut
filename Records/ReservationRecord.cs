@@ -8,8 +8,8 @@ namespace PinusPengger.Records
     {
         private int _id;
         private string _code;
-        private DateTime? _checkIn;
-        private DateTime? _checkOut;
+        private DateTime _checkIn;
+        private DateTime _checkOut;
         private ReservationStatus _status;
         private int _idCustomer;
         private int _idRoom;
@@ -32,7 +32,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime? CheckIn
+        public DateTime CheckIn
         {
             get => _checkIn;
             set
@@ -41,7 +41,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime? CheckOut
+        public DateTime CheckOut
         {
             get => _checkOut;
             set
