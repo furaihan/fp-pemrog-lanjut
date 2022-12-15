@@ -1,21 +1,24 @@
 using PinusPengger.Model;
-using PinusPengger.Records;
 using PinusPengger.Repository;
+using PinusPengger.ViewModel.Extension;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
     internal class HomeViewModel : ViewModelBase
     {
+        // KITA JOINAN DI SINI
         public HomeViewModel()
         {
-            //_reservationEntity = new Reservation();
             _reservationRepo = new ReservationCRUD();
+            _customerRepo = new CustomerCRUD();
+            _roomRepo = new RoomCRUD();
             _reservationList = new List<Reservation>();
-            ReservationRecord = new ReservationRecord();
-            ReservationRecords = new ObservableCollection<ReservationRecord>();
+            _customerList = new List<Customer>();
+            _roomList = new List<Room>();
             FetchData();
             GetData();
         }
@@ -23,9 +26,12 @@ namespace PinusPengger.ViewModel
         #region Field
         private string _target;
         private ICommand _searchCommand;
-        //private Reservation _reservationEntity;
         private ReservationCRUD _reservationRepo;
+        private CustomerCRUD _customerRepo;
+        private RoomCRUD _roomRepo;
         private List<Reservation> _reservationList;
+        private List<Customer> _customerList;
+        private List<Room> _roomList;
         #endregion
 
         #region Properties
@@ -49,46 +55,42 @@ namespace PinusPengger.ViewModel
                 return _searchCommand;
             }
         }
-        public ReservationRecord ReservationRecord { get; set; }
-        public ObservableCollection<ReservationRecord> ReservationRecords { get; set; }
+        public ObservableCollection<ReservationJoined> Source { get; set; }
         #endregion
 
         #region Method
         private void FetchData()
         {
             _reservationList.Clear();
+            _customerList.Clear();
+            _roomList.Clear();
             _reservationRepo.ReadData().ForEach(data => _reservationList.Add(data));
+            _customerRepo.ReadData().ForEach(data => _customerList.Add(data));
+            _roomRepo.ReadData().ForEach(data => _roomList.Add(data));
         }
         public void GetData(object target = null)
         {
+            var data = from reservation in _reservationList
+                       join customer in _customerList on reservation.ResIDCust equals customer.CustID
+                       join room in _roomList on reservation.ResIDRoom equals room.RoomID
+                       select new ReservationJoined
+                       {
+                           ReservationEntity = reservation,
+                           CustomerEntity = customer,
+                           RoomEntity = room
+                       };
             if (string.IsNullOrEmpty(target.ToString()))
             {
-                _reservationList.ForEach(data => ReservationRecords.Add(
-                    new ReservationRecord
-                    {
-                        ID = data.ResID,
-                        Code = data.ResCode,
-                        CheckIn = data.ResCheckIn,
-                        CheckOut = data.ResCheckOut,
-                        Status = data.ResStatus,
-                        IDCustomer = data.ResIDCust,
-                        IDRoom = data.ResIDRoom
-                    }));
+                Source = null;
+                Source = new ObservableCollection<ReservationJoined>(data);
             }
             else
             {
-                var data = _reservationList.Find(data => target.ToString() == data.ResCode);
-                ReservationRecords.Clear();
-                ReservationRecords.Add(new ReservationRecord
-                {
-                    ID = data.ResID,
-                    Code = data.ResCode,
-                    CheckIn = data.ResCheckIn,
-                    CheckOut = data.ResCheckOut,
-                    Status = data.ResStatus,
-                    IDCustomer = data.ResIDCust,
-                    IDRoom = data.ResIDRoom
-                });
+                Source = null;
+                Source = new ObservableCollection<ReservationJoined>(
+                    from x in data
+                    where x.ReservationEntity.ResCode == target.ToString()
+                    select x);
             }
         }
         #endregion

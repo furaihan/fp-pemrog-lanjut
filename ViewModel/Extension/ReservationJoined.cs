@@ -8,7 +8,7 @@ namespace PinusPengger.ViewModel.Extension
         private Customer _customerEntity;
         private Room _roomEntity;
 
-        public Reservation HistoryEntity
+        public Reservation ReservationEntity
         {
             get => _reservationEntity;
             set
