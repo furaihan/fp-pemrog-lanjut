@@ -42,14 +42,11 @@
                     Cursor="Hand"
                     Click="MinimizeApp">
                 <Button.Content>
-                    <Path Data="{StaticResource MinimizeIcon}" 
-                          Stretch="Uniform"
-                          Fill="Black"
+                    <icon:PackIconMaterial Kind="WindowMinimize"
                           Width="10" 
                           Height="10"
                           HorizontalAlignment="Center" 
                           VerticalAlignment="Center"
-                          RenderTransformOrigin="0.5,0.5"
                           Margin="1,0,0,0"/>
                 </Button.Content>
                 <Button.Style>
@@ -81,14 +78,11 @@
                     Click="CloseApp"
                     Margin="5">
                 <Button.Content>
-                    <Path Data="{StaticResource CloseAppIcon}" 
-                          Stretch="Uniform"
-                          Fill="Black"
+                    <icon:PackIconMaterial Kind="WindowClose"
                           Width="10" 
                           Height="10"
                           HorizontalAlignment="Center" 
                           VerticalAlignment="Center"
-                          RenderTransformOrigin="0.5,0.5"
                           Margin="1,0,0,0"/>
                 </Button.Content>
                 <Button.Style>

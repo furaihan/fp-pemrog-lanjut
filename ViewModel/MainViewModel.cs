@@ -2,27 +2,27 @@
 {
     internal class MainViewModel : ViewModelBase
     {
-        /*
+        
         public ViewModelCommand HomeViewCommand { get; set; }
         public ViewModelCommand ReservationViewCommand { get; set; }
         public ViewModelCommand HistoryViewCommand { get; set; }
 
-        private HomeViewModel _homeView;
-        private ReservationViewModel _reservasiView;
-        private HistoryViewModel _historyView;
+        private HomePageViewModel _homeView;
+        private ReservationPageViewModel _reservasiView;
+        private HistoryPageViewModel _historyView;
         private object _currentView;
 
-        public HomeViewModel HomeView
+        public HomePageViewModel HomeView
         {
             get => _homeView;
             set => _homeView = value;
         }
-        public ReservationViewModel ReservasiView
+        public ReservationPageViewModel ReservasiView
         {
             get => _reservasiView;
             set => _reservasiView = value;
         }
-        public HistoryViewModel HistoryView
+        public HistoryPageViewModel HistoryView
         {
             get => _historyView;
             set => _historyView = value;
@@ -39,9 +39,9 @@
         }
         public MainViewModel()
         {
-            HomeView = new HomeViewModel();
-            ReservasiView = new ReservationViewModel();
-            HistoryView = new HistoryViewModel();
+            HomeView = new HomePageViewModel();
+            ReservasiView = new ReservationPageViewModel();
+            HistoryView = new HistoryPageViewModel();
 
             CurrentView = HistoryView;
 
@@ -49,6 +49,6 @@
             ReservationViewCommand = new ViewModelCommand(o => CurrentView = ReservasiView);
             HomeViewCommand = new ViewModelCommand(o => CurrentView = HomeView);
         }
-        */
+        
     }
 }
