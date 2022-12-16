@@ -10,7 +10,6 @@ namespace PinusPengger.Model
         public short? RoomFloor { get; set; }
         public RoomType? RoomType { get; set; }
     }
-    [Flags]
     enum RoomType
     {
         Reg = 0,
