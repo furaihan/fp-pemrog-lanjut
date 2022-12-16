@@ -27,8 +27,8 @@
                 <ComboBoxItem>Presidential Suite / VIP</ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <WrapPanel Grid.Row="2" Margin="15">
-            
+        <WrapPanel Grid.Row="2" 
+                   Margin="15">
         </WrapPanel>
     </Grid>
 </Page>

@@ -13,7 +13,6 @@ namespace PinusPengger.Model
         public int ResIDRoom { get; set; }
     }
 
-    [Flags]
     enum ReservationStatus
     {
         Booking = 0,
