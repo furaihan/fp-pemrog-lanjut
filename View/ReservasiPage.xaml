@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PinusPengger.View"
+             xmlns:uc="clr-namespace:PinusPengger.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="420" 
              d:DesignWidth="920">
@@ -29,6 +30,18 @@
         </StackPanel>
         <WrapPanel Grid.Row="2" 
                    Margin="15">
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
+            <uc:RegularRoom/>
         </WrapPanel>
     </Grid>
 </Page>
