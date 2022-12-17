@@ -5,14 +5,14 @@ namespace PinusPengger.Records
 {
     internal class HistoryRecord : ViewModelBase
     {
-        private int _id;
+        private int? _id;
         private string _code;
-        private DateTime _checkIn;
-        private DateTime _checkOut;
-        private int _idCustomer;
-        private int _idRoom;
+        private DateTime? _checkIn;
+        private DateTime? _checkOut;
+        private int? _idCustomer;
+        private int? _idRoom;
 
-        public int ID
+        public int? ID
         {
             get => _id;
             set
@@ -30,7 +30,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime CheckIn
+        public DateTime? CheckIn
         {
             get => _checkIn;
             set
@@ -39,7 +39,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public DateTime CheckOut
+        public DateTime? CheckOut
         {
             get => _checkOut;
             set
@@ -48,7 +48,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public int IDCustomer
+        public int? IDCustomer
         {
             get => _idCustomer;
             set
@@ -57,7 +57,7 @@ namespace PinusPengger.Records
                 OnPropertyChanged();
             }
         }
-        public int IDRoom
+        public int? IDRoom
         {
             get => _idRoom;
             set

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PinusPengger.Model
+﻿namespace PinusPengger.Model
 {
     internal class Room
     {
@@ -10,6 +8,7 @@ namespace PinusPengger.Model
         public short? RoomFloor { get; set; }
         public RoomType? RoomType { get; set; }
     }
+
     enum RoomType
     {
         Reg = 0,

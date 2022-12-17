@@ -22,7 +22,6 @@ namespace PinusPengger.Records
         }
         public string Code
         {
-            //get => $"{_type.ToString().ToUpper()[0]}.{_floor}.{_number}";
             get => _code;
             set
             {
