@@ -6,8 +6,8 @@ namespace PinusPengger.Model
     {
         public int ResID { get; set; }
         public string ResCode { get; set; }
-        public DateTime ResCheckIn { get; set; }
-        public DateTime ResCheckOut { get; set; }
+        public DateTime? ResCheckIn { get; set; }
+        public DateTime? ResCheckOut { get; set; }
         public ReservationStatus ResStatus { get; set; }
         public int ResIDCust { get; set; }
         public int ResIDRoom { get; set; }

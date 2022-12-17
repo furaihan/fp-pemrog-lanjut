@@ -18,7 +18,6 @@ namespace PinusPengger.ViewModel
             _reservationList = new List<Reservation>();
             _customerList = new List<Customer>();
             _roomList = new List<Room>();
-            SelectedItem = new ReservationJoined();
             FetchData();
             GetData();
         }
