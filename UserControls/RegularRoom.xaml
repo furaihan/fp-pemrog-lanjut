@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PinusPengger.UserControls"
              mc:Ignorable="d"
-             Height="50"
-             Width="50"
+             BorderThickness="0"
              Background="Transparent"
              Name="roomButton">
-    <Button Width="45"
-            Height="45"
-            Background="{Binding ElementName=roomButton, Path=ButtonColor}">
+    <Button Width="70"
+            Height="70"
+            Background="{Binding ElementName=roomButton, Path=ButtonColor}"
+            Cursor="Hand">
         <Button.Content>
             <Label Content=""/>
         </Button.Content>
@@ -21,16 +21,16 @@
                     <Setter.Value>
                         <DropShadowEffect BlurRadius="0"
                                           ShadowDepth="0"
-                                          Color="Black"/>
+                                          Color="Transparent"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}"
-                                    CornerRadius="5"
+                                    CornerRadius="10"
                                     BorderThickness="0"
-                                    BorderBrush="Black"
+                                    BorderBrush="Transparent"
                                     Effect="{TemplateBinding Effect}">
                                 <ContentPresenter HorizontalAlignment="Center"
                                                   VerticalAlignment="Center"/>

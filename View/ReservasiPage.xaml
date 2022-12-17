@@ -30,14 +30,17 @@
         </StackPanel>
         <WrapPanel Grid.Row="2" 
                    Margin="15">
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type uc:RegularRoom}">
+                    <Setter Property="Margin" Value="10,0,10,0" />
+                </Style>
+            </WrapPanel.Resources>
             <uc:RegularRoom ButtonColor="Red"/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
-            <uc:RegularRoom/>
+            <uc:RegularRoom ButtonColor="Red"/> 
+            <uc:RegularRoom ButtonColor="Red"/>
+            <uc:RegularRoom ButtonColor="Lime"/>
+            <uc:RegularRoom ButtonColor="Lime"/>
+            <uc:RegularRoom ButtonColor="Lime"/>
         </WrapPanel>
     </Grid>
 </Page>
