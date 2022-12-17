@@ -2,6 +2,9 @@
 
 namespace PinusPengger.Model
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel reservasi
+    /// </summary>
     internal class Reservation
     {
         public int? ResID { get; set; }
@@ -13,6 +16,9 @@ namespace PinusPengger.Model
         public int? ResIDRoom { get; set; }
     }
 
+    /// <summary>
+    /// Representasi dari kolom status reservasi
+    /// </summary>
     enum ReservationStatus
     {
         Booking = 0,

@@ -16,7 +16,7 @@ namespace PinusPengger.Repository
                 {"@id", history.HisID},
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override void InsertRecord(History history)
@@ -32,7 +32,7 @@ namespace PinusPengger.Repository
                 {"@kamar", history.ResIDRoom },
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override List<History> ReadData()
@@ -41,7 +41,7 @@ namespace PinusPengger.Repository
 
             const string query = "SELECT * FROM riwayat";
 
-            SqlDataReader rdr = ExecuteRead(query);
+            SqlDataReader rdr = ExecuteDQLCommand(query);
 
             while (rdr.Read())
             {
@@ -73,7 +73,7 @@ namespace PinusPengger.Repository
                 {"@kamar", history.ResIDRoom }
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
     }
 }

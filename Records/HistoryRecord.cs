@@ -3,6 +3,9 @@ using System;
 
 namespace PinusPengger.Records
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel riwayat yang dapat membangkitkan event apabila ternadi perubahan data
+    /// </summary>
     internal class HistoryRecord : ViewModelBase
     {
         private int? _id;

@@ -4,6 +4,9 @@ using System;
 
 namespace PinusPengger.Records
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel reservasi yang dapat membangkitkan event apabila ternadi perubahan data
+    /// </summary>
     internal class ReservationRecord : ViewModelBase
     {
         private int? _id;

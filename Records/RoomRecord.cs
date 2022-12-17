@@ -3,6 +3,9 @@ using PinusPengger.ViewModel;
 
 namespace PinusPengger.Records
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel kamar yang dapat membangkitkan event apabila ternadi perubahan data
+    /// </summary>
     internal class RoomRecord : ViewModelBase
     {
         private int? _id;
