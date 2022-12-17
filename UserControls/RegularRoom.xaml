@@ -7,15 +7,16 @@
              mc:Ignorable="d"
              Height="50"
              Width="50"
-             Background="White">
+             Background="Transparent"
+             Name="roomButton">
     <Button Width="45"
-            Height="45">
+            Height="45"
+            Background="{Binding ElementName=roomButton, Path=ButtonColor}">
         <Button.Content>
             <Label Content=""/>
         </Button.Content>
         <Button.Style>
             <Style TargetType="Button">
-                <Setter Property="Background" Value="Red"/>
                 <Setter Property="Effect">
                     <Setter.Value>
                         <DropShadowEffect BlurRadius="0"

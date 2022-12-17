@@ -34,5 +34,11 @@ namespace PinusPengger.UserControls
         public static readonly DependencyProperty DropShadowEffectProperty = DependencyProperty.Register("DropShadowEffect",
                                                                                                         typeof(DropShadowEffect),
                                                                                                         typeof(RegularRoom));
+        public Brush ButtonColor
+        {
+            get => (Brush)GetValue(ButtonColorProperty);
+            set => SetValue(ButtonColorProperty, value);
+        }
+        public static readonly DependencyProperty ButtonColorProperty = DependencyProperty.Register("ButtonColor", typeof(Brush), typeof(RegularRoom));
     }
 }
