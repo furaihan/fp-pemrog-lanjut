@@ -16,7 +16,7 @@ namespace PinusPengger.Repository
                 {"@id", reservation.ResID }
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override void InsertRecord(Reservation reservation)
@@ -33,7 +33,7 @@ namespace PinusPengger.Repository
                 {"@id_kamar", reservation.ResIDRoom }
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override List<Reservation> ReadData()
@@ -42,7 +42,7 @@ namespace PinusPengger.Repository
 
             const string query = "SELECT * FROM reservasi";
 
-            SqlDataReader rdr = ExecuteRead(query);
+            SqlDataReader rdr = ExecuteDQLCommand(query);
 
             while (rdr.Read())
             {
@@ -77,7 +77,7 @@ namespace PinusPengger.Repository
                 {"@id_kamar", reservation.ResIDRoom }
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
     }
 }

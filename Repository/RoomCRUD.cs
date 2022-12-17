@@ -16,7 +16,7 @@ namespace PinusPengger.Repository
                 {"@id", room.RoomID}
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override void InsertRecord(Room room)
@@ -31,7 +31,7 @@ namespace PinusPengger.Repository
                 {"@tipe", room.RoomType.ToString()}
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override List<Room> ReadData()
@@ -40,7 +40,7 @@ namespace PinusPengger.Repository
 
             const string query = "SELECT * FROM kamar";
 
-            SqlDataReader rdr = ExecuteRead(query);
+            SqlDataReader rdr = ExecuteDQLCommand(query);
 
             while (rdr.Read())
             {
@@ -71,7 +71,7 @@ namespace PinusPengger.Repository
                 {"@tipe", room.RoomType.ToString()}
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
     }
 }

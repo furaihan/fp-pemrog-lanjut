@@ -7,6 +7,7 @@ namespace PinusPengger.Repository
 {
     internal class CustomerCRUD : DatabaseCRUD<Customer>
     {
+
         public override void DeleteRecord(Customer customer)
         {
             const string query = "DELETE FROM pelanggan WHERE id = @id";
@@ -16,7 +17,7 @@ namespace PinusPengger.Repository
                 {"@id", customer.CustID }
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override void InsertRecord(Customer customer)
@@ -31,7 +32,7 @@ namespace PinusPengger.Repository
                 {"@telp", customer.CustPhone}
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
 
         public override List<Customer> ReadData()
@@ -40,7 +41,7 @@ namespace PinusPengger.Repository
 
             const string query = "SELECT * FROM pelanggan";
 
-            SqlDataReader rdr = ExecuteRead(query);
+            SqlDataReader rdr = ExecuteDQLCommand(query);
 
             while (rdr.Read())
             {
@@ -71,7 +72,7 @@ namespace PinusPengger.Repository
                 {"@telp", customer.CustPhone}
             };
 
-            ExecuteWrite(query, args);
+            ExecuteDMLCommand(query, args);
         }
     }
 }

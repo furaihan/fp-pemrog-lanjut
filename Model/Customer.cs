@@ -2,6 +2,9 @@
 
 namespace PinusPengger.Model
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel pelanggan
+    /// </summary>
     internal class Customer
     {
         public int? CustID { get; set; }

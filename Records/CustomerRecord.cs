@@ -3,6 +3,9 @@ using System;
 
 namespace PinusPengger.Records
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel pelanggan yang dapat membangkitkan event apabila ternadi perubahan data
+    /// </summary>
     internal class CustomerRecord : ViewModelBase
     {
         private int? _id;

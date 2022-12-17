@@ -2,6 +2,9 @@
 
 namespace PinusPengger.Model
 {
+    /// <summary>
+    /// Representasi dari record di dalam tabel riwayat
+    /// </summary>
     internal class History
     {
         public int? HisID { get; set; }
