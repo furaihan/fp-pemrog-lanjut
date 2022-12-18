@@ -8,31 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Aviva\**" />
-    <EmbeddedResource Remove="Aviva\**" />
-    <None Remove="Aviva\**" />
-    <Page Remove="Aviva\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="View\BookingVIP.xaml.cs" />
-    <Compile Remove="View\Customer_data.xaml.cs" />
-    <Compile Remove="View\DetailPemesananBooking.xaml.cs" />
-    <Compile Remove="View\DetailPemesananCheckIn.xaml.cs" />
-    <Compile Remove="View\Kamar_reguler.xaml.cs" />
-    <Compile Remove="View\reservasi_reguler.xaml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Remove="View\BookingVIP.xaml" />
-    <Page Remove="View\Customer_data.xaml" />
-    <Page Remove="View\DetailPemesananBooking.xaml" />
-    <Page Remove="View\DetailPemesananCheckIn.xaml" />
-    <Page Remove="View\Kamar_reguler.xaml" />
-    <Page Remove="View\reservasi_reguler.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
