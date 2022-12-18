@@ -10,59 +10,37 @@ using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
-    internal class ReservationViewModel : ViewModelBase
+    /// <summary>
+    /// View model untuk halaman reservasi
+    /// </summary>
+    internal class ReservationViewModel : ViewModelLogic
     {
-        private ObservableCollection<RegularRoom> _regularRoom;
-
-        public ObservableCollection<RegularRoom> RegularRoom
-        {
-            get => _regularRoom;
-            set
-            {
-                _regularRoom = value;
-                OnPropertyChanged();
-            }
-        }
-        private void RegularRoomInit()
-        {
-            int jumlahLantai = 8;
-            List<int> junmlahKamar = new List<int>() { 8, 9, 6, 7, 8, 9, 6, 5 };
-            for (int i = 0; i < jumlahLantai; i++)
-            {
-
-            }
-        }
+        /// <summary>
+        /// Menginisialisasi instance sekaligus mengambil data dari database
+        /// </summary>
         public ReservationViewModel()
         {
-            RoomTypes = new List<RoomType>() { RoomType.Reg, RoomType.VIP };
-            _roomRepo = new RoomCRUD();
             _customerRepo = new CustomerCRUD();
+            _roomRepo = new RoomCRUD();
             _reservationRepo = new ReservationCRUD();
-            _roomList = new List<Room>();
-            _reservationList = new List<Reservation>();
-            RoomDisplayed = new ObservableCollection<RoomRecord>();
-            SelectedRoom = new RoomRecord();
+            CustomerRecord = new CustomerRecord();
+            RoomRecord = new RoomRecord();
+            _rooms = new List<Room>();
+            _reservations = new List<Reservation>();
+            RoomRecords = new ObservableCollection<RoomRecord>();
+            RoomTypes = new List<RoomType>() { RoomType.Reg, RoomType.VIP };
+            RegularRoom = new ObservableCollection<RegularRoom>();
             FetchData();
-            GetData();
+            ProcessData();
         }
 
         #region Field
         private ICommand _changeOptionCommand;
         private ICommand _reserveCommand;
         private ICommand _resetCommand;
-        private RoomType _selectedType;
-        private RoomCRUD _roomRepo;
-        private CustomerCRUD _customerRepo;
-        private ReservationCRUD _reservationRepo;
-        private List<Reservation> _reservationList;
-        private List<Room> _roomList;
-        private RoomRecord _selectedRoom;
-        private CustomerRecord _newCustomer;
-        private Customer _customer;
-        private Reservation _reservation;
         private DateTime? _checkin;
         private DateTime? _checkout;
-        private ReservationStatus _status; // properti digunakan sebagai command parameter
+        private RoomType _selectedType;
         #endregion
 
         #region Properties
@@ -70,7 +48,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                _changeOptionCommand ??= new ViewModelCommand(param => GetData());
+                _changeOptionCommand ??= new ViewModelCommand(param => ProcessData());
                 return _changeOptionCommand;
             }
         }
@@ -88,33 +66,6 @@ namespace PinusPengger.ViewModel
             {
                 _resetCommand ??= new ViewModelCommand(param => Reset());
                 return _resetCommand;
-            }
-        }
-        public RoomType SelectedType
-        {
-            get => _selectedType;
-            set
-            {
-                _selectedType = value;
-                OnPropertyChanged();
-            }
-        }
-        public RoomRecord SelectedRoom
-        {
-            get => _selectedRoom;
-            set
-            {
-                _selectedRoom = value;
-                OnPropertyChanged();
-            }
-        }
-        public CustomerRecord NewCustomer
-        {
-            get => _newCustomer;
-            set
-            {
-                _newCustomer = value;
-                OnPropertyChanged();
             }
         }
         public DateTime? Checkin
@@ -135,35 +86,44 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ReservationStatus Status
+        public RoomType SelectedType
         {
-            get => _status;
+            get => _selectedType;
             set
             {
-                _status = value;
+                _selectedType = value;
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<RoomRecord> RoomDisplayed;
         public List<RoomType> RoomTypes { get; set; }
+        public ObservableCollection<RegularRoom> RegularRoom { get; set; }
         #endregion
 
         #region Method
-        private void FetchData()
+        private void RegularRoomInit()
         {
-            _roomList = null;
-            _reservationList = null;
-            _roomRepo.ReadData().ForEach(data => _roomList.Add(data));
-            _reservationRepo.ReadData().ForEach(data => _reservationList.Add(data));
+            int jumlahLantai = 8;
+            List<int> junmlahKamar = new List<int>() { 8, 9, 6, 7, 8, 9, 6, 5 };
+            for (int i = 0; i < jumlahLantai; i++)
+            {
+
+            }
         }
-        public void GetData()
+        protected override void FetchData()
+        {
+            _rooms = null;
+            _reservations = null;
+            _roomRepo.ReadData().ForEach(data => _rooms.Add(data));
+            _reservationRepo.ReadData().ForEach(data => _reservations.Add(data));
+        }
+        public override void ProcessData()
         {
             // di view gunakan kondisi apabila id room ada di dalam reservasi maka warna merah
-            var dataSelected = from room in _roomList
+            var dataSelected = from room in _rooms
                                where room.RoomType == _selectedType
                                select room;
 
-            dataSelected.ToList().ForEach(data => RoomDisplayed.Add(
+            dataSelected.ToList().ForEach(data => RoomRecords.Add(
                 new RoomRecord
                 {
                     ID = data.RoomID,
@@ -173,14 +133,20 @@ namespace PinusPengger.ViewModel
                     Type = data.RoomType
                 }));
         }
+        /// <summary>
+        /// Memesan kamar hotel
+        /// </summary>
+        /// <param name="status">
+        /// Pilih salah satu dari <see cref="ReservationStatus"/> sebagai command parameter button
+        /// </param>
         public void Reserve(object status)
         {
             _customer = new Customer
             {
-                CustName = _newCustomer.Name,
-                CustNIK = _newCustomer.NIK,
-                CustBirthDate = _newCustomer.BirthDate,
-                CustPhone = _newCustomer.Phone
+                CustName = CustomerRecord.Name,
+                CustNIK = CustomerRecord.NIK,
+                CustBirthDate = CustomerRecord.BirthDate,
+                CustPhone = CustomerRecord.Phone
             };
             _customerRepo.InsertRecord(_customer);
 
@@ -190,17 +156,20 @@ namespace PinusPengger.ViewModel
                 ResCheckIn = _checkin,
                 ResCheckOut = _checkout,
                 ResStatus = (ReservationStatus)status,
-                ResIDCust = _customerRepo.ReadData().Last().CustID ?? default(int),
-                ResIDRoom = SelectedRoom.ID ?? default(int)
+                ResIDCust = _customerRepo.ReadData().Last().CustID,
+                ResIDRoom = RoomRecord.ID
             };
             _reservationRepo.InsertRecord(_reservation);
         }
+        /// <summary>
+        /// Membersihkan data
+        /// </summary>
         public void Reset()
         {
-            _newCustomer.Name = null;
-            _newCustomer.NIK = null;
-            _newCustomer.BirthDate = null;
-            _newCustomer.Phone = null;
+            CustomerRecord.Name = null;
+            CustomerRecord.NIK = null;
+            CustomerRecord.BirthDate = null;
+            CustomerRecord.Phone = null;
             Checkin = null;
             Checkout = null;
         }

@@ -2,6 +2,9 @@
 
 namespace PinusPengger.ViewModel
 {
+    /// <summary>
+    /// Representasi dari join tabel
+    /// </summary>
     class ReservationJoined : ViewModelBase
     {
         private Reservation _reservationEntity;

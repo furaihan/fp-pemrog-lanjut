@@ -1,5 +1,6 @@
 ﻿using PinusPengger.Model;
 using PinusPengger.Repository;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,42 +8,35 @@ using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
-    class HistoryViewModel : ViewModelBase
+    /// <summary>
+    /// View model untuk halaman riwayat
+    /// </summary>
+    class HistoryViewModel : ViewModelLogic
     {
+        /// <summary>
+        /// Menginisialisasi instance sekaligus mengambil data dari database
+        /// </summary>
         public HistoryViewModel()
         {
             _historyRepo = new HistoryCRUD();
             _customerRepo = new CustomerCRUD();
             _roomRepo = new RoomCRUD();
-            _historyList = new List<History>();
-            _customerList = new List<Customer>();
-            _roomList = new List<Room>();
-            SelectedItem = new HistoryJoined();
+            _histories = new List<History>();
+            _customers = new List<Customer>();
+            _rooms = new List<Room>();
+            HistoryJoined = new HistoryJoined();
+            HistoryJoineds = new ObservableCollection<HistoryJoined>();
             FetchData();
-            GetData();
+            ProcessData();
         }
 
         #region Field
-        private string _target;
+        private string _target = string.Empty;
         private ICommand _searchCommand;
-        private HistoryCRUD _historyRepo;
-        private CustomerCRUD _customerRepo;
-        private RoomCRUD _roomRepo;
-        private List<History> _historyList;
-        private List<Customer> _customerList;
-        private List<Room> _roomList;
-        private HistoryJoined _selectedItem;
         #endregion
 
         #region Properties
-        public ICommand SearchCommand
-        {
-            get
-            {
-                _searchCommand ??= new ViewModelCommand(GetData);
-                return _searchCommand;
-            }
-        }
+        public string MessageError { get; set; }
         public string Target
         {
             get => _target;
@@ -52,53 +46,62 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public HistoryJoined SelectedItem
+        public ICommand SearchCommand
         {
-            get => _selectedItem;
-            set
+            get
             {
-                _selectedItem = value;
-                OnPropertyChanged();
+                _searchCommand ??= new ViewModelCommand(param => ProcessData());
+                return _searchCommand;
             }
         }
-        public ObservableCollection<HistoryJoined> ItemSource { get; set; }
         #endregion
 
         #region Method
-        private void FetchData()
+        protected override void FetchData()
         {
-            _historyList = null;
-            _customerList = null;
-            _roomList = null;
-            _historyRepo.ReadData().ForEach(data => _historyList.Add(data));
-            _customerRepo.ReadData().ForEach(data => _customerList.Add(data));
-            _roomRepo.ReadData().ForEach(data => _roomList.Add(data));
+            _histories = null;
+            _customers = null;
+            _rooms = null;
+
+            try
+            {
+                _historyRepo.ReadData().ForEach(data => _histories.Add(data));
+                _customerRepo.ReadData().ForEach(data => _customers.Add(data));
+                _roomRepo.ReadData().ForEach(data => _rooms.Add(data));
+            }
+            catch (Exception e)
+            {
+                MessageError = e.Message;
+            }
         }
-        public void GetData(object target = null)
+
+        public override void ProcessData()
         {
-            var data = from history in _historyList
-                       join customer in _customerList on history.ResIDCust equals customer.CustID
-                       join room in _roomList on history.ResIDRoom equals room.RoomID
+            var data = from history in _histories
+                       join customer in _customers on history.ResIDCust equals customer.CustID
+                       join room in _rooms on history.ResIDRoom equals room.RoomID
                        select new HistoryJoined
                        {
                            HistoryEntity = history,
                            CustomerEntity = customer,
                            RoomEntity = room
                        };
-            if (string.IsNullOrEmpty(target.ToString()) || string.IsNullOrWhiteSpace(target.ToString()))
+
+            if (string.IsNullOrEmpty(_target.ToString()) || string.IsNullOrWhiteSpace(_target.ToString()))
             {
-                ItemSource = null;
-                ItemSource = new ObservableCollection<HistoryJoined>(data);
+                HistoryJoineds = null;
+                HistoryJoineds = new ObservableCollection<HistoryJoined>(data);
             }
             else
             {
-                ItemSource = null;
-                ItemSource = new ObservableCollection<HistoryJoined>(
+                HistoryJoineds = null;
+                HistoryJoineds = new ObservableCollection<HistoryJoined>(
                     from x in data
-                    where x.HistoryEntity.ResCode == target.ToString()
+                    where x.HistoryEntity.ResCode == _target.ToString()
                     select x);
-                //var tes = data.Where(x => x.HistoryEntity.ResCode == target.ToString()).Select(x => x);
             }
+
+            _target = string.Empty;
         }
         #endregion
     }

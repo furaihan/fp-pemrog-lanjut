@@ -2,6 +2,9 @@
 
 namespace PinusPengger.ViewModel
 {
+    /// <summary>
+    /// Representasi dari join tabel
+    /// </summary>
     class HistoryJoined : ViewModelBase
     {
         private History _historyEntity;

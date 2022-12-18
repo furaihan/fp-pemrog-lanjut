@@ -1,5 +1,6 @@
 using PinusPengger.Model;
 using PinusPengger.Repository;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,61 +8,39 @@ using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
-    internal class HomeViewModel : ViewModelBase
+    /// <summary>
+    /// ViewModel untuk halaman home
+    /// </summary>
+    internal class HomeViewModel : ViewModelLogic
     {
+        /// <summary>
+        /// Menginisialisasi instance sekaligus mengambil data dari database
+        /// </summary>
         public HomeViewModel()
         {
             _reservationRepo = new ReservationCRUD();
             _customerRepo = new CustomerCRUD();
             _roomRepo = new RoomCRUD();
             _historyRepo = new HistoryCRUD();
-            _reservationList = new List<Reservation>();
-            _customerList = new List<Customer>();
-            _roomList = new List<Room>();
+            _reservations = new List<Reservation>();
+            _customers = new List<Customer>();
+            _rooms = new List<Room>();
+            ReservationJoined = new ReservationJoined();
+            ReservationJoineds = new ObservableCollection<ReservationJoined>();
             FetchData();
-            GetData();
+            ProcessData();
         }
 
         #region Field
-        private string _target;
+        private string _target = string.Empty;
         private ICommand _searchCommand;
-        private ICommand _cancelOrCheckoutCommand;
         private ICommand _checkinCommand;
-        private ReservationCRUD _reservationRepo;
-        private CustomerCRUD _customerRepo;
-        private RoomCRUD _roomRepo;
-        private HistoryCRUD _historyRepo;
-        private List<Reservation> _reservationList;
-        private List<Customer> _customerList;
-        private List<Room> _roomList;
-        private ReservationJoined _selectedItem;
+        private ICommand _cancelCommand;
+        private ICommand _checkoutCommand;
         #endregion
 
         #region Properties
-        public ICommand SearchCommand
-        {
-            get
-            {
-                _searchCommand ??= new ViewModelCommand(GetData);
-                return _searchCommand;
-            }
-        }
-        public ICommand CancelOrCheckoutCommand
-        {
-            get
-            {
-                _cancelOrCheckoutCommand ??= new ViewModelCommand(CancelOrCheckout);
-                return _cancelOrCheckoutCommand;
-            }
-        }
-        public ICommand CheckinCommand
-        {
-            get
-            {
-                _checkinCommand ??= new ViewModelCommand(Checkin);
-                return _checkinCommand;
-            }
-        }
+        public string ErrorMessage { get; set; }
         public string Target
         {
             get => _target;
@@ -71,33 +50,63 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ReservationJoined SelectedItem
+        public ICommand SearchCommand
         {
-            get => _selectedItem;
-            set
+            get
             {
-                _selectedItem = value;
-                OnPropertyChanged();
+                _searchCommand ??= new ViewModelCommand(param => ProcessData());
+                return _searchCommand;
             }
         }
-        public ObservableCollection<ReservationJoined> ItemSource { get; set; }
+        public ICommand CheckinCommand
+        {
+            get
+            {
+                _checkinCommand ??= new ViewModelCommand(param => Checkin());
+                return _checkinCommand;
+            }
+        }
+        public ICommand CancelCommand
+        {
+            get
+            {
+                _cancelCommand ??= new ViewModelCommand(param => Cancel());
+                return _cancelCommand;
+            }
+        }
+        public ICommand CheckoutCommand
+        {
+            get
+            {
+                _checkoutCommand ??= new ViewModelCommand(param => Checkout());
+                return _checkoutCommand;
+            }
+        }
         #endregion
 
         #region Method
-        private void FetchData()
+        protected override void FetchData()
         {
-            _reservationList = null;
-            _customerList = null;
-            _roomList = null;
-            _reservationRepo.ReadData().ForEach(data => _reservationList.Add(data));
-            _customerRepo.ReadData().ForEach(data => _customerList.Add(data));
-            _roomRepo.ReadData().ForEach(data => _roomList.Add(data));
+            _reservations = null;
+            _customers = null;
+            _rooms = null;
+
+            try
+            {
+                _reservationRepo.ReadData().ForEach(data => _reservations.Add(data));
+                _customerRepo.ReadData().ForEach(data => _customers.Add(data));
+                _roomRepo.ReadData().ForEach(data => _rooms.Add(data));
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
         }
-        public void GetData(object target = null)
+        public override void ProcessData()
         {
-            var data = from reservation in _reservationList
-                       join customer in _customerList on reservation.ResIDCust equals customer.CustID
-                       join room in _roomList on reservation.ResIDRoom equals room.RoomID
+            var data = from reservation in _reservations
+                       join customer in _customers on reservation.ResIDCust equals customer.CustID
+                       join room in _rooms on reservation.ResIDRoom equals room.RoomID
                        select new ReservationJoined
                        {
                            ReservationEntity = reservation,
@@ -105,47 +114,88 @@ namespace PinusPengger.ViewModel
                            RoomEntity = room
                        };
 
-            if (string.IsNullOrEmpty(target.ToString()) || string.IsNullOrWhiteSpace(target.ToString()))
+            if (string.IsNullOrEmpty(_target.ToString()) || string.IsNullOrWhiteSpace(_target.ToString()))
             {
-                ItemSource = null;
-                ItemSource = new ObservableCollection<ReservationJoined>(data);
+                ReservationJoineds = null;
+                ReservationJoineds = new ObservableCollection<ReservationJoined>(data);
             }
             else
             {
-                ItemSource = null;
-                ItemSource = new ObservableCollection<ReservationJoined>(
+                ReservationJoineds = null;
+                ReservationJoineds = new ObservableCollection<ReservationJoined>(
                     from x in data
-                    where x.ReservationEntity.ResCode == target.ToString()
+                    where x.ReservationEntity.ResCode == _target.ToString()
                     select x);
             }
-        }
-        public void CancelOrCheckout(object target)
-        {
-            var reservation = ((ReservationJoined)target).ReservationEntity;
 
-            _reservationRepo.DeleteRecord(reservation);
-            _historyRepo.InsertRecord(
-                new History
-                {
-                    ResCode = reservation.ResCode,
-                    ResCheckIn = reservation.ResCheckIn,
-                    ResCheckOut = reservation.ResCheckOut,
-                    ResIDCust = reservation.ResIDCust,
-                    ResIDRoom = reservation.ResIDRoom,
-                });
+            _target = string.Empty;
+        }
+        /// <summary>
+        /// Memperbarui status item terpilih menjadi checkin
+        /// </summary>
+        public void Checkin()
+        {
+            var reservation = ReservationJoined.ReservationEntity;
+
+            try
+            {
+                reservation.ResStatus = ReservationStatus.Checkin;
+                _reservationRepo.UpdateRecord(reservation);
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
 
             FetchData();
-            GetData();
+            ProcessData();
         }
-        public void Checkin(object target)
+        /// <summary>
+        /// Menghapus item dari tabel reservasi
+        /// </summary>
+        public void Cancel()
         {
-            var reservation = ((ReservationJoined)target).ReservationEntity;
+            var reservation = ReservationJoined.ReservationEntity;
 
-            reservation.ResStatus = ReservationStatus.Checkin;
-            _reservationRepo.UpdateRecord(reservation);
+            try
+            {
+                _reservationRepo.DeleteRecord(reservation);
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
 
             FetchData();
-            GetData();
+            ProcessData();
+        }
+        /// <summary>
+        /// Menghapus item dari tabel reservasi sekaligus memasukkan item ke tabel riwayat
+        /// </summary>
+        public void Checkout()
+        {
+            var reservation = ReservationJoined.ReservationEntity;
+
+            try
+            {
+                _reservationRepo.DeleteRecord(reservation);
+                _historyRepo.InsertRecord(
+                    new History
+                    {
+                        ResCode = reservation.ResCode,
+                        ResCheckIn = reservation.ResCheckIn,
+                        ResCheckOut = reservation.ResCheckOut,
+                        ResIDCust = reservation.ResIDCust,
+                        ResIDRoom = reservation.ResIDRoom,
+                    });
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
+
+            FetchData();
+            ProcessData();
         }
         #endregion
     }
