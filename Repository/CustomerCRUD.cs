@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
 {
+    /// <summary>
+    /// Repository tabel pelanggan
+    /// </summary>
     internal class CustomerCRUD : DatabaseCRUD<Customer>
     {
 

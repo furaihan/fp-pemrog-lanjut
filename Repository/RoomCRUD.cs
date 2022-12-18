@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
 {
+    /// <summary>
+    /// Repository tabel kamar
+    /// </summary>
     internal class RoomCRUD : DatabaseCRUD<Room>
     {
         public override void DeleteRecord(Room room)

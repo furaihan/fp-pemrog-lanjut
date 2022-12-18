@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 
 namespace PinusPengger.Repository
 {
+    /// <summary>
+    /// Repository tabel riwayat
+    /// </summary>
     internal class HistoryCRUD : DatabaseCRUD<History>
     {
         public override void DeleteRecord(History history)
