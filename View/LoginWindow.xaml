@@ -1,10 +1,12 @@
-﻿<Window x:Class="PinusPengger.Controller.LoginWindowController"
+﻿<Window x:Class="PinusPengger.View.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:PinusPengger.View"
-        xmlns:controller="clr-namespace:PinusPengger.Controller"
+        xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
+        xmlns:record="clr-namespace:PinusPengger.Records"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Hotel Jaya Abadi - Login Page" 
         Height="540" 
@@ -12,6 +14,9 @@
         ResizeMode="CanMinimize"
         WindowStyle="None" 
         MouseDown="DragApp">
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -19,9 +24,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="125"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions> 
+        <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="25"/>  
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="75"/>
         </Grid.ColumnDefinitions>
@@ -37,14 +42,11 @@
                     Cursor="Hand"
                     Click="MinimizeApp">
                 <Button.Content>
-                    <Path Data="{StaticResource MinimizeIcon}" 
-                          Stretch="Uniform"
-                          Fill="Black"
+                    <icon:PackIconMaterial Kind="WindowMinimize"
                           Width="10" 
                           Height="10"
                           HorizontalAlignment="Center" 
                           VerticalAlignment="Center"
-                          RenderTransformOrigin="0.5,0.5"
                           Margin="1,0,0,0"/>
                 </Button.Content>
                 <Button.Style>
@@ -76,14 +78,11 @@
                     Click="CloseApp"
                     Margin="5">
                 <Button.Content>
-                    <Path Data="{StaticResource CloseAppIcon}" 
-                          Stretch="Uniform"
-                          Fill="Black"
+                    <icon:PackIconMaterial Kind="WindowClose"
                           Width="10" 
                           Height="10"
                           HorizontalAlignment="Center" 
                           VerticalAlignment="Center"
-                          RenderTransformOrigin="0.5,0.5"
                           Margin="1,0,0,0"/>
                 </Button.Content>
                 <Button.Style>
@@ -117,7 +116,7 @@
                 VerticalAlignment="Center" 
                 Width="290"
                 Background="#FFF3F3F3">
-            <Grid >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -141,45 +140,48 @@
                        Margin="5,0,0,0" 
                        FontWeight="Bold"
                        Text="Password"/>
-                <TextBox x:Name="usernameBox"
+                <TextBox 
                          Grid.Row="2" 
                          Height="25" 
                          Width="275" 
-                         Text="Admin"/>
-                <TextBox x:Name="passwdBox" 
+                         Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+                <TextBox 
                          Grid.Row="4"
                          Height="25"
                          Width="275"
-                         Text="Admin"/>
+                         Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
                 <Button Grid.Row="5"
                         Height="20"
-                        Width="75" 
+                        Width="80" 
                         HorizontalAlignment="Right"
                         Margin="0,0,10,0" 
                         BorderThickness="0"
                         Background="ForestGreen" 
-                        Click="LoginClick">
-                    <Grid Height="20" Width="75">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" 
-                                   HorizontalAlignment="Center"
-                                   FontWeight="Bold" 
-                                   Foreground="WhiteSmoke" 
-                                   Margin="5,0,0,0"
-                                   Text="Login"/>
-                        <Path Data="{StaticResource LoginIcon}" 
-                              Grid.Column="1" 
-                              Stretch="Uniform"
-                              Fill="WhiteSmoke"
-                              Width="15" Height="15" 
-                              HorizontalAlignment="Center" 
-                              VerticalAlignment="Center" 
-                              Margin="0,0,0,1" />
-                    </Grid>
+                        Command="{Binding LoginCommand}">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Stretch">
+                        <TextBlock Text="Login" 
+                                   Margin="0,-6,0,0"
+                                   FontWeight="Bold"
+                                   FontFamily="Dubai"
+                                   Foreground="WhiteSmoke"/>
+                        <icon:PackIconMaterial Kind="Login"
+                                               Width="10"
+                                               Height="10"
+                                               Margin="5,0,0,0"
+                                               Foreground="WhiteSmoke"
+                                               FontWeight="Bold"/>
+                    </StackPanel>
                 </Button>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Foreground="Red"
+                               Margin="10,0,0,0"
+                               Text="{Binding Path=ErrorMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                </Grid>
             </Grid>
         </Border>
         <TextBlock FontSize="30" 

@@ -4,24 +4,25 @@
              xmlns:local="clr-namespace:PinusPengger"
              xmlns:model="clr-namespace:PinusPengger.Model"
              xmlns:view="clr-namespace:PinusPengger.View"
-             xmlns:controller="clr-namespace:PinusPengger.Controller"
+             xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="/View/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/UserControls/NavbarButton.xaml"/>
                 <ResourceDictionary Source="/UserControls/StylishScrollBar.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/CloseAppIcon.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/LoginIcon.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/LogoutIcon.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/MinimizeIcon.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/CircleUserIcon.xaml"/>
-                <ResourceDictionary Source="/UserControls/Icons/MagnifyingGlassIcon.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Purple" SecondaryColor="Orange" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Yellow.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type controller:HomePageViewModel}">
+                <view:HomePage/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type controller:ReservationPageViewModel}">
+                <view:ReservasiPage/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type controller:HistoryPageViewModel}">
+                <view:HistoryPage/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
