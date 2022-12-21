@@ -2,7 +2,7 @@
 {
     internal class MainViewModel : ViewModelBase
     {
-        
+
         public ViewModelCommand HomeViewCommand { get; set; }
         public ViewModelCommand ReservationViewCommand { get; set; }
         public ViewModelCommand HistoryViewCommand { get; set; }
@@ -43,12 +43,12 @@
             ReservasiView = new ReservationPageViewModel();
             HistoryView = new HistoryPageViewModel();
 
-            CurrentView = HistoryView;
+            CurrentView = HomeView;
 
             HistoryViewCommand = new ViewModelCommand(o => CurrentView = HistoryView);
             ReservationViewCommand = new ViewModelCommand(o => CurrentView = ReservasiView);
             HomeViewCommand = new ViewModelCommand(o => CurrentView = HomeView);
         }
-        
+
     }
 }

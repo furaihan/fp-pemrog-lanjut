@@ -32,7 +32,7 @@ namespace PinusPengger.ViewModel
         }
 
         #region Field
-        private string _target = string.Empty;
+        private string _target = "a";
         private ICommand _searchCommand;
         private ICommand _checkinCommand;
         private ICommand _cancelCommand;
@@ -87,9 +87,9 @@ namespace PinusPengger.ViewModel
         #region Method
         protected override void FetchData()
         {
-            _reservations = null;
-            _customers = null;
-            _rooms = null;
+            _reservations.Clear();
+            _customers.Clear();
+            _rooms.Clear();
 
             try
             {
