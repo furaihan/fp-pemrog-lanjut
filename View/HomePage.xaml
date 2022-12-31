@@ -64,8 +64,7 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="tabelHistori"
-                  Margin="10"
+        <DataGrid Margin="10"
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
@@ -73,41 +72,16 @@
                   IsReadOnly="True"
                   ItemsSource="{Binding ReservationJoineds}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Kode Pemesanan" Binding="{Binding ReservationEntity.ResCode}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Nama" Width="200" Binding="{Binding CustomerEntity.CustName}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Nomor Kamar" Width="*"  Binding="{Binding RoomEntity.RoomCode}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Tanggal Checkin" Width="*" Binding="{Binding ReservationEntity.ResCheckIn, StringFormat='dd/MM/yyyy'}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Tanggal Checkout" Width="*"  Binding="{Binding ReservationEntity.ResCheckOut, StringFormat='dd/MM/yyyy'}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
+                <DataGridTextColumn Header="Kode Pemesanan" 
+                                    Binding="{Binding ReservationEntity.ResCode}"/>
+                <DataGridTextColumn Header="Nama" Width="200" 
+                                    Binding="{Binding CustomerEntity.CustName}"/>
+                <DataGridTextColumn Header="Nomor Kamar" Width="*"  
+                                    Binding="{Binding RoomEntity.RoomCode}"/>
+                <DataGridTextColumn Header="Tanggal Checkin" Width="*" 
+                                    Binding="{Binding ReservationEntity.ResCheckIn, StringFormat='dd/MM/yyyy'}"/>
+                <DataGridTextColumn Header="Tanggal Checkout" Width="*"  
+                                    Binding="{Binding ReservationEntity.ResCheckOut, StringFormat='dd/MM/yyyy'}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -3,6 +3,7 @@ using PinusPengger.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -27,6 +28,7 @@ namespace PinusPengger.ViewModel
             _rooms = new List<Room>();
             ReservationJoined = new ReservationJoined();
             ReservationJoineds = new ObservableCollection<ReservationJoined>();
+            Debug.WriteLine($"RJ-45: {ReservationJoineds.Count}");
             FetchData();
             ProcessData();
         }
@@ -128,7 +130,7 @@ namespace PinusPengger.ViewModel
                     select x);
             }
 
-            _target = string.Empty;
+            Target = string.Empty;
         }
         /// <summary>
         /// Memperbarui status item terpilih menjadi checkin

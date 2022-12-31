@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
         mc:Ignorable="d"
-        Title="DataCustomerPopUp" Height="450" Width="800">
+        Title="DataCustomerPopUp" 
+        Height="400" 
+        Width="300"
+        ResizeMode="CanMinimize"
+        WindowStyle="None">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.650*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   Content="Data Pelanggan"
+                   FontFamily="Dubai"
+                   FontWeight="Bold"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Nama Lengkap"
+                           FontFamily="Inter"/>
+                    <TextBox HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="125"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"
+                             Text="Nama Depan"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Nama Lengkap"
+                           FontFamily="Inter"/>
+                    <TextBox HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="125"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"
+                             Text="Nama Depan"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
