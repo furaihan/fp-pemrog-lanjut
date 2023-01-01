@@ -28,7 +28,6 @@
                     BorderThickness="0"
                     Foreground="White"
                     Cursor="Hand"
-                    Click="CloseApp"
                     Margin="5"
                 HorizontalAlignment="Right">
             <Button.Content>

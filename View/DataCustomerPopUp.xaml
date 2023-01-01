@@ -17,13 +17,14 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.650*"/>
+                <RowDefinition Height="0.65*"/>
+                <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" 
                    Content="Data Pelanggan"
@@ -44,21 +45,108 @@
                              Width="125"
                              Height="20"
                              FontSize="9"
-                             Margin="5"
-                             Text="Nama Depan"/>
+                             Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <TextBlock Text="Nama Lengkap"
+                    <TextBlock Text="No. KTP"
                            FontFamily="Inter"/>
                     <TextBox HorizontalAlignment="Left"
                              VerticalAlignment="Bottom"
                              Width="125"
                              Height="20"
                              FontSize="9"
-                             Margin="5"
-                             Text="Nama Depan"/>
+                             Margin="5"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="No. Telp / WA"
+                               FontFamily="Inter"/>
+                    <TextBox HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="125"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Email"
+                               FontFamily="Inter"/>
+                    <TextBox HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="125"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="3" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <TextBlock Text="Jumlah Tamu"
+                               FontFamily="Inter"/>
+                <TextBox HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="280"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <TextBlock Text="Tanggal Checkin"
+                               FontFamily="Inter"/>
+                <DatePicker HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="280"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"/>
+            </StackPanel>
+            <StackPanel Grid.Row="5" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <TextBlock Text="Tanggal Checkout"
+                               FontFamily="Inter"/>
+                <DatePicker HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Width="280"
+                             Height="20"
+                             FontSize="9"
+                             Margin="5"/>
+            </StackPanel>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,10,0">
+                    <Button Background="Green"
+                            Foreground="White"
+                            Width="60"
+                            Height="18">
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="Lanjut"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Grid>
