@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace PinusPengger.Repository
 {
@@ -17,6 +19,11 @@ namespace PinusPengger.Repository
         /// <param name="args"></param>
         protected void ExecuteDMLCommand(string query, Dictionary<string, object> args)
         {
+            //membaca connectionString dari file json
+            Debug.WriteLine("Json Start");
+            dynamic appData = JsonConvert.DeserializeObject(System.IO.File.ReadAllText("config.json"));
+            string cs = appData.PinusPengger.connectionString;
+            Debug.WriteLine(cs);
             // membuat koneksi ke database
             string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=db_hotel;Integrated Security=True";
 

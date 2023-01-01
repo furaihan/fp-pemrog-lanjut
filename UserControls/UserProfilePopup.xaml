@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="PinusPengger.UserControls.UserProfilePopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PinusPengger.UserControls"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             Height="120" 
+             Width="150"
+             Background="Transparent"> 
+    <Border CornerRadius="10" Background="WhiteSmoke" Opacity="90">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" 
+                           FontFamily="Dubai"
+                           Text="User Profile"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+                <Button x:Name="btnLogout"                           
+                            Foreground="White"
+                            Cursor="Hand"
+                            Grid.Row="2">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Red"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" 
+                                    Height="15"
+                                    CornerRadius="3"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Content>
+                        <Grid FlowDirection="RightToLeft">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <icon:PackIconMaterial Kind="Logout"
+                                                   Grid.Column="0"
+                                                   Width="10"
+                                                   Height="10"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,5,0"/>
+                            <TextBlock Grid.Column="1"
+                                   Text="Logout"
+                                   FontSize="10"
+                                   FontFamily="Leelawadee"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Border Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Height="30"
+                    Panel.ZIndex="-2"
+                    VerticalAlignment="Top"
+                    CornerRadius="10,10,0,0"
+                    Background="Tomato"/>
+            <Border Grid.Row="1"
+                    Height="40"
+                    Width="40"
+                    CornerRadius="32"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0">
+                <Border.Background>
+                    <ImageBrush ImageSource="\Images\userProfile.png" 
+                                RenderOptions.BitmapScalingMode="Fant"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Row="1"
+                    Height="43"
+                    Width="43"
+                    CornerRadius="32"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Background="WhiteSmoke"
+                    Panel.ZIndex="-1"
+                    Margin="0,5,0,0"/>
+        </Grid>
+    </Border>
+</UserControl>
