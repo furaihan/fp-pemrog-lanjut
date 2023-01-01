@@ -69,6 +69,18 @@
                     <ColumnDefinition Width="0.8*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Margin="5"
+                        BorderThickness="2"
+                        BorderBrush="Black">
+                    <Border Margin="5"
+                            BorderThickness="0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="\Images\room2.png"
+                                    Stretch="UniformToFill"/>
+                        </Border.Background>
+                    </Border>
+                </Border> 
             </Grid>
         </Grid>
     </Grid>
