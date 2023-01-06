@@ -1,11 +1,20 @@
-﻿using TestingDatabase.Model.CombinedModel;
-using TestingDatabase.Model.DataAccessLayer;
-using TestingDatabase.Model.EntityModel;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.DataAccessLayer;
+using PinusPengger.Model.EntityModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace TestingDatabase.Model.ServiceAgent
+namespace PinusPengger.Model.ServiceAgent
 {
+    /// <summary>
+    /// Layanan mengakses model <see cref="CombinedModel.ReservationJoined"/>
+    /// </summary>
     internal class ReservationSA : ServiceAgent, IDisposable
     {
+        /// <summary>
+        /// Menginisialisasi objek <see cref="ReservationSA"/>
+        /// </summary>
         public ReservationSA()
         {
             _customerDAL = new CustomerDAL();
@@ -23,6 +32,9 @@ namespace TestingDatabase.Model.ServiceAgent
         private List<Room> _rooms;
         private List<Reservation> _reservations;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public override void FetchData()
         {
             // Fetch customer datas
@@ -35,6 +47,10 @@ namespace TestingDatabase.Model.ServiceAgent
             _reservations = _reservationDAL.ReadData().Cast<Reservation>().ToList();
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override IEnumerable<object> GetData()
         {
             var result = from reservation in _reservations
@@ -49,7 +65,9 @@ namespace TestingDatabase.Model.ServiceAgent
 
             return result;
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public void Dispose()
         {
             _customerDAL.Dispose();

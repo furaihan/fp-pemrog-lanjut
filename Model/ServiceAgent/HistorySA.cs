@@ -1,11 +1,20 @@
-﻿using TestingDatabase.Model.CombinedModel;
-using TestingDatabase.Model.DataAccessLayer;
-using TestingDatabase.Model.EntityModel;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.DataAccessLayer;
+using PinusPengger.Model.EntityModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace TestingDatabase.Model.ServiceAgent
+namespace PinusPengger.Model.ServiceAgent
 {
+    /// <summary>
+    /// Layanan mengakses model <see cref="CombinedModel.HistoryJoined"/>
+    /// </summary>
     internal class HistorySA : ServiceAgent, IDisposable
     {
+        /// <summary>
+        /// Menginisialisasi objek <see cref="HistorySA"/>
+        /// </summary>
         public HistorySA()
         {
             _customerDAL = new CustomerDAL();
@@ -23,6 +32,9 @@ namespace TestingDatabase.Model.ServiceAgent
         private List<Room> _rooms;
         private List<History> _histories;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public override void FetchData()
         {
             // Fetch customer datas
@@ -35,6 +47,10 @@ namespace TestingDatabase.Model.ServiceAgent
             _histories = _historyDAL.ReadData().Cast<History>().ToList();
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override IEnumerable<object> GetData()
         {
             var result = from history in _histories
@@ -49,7 +65,9 @@ namespace TestingDatabase.Model.ServiceAgent
 
             return result;
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public void Dispose()
         {
             _customerDAL.Dispose();

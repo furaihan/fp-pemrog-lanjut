@@ -1,9 +1,16 @@
-﻿using TestingDatabase.Model.EntityModel;
+﻿using PinusPengger.Model.EntityModel;
+using System.Collections.Generic;
 
-namespace TestingDatabase.Model.CombinedModel
+namespace PinusPengger.Model.CombinedModel
 {
+    /// <summary>
+    /// Merepresentasikan kamar beserta fasilitas lengkapnya
+    /// </summary>
     internal class RoomWithFacilities
     {
+        /// <summary>
+        /// Menginisialisasi objek <see cref="RoomWithFacilities"/>
+        /// </summary>
         public RoomWithFacilities()
         {
             _room = new Room();
@@ -17,21 +24,33 @@ namespace TestingDatabase.Model.CombinedModel
         private List<RoomFacilityBathroom> _roomFacilityBathrooms;
         private List<RoomFacilityOther> _roomFacilityOthers;
 
+        /// <summary>
+        /// Merepresentasikan data sebuah ruangan
+        /// </summary>
         public Room Room
         {
             get => _room;
             set => _room = value;
         }
+        /// <summary>
+        /// Merepresentasikan data fasilitas kamar
+        /// </summary>
         public RoomFacility RoomFacility
         {
             get => _roomFacility;
             set => _roomFacility = value;
         }
+        /// <summary>
+        /// Merepresentasikan data fasilitas kamar mandi
+        /// </summary>
         public List<RoomFacilityBathroom> RoomFacilityBathrooms
         {
             get => _roomFacilityBathrooms;
             set => _roomFacilityBathrooms = value;
         }
+        /// <summary>
+        /// Merepresentasikan data fasilitas lainnya
+        /// </summary>
         public List<RoomFacilityOther> RoomFacilityOthers
         {
             get => _roomFacilityOthers;

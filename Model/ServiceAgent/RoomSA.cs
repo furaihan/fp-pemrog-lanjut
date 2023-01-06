@@ -1,11 +1,20 @@
-﻿using TestingDatabase.Model.CombinedModel;
-using TestingDatabase.Model.DataAccessLayer;
-using TestingDatabase.Model.EntityModel;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.DataAccessLayer;
+using PinusPengger.Model.EntityModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace TestingDatabase.Model.ServiceAgent
+namespace PinusPengger.Model.ServiceAgent
 {
+    /// <summary>
+    /// Layanan mengakses model <see cref="CombinedModel.RoomWithFacilities"/>
+    /// </summary>
     internal class RoomSA : ServiceAgent, IDisposable
     {
+        /// <summary>
+        /// Menginisialisasi objek <see cref="RoomSA"/>
+        /// </summary>
         public RoomSA()
         {
             _roomDAL = new RoomDAL();
@@ -27,6 +36,9 @@ namespace TestingDatabase.Model.ServiceAgent
         private List<RoomFacilityBathroom> _roomFacilityBathrooms;
         private List<RoomFacilityOther> _roomFacilityOthers;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public override void FetchData()
         {
             // Fetch room datas
@@ -42,6 +54,10 @@ namespace TestingDatabase.Model.ServiceAgent
             _roomFacilityOthers = _roomFacilityOtherDAL.ReadData().Cast<RoomFacilityOther>().ToList();
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override IEnumerable<object> GetData()
         {
             FetchData();
@@ -58,7 +74,9 @@ namespace TestingDatabase.Model.ServiceAgent
 
             return result;
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public void Dispose()
         {
             _roomDAL.Dispose();
@@ -66,6 +84,5 @@ namespace TestingDatabase.Model.ServiceAgent
             _roomFacilityBathroomDAL.Dispose();
             _roomFacilityOtherDAL.Dispose();
         }
-
     }
 }

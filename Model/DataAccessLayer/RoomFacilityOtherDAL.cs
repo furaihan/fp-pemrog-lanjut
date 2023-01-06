@@ -1,20 +1,35 @@
-﻿using System.Configuration;
+﻿using PinusPengger.Model.EntityModel;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
-using TestingDatabase.Model.EntityModel;
+using System.Linq;
 
-namespace TestingDatabase.Model.DataAccessLayer
+namespace PinusPengger.Model.DataAccessLayer
 {
+    /// <summary>
+    /// Mekanisme CRUD tabel fasilitas lainnya
+    /// </summary>
     internal class RoomFacilityOtherDAL : IRepository, IDisposable
     {
-
+        /// <summary>
+        /// Menginisialisasi objek <see cref="RoomFacilityOtherDAL"/>
+        /// </summary>
         public RoomFacilityOtherDAL()
         {
             Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
             Connection.Open();
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public SqlConnection Connection { get; set; }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public List<object> ReadData()
         {
             var result = new List<RoomFacilityOther>();
@@ -39,22 +54,36 @@ namespace TestingDatabase.Model.DataAccessLayer
 
             return result.Select(x => (object)x).ToList();
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="obj"><inheritdoc/></param>
+        /// <exception cref="NotImplementedException"></exception>
         public void InsertRecord(object obj)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="obj"><inheritdoc/></param>
+        /// <exception cref="NotImplementedException"></exception>
         public void UpdateRecord(object obj)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="obj"><inheritdoc/></param>
+        /// <exception cref="NotImplementedException"></exception>
         public void DeleteRecord(object obj)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public void Dispose()
         {
             Connection.Close();
