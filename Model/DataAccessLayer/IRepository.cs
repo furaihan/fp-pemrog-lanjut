@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace PinusPengger.Model.DataAccessLayer
@@ -6,7 +7,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Menyediakan mekanisme CRUD 
     /// </summary>
-    public interface IRepository
+    public interface IRepository : IDisposable
     {
         /// <summary>
         /// Merepresentasikan koneksi database
@@ -33,6 +34,5 @@ namespace PinusPengger.Model.DataAccessLayer
         /// </summary>
         /// <param name="obj">Record yang akan dihapus</param>
         void DeleteRecord(object obj);
-
     }
 }

@@ -53,6 +53,7 @@ namespace PinusPengger.Model.ServiceAgent
                 default:
                     break;
             }
+            repo.Dispose();
         }
     }
 }

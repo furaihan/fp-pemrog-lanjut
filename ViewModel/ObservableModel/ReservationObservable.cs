@@ -3,7 +3,7 @@ using System;
 
 namespace PinusPengger.ViewModel.ObservableModel
 {
-    internal class ReservationObservable : ViewModelBase
+    public class ReservationObservable : ViewModelBase
     {
         private int _reservationID;
         private string _reservationCode;

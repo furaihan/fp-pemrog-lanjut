@@ -1,11 +1,18 @@
-﻿using PinusPengger.ViewModel.ObservableCombinedModel;
-using PinusPengger.ViewModel.ObservableModel;
+﻿using PinusPengger.ViewModel.ObservableModel;
 using System.Collections.Generic;
 
 namespace PinusPengger.ViewModel.ObservableCombinedModel
 {
-    internal class RoomWithFacilitiesObservable : ViewModelBase
+    public class RoomWithFacilitiesObservable : ViewModelBase
     {
+        public RoomWithFacilitiesObservable()
+        {
+            _room = new RoomObservable();
+            _roomFacility = new RoomFacilityObservable();
+            _roomFacilityBathrooms = new List<RoomFacilityBathroomObservable>();
+            _roomFacilityOthers = new List<RoomFacilityOtherObservable>();
+        }
+
         private RoomObservable _room;
         private RoomFacilityObservable _roomFacility;
         private List<RoomFacilityBathroomObservable> _roomFacilityBathrooms;

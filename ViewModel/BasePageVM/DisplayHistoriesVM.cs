@@ -6,12 +6,12 @@ using System.Collections.ObjectModel;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
-    public class DisplayReservationsVM : ViewModelBase
+    public class DisplayHistoriesVM : ViewModelBase
     {
-        public DisplayReservationsVM()
+        public DisplayHistoriesVM()
         {
             _searchCommand = new ViewModelCommand(param => GetData());
-            ReservationJoineds = new ObservableCollection<ReservationJoinedObservable>();
+            HistoryJoineds = new ObservableCollection<HistoryJoinedObservable>();
         }
 
         #region Field
@@ -47,22 +47,22 @@ namespace PinusPengger.ViewModel.BasePageVM
                 return _searchCommand;
             }
         }
-        public ObservableCollection<ReservationJoinedObservable> ReservationJoineds { get; set; }
+        public ObservableCollection<HistoryJoinedObservable> HistoryJoineds { get; set; }
         #endregion
 
         #region Method
         public void GetData()
         {
-            using (var reservationSA = new ReservationSA())
+            using (var historySA = new HistorySA())
             {
                 try
                 {
-                    reservationSA.FetchData();
-                    var data = reservationSA.GetData(_target);
+                    historySA.FetchData();
+                    var data = historySA.GetData(_target);
 
-                    if (data is IEnumerable<ReservationJoinedObservable> convertedData)
+                    if (data is IEnumerable<HistoryJoinedObservable> convertedData)
                     {
-                        ReservationJoineds = new ObservableCollection<ReservationJoinedObservable>(convertedData);
+                        HistoryJoineds = new ObservableCollection<HistoryJoinedObservable>(convertedData);
                     }
                     else
                     {

@@ -10,7 +10,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Mekanisme CRUD tabel kamar
     /// </summary>
-    public class RoomDAL : IRepository, IDisposable
+    public class RoomDAL : IRepository
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomDAL"/>

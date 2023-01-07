@@ -10,7 +10,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Mekanisme CRUD untuk tabel pelanggan
     /// </summary>
-    public class CustomerDAL : IRepository, IDisposable
+    public class CustomerDAL : IRepository
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="CustomerDAL"/>

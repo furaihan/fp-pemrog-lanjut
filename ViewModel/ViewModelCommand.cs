@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
-    internal class ViewModelCommand : ICommand
+    public class ViewModelCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;

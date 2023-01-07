@@ -2,7 +2,7 @@
 
 namespace PinusPengger.ViewModel.ObservableCombinedModel
 {
-    internal class ReservationJoinedObservable : ViewModelBase
+    public class ReservationJoinedObservable : ViewModelBase
     {
         public ReservationJoinedObservable()
         {
@@ -10,6 +10,7 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
             _room = new RoomObservable();
             _reservation = new ReservationObservable();
         }
+
         private CustomerObservable _customer;
         private RoomObservable _room;
         private ReservationObservable _reservation;

@@ -1,9 +1,4 @@
 ﻿using PinusPengger.ViewModel.ObservableModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinusPengger.ViewModel.ObservableCombinedModel
 {
@@ -15,6 +10,7 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
             _room = new RoomObservable();
             _history = new HistoryObservable();
         }
+
         private CustomerObservable _customer;
         private RoomObservable _room;
         private HistoryObservable _history;
@@ -37,14 +33,14 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
                 OnPropertyChanged();
             }
         }
-        public HistoryObservable History 
-        { 
-            get => _history; 
-            set 
+        public HistoryObservable History
+        {
+            get => _history;
+            set
             {
                 _history = value;
                 OnPropertyChanged();
-            } 
+            }
         }
     }
 }

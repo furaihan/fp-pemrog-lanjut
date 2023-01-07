@@ -10,7 +10,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Mekanisme CRUD untuk tabel reservasi
     /// </summary>
-    public class ReservationDAL : IRepository, IDisposable
+    public class ReservationDAL : IRepository
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="ReservationDAL"/>
