@@ -1,7 +1,8 @@
-﻿using PinusPengger.Model;
-using PinusPengger.Records;
-using PinusPengger.Repository;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.ServiceAgent;
 using PinusPengger.UserControls;
+using PinusPengger.ViewModel.ObservableCombinedModel;
+using PinusPengger.ViewModel.ObservableModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,25 +14,35 @@ namespace PinusPengger.ViewModel
     /// <summary>
     /// View model untuk halaman reservasi
     /// </summary>
-    internal class ReservationViewModel : ViewModelLogic
+    internal class ReservationViewModel : ViewModelBase
     {
         /// <summary>
         /// Menginisialisasi instance sekaligus mengambil data dari database
         /// </summary>
         public ReservationViewModel()
         {
-            _customerRepo = new CustomerCRUD();
-            _roomRepo = new RoomCRUD();
-            _reservationRepo = new ReservationCRUD();
-            CustomerRecord = new CustomerRecord();
-            RoomRecord = new RoomRecord();
-            _rooms = new List<Room>();
-            _reservations = new List<Reservation>();
-            RoomRecords = new ObservableCollection<RoomRecord>();
-            RoomTypes = new List<RoomType>() { RoomType.Reg, RoomType.VIP };
-            RegularRoom = new ObservableCollection<RegularRoom>();
-            FetchData();
-            ProcessData();
+            using (var roomSa = new RoomSA())
+            {
+                try
+                {
+                    roomSa.FetchData();
+                    var data = roomSa.GetData(null);
+                    if (data.FirstOrDefault() is RoomWithFacilities)
+                    {
+                        RoomTypes = data.Cast<RoomWithFacilities>().Select(x => new RoomWithFacilitiesObservable
+                        {
+                            Room = RoomObservable.FromEntity(x.Room),
+                            RoomFacility = RoomFacilityObservable.FromEntity(x.RoomFacility),
+                            RoomFacilityBathrooms = x.RoomFacilityBathrooms.Select(y=> RoomFacilityBathroomObservable.FromEntity(y)),
+                            RoomFacilityOthers = x.RoomFacilityOthers.Select(y=> RoomFacilityOtherObservable.FromEntity(y))
+                        });
+                    }
+                }
+                catch (Exception e)
+                {
+                    //do nothing atm
+                }
+            }
         }
 
         #region Field
@@ -40,7 +51,7 @@ namespace PinusPengger.ViewModel
         private ICommand _resetCommand;
         private DateTime? _checkin;
         private DateTime? _checkout;
-        private RoomType _selectedType;
+        private RoomWithFacilitiesObservable _selectedType;
         #endregion
 
         #region Properties
@@ -48,7 +59,7 @@ namespace PinusPengger.ViewModel
         {
             get
             {
-                _changeOptionCommand ??= new ViewModelCommand(param => ProcessData());
+                _changeOptionCommand ??= new ViewModelCommand(null);
                 return _changeOptionCommand;
             }
         }
@@ -86,7 +97,7 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public RoomType SelectedType
+        public RoomWithFacilitiesObservable SelectedType
         {
             get => _selectedType;
             set
@@ -95,7 +106,7 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        public List<RoomType> RoomTypes { get; set; }
+        public List<RoomWithFacilitiesObservable> RoomTypes { get; set; }
         public ObservableCollection<RegularRoom> RegularRoom { get; set; }
         #endregion
 
@@ -109,30 +120,6 @@ namespace PinusPengger.ViewModel
 
             }
         }
-        protected override void FetchData()
-        {
-            _rooms = null;
-            _reservations = null;
-            _roomRepo.ReadData().ForEach(data => _rooms.Add(data));
-            _reservationRepo.ReadData().ForEach(data => _reservations.Add(data));
-        }
-        public override void ProcessData()
-        {
-            // di view gunakan kondisi apabila id room ada di dalam reservasi maka warna merah
-            var dataSelected = from room in _rooms
-                               where room.RoomType == _selectedType
-                               select room;
-
-            dataSelected.ToList().ForEach(data => RoomRecords.Add(
-                new RoomRecord
-                {
-                    ID = data.RoomID,
-                    Code = data.RoomCode,
-                    Number = data.RoomNumber,
-                    Floor = data.RoomFloor,
-                    Type = data.RoomType
-                }));
-        }
         /// <summary>
         /// Memesan kamar hotel
         /// </summary>
@@ -141,37 +128,14 @@ namespace PinusPengger.ViewModel
         /// </param>
         public void Reserve(object status)
         {
-            _customer = new Customer
-            {
-                CustName = CustomerRecord.Name,
-                CustNIK = CustomerRecord.NIK,
-                CustBirthDate = CustomerRecord.BirthDate,
-                CustPhone = CustomerRecord.Phone
-            };
-            _customerRepo.InsertRecord(_customer);
-
-            _reservation = new Reservation
-            {
-                ResCode = null, //hasil generate random
-                ResCheckIn = _checkin,
-                ResCheckOut = _checkout,
-                ResStatus = (ReservationStatus)status,
-                ResIDCust = _customerRepo.ReadData().Last().CustID,
-                ResIDRoom = RoomRecord.ID
-            };
-            _reservationRepo.InsertRecord(_reservation);
+            
         }
         /// <summary>
         /// Membersihkan data
         /// </summary>
         public void Reset()
         {
-            CustomerRecord.Name = null;
-            CustomerRecord.NIK = null;
-            CustomerRecord.BirthDate = null;
-            CustomerRecord.Phone = null;
-            Checkin = null;
-            Checkout = null;
+            
         }
         #endregion
     }

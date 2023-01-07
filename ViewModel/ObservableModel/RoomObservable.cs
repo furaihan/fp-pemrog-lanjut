@@ -1,4 +1,5 @@
 ﻿using PinusPengger.Model;
+using PinusPengger.Model.EntityModel;
 
 namespace PinusPengger.ViewModel.ObservableModel
 {
@@ -69,6 +70,18 @@ namespace PinusPengger.ViewModel.ObservableModel
                 _roomType = value;
                 OnPropertyChanged();
             }
+        }
+        internal static RoomObservable FromEntity(Room room)
+        {
+            return new RoomObservable()
+            {
+                RoomID = room.RoomID,
+                RoomCode = room.RoomCode,
+                RoomFloor = room.RoomFloor,
+                RoomNumber = room.RoomNumber,
+                SquareMeter = room.SquareMeter,
+                RoomType = room.RoomType
+            };
         }
     }
 }

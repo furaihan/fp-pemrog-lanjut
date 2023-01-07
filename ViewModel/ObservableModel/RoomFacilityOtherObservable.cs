@@ -1,4 +1,5 @@
 ﻿using PinusPengger.Model;
+using PinusPengger.Model.EntityModel;
 
 namespace PinusPengger.ViewModel.ObservableModel
 {
@@ -29,6 +30,14 @@ namespace PinusPengger.ViewModel.ObservableModel
                 _roomType = value;
                 OnPropertyChanged();
             }
+        }
+        public static RoomFacilityOtherObservable FromEntity(RoomFacilityOther roomFacilityOther)
+        {
+            return new RoomFacilityOtherObservable()
+            {
+                RoomType = roomFacilityOther.RoomType,
+                NameOfFacility = roomFacilityOther.NameOfFacility
+            };
         }
     }
 }
