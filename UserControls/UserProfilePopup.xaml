@@ -10,7 +10,7 @@
              Width="150"
              Background="Transparent"> 
     <Border CornerRadius="10" Background="WhiteSmoke" Opacity="90">
-        <Grid>
+        <Grid Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition/>

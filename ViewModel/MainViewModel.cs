@@ -1,36 +1,22 @@
 ﻿using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using PinusPengger.View;
 
 namespace PinusPengger.ViewModel
 {
     internal class MainViewModel : ViewModelBase
     {
 
-        public ViewModelCommand HomeViewCommand { get; set; }
-        public ViewModelCommand ReservationViewCommand { get; set; }
-        public ViewModelCommand HistoryViewCommand { get; set; }
-        public ViewModelCommand ProfileCommand { get; set; }
+        public ICommand HomeViewCommand { get; set; }
+        public ICommand ReservationViewCommand { get; set; }
+        public ICommand HistoryViewCommand { get; set; }
+        public ICommand ProfileCommand { get; set; }
 
-        private HomePageViewModel _homeView;
-        private ReservationPageViewModel _reservasiView;
-        private HistoryPageViewModel _historyView;
         private object _currentView;
         private bool showUserProfile;
-
-        public HomePageViewModel HomeView
-        {
-            get => _homeView;
-            set => _homeView = value;
-        }
-        public ReservationPageViewModel ReservasiView
-        {
-            get => _reservasiView;
-            set => _reservasiView = value;
-        }
-        public HistoryPageViewModel HistoryView
-        {
-            get => _historyView;
-            set => _historyView = value;
-        }
+        private readonly HomePage homePage;
+        private readonly ReservasiPage reservasiPage;
+        private readonly HistoryPage historyPage;
 
         public object CurrentView
         {
@@ -52,15 +38,15 @@ namespace PinusPengger.ViewModel
         }
         public MainViewModel()
         {
-            HomeView = new HomePageViewModel();
-            ReservasiView = new ReservationPageViewModel();
-            HistoryView = new HistoryPageViewModel();
+            homePage = new HomePage();
+            historyPage = new HistoryPage();
+            reservasiPage = new ReservasiPage();
 
-            CurrentView = HomeView;
+            CurrentView = homePage;
             showUserProfile = false;
-            HistoryViewCommand = new ViewModelCommand(o => CurrentView = HistoryView);
-            ReservationViewCommand = new ViewModelCommand(o => CurrentView = ReservasiView);
-            HomeViewCommand = new ViewModelCommand(o => CurrentView = HomeView);
+            HistoryViewCommand = new ViewModelCommand(o => CurrentView = historyPage);
+            ReservationViewCommand = new ViewModelCommand(o => CurrentView = reservasiPage);
+            HomeViewCommand = new ViewModelCommand(o => CurrentView = homePage);
             ProfileCommand = new ViewModelCommand(x => ShowUserProfile = !ShowUserProfile);
         }
 

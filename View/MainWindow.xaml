@@ -116,12 +116,12 @@
                     <ColumnDefinition Width="125"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="21"
-                       FontFamily="Leelawadee"
-                       Grid.Column="0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center" 
-                       FontWeight="Bold"
-                       Text="Hotel Jaya Abadi"/>
+                           FontFamily="Leelawadee"
+                           Grid.Column="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontWeight="Bold"
+                           Text="Hotel Jaya Abadi"/>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal">
                     <RadioButton Height="40"
@@ -301,11 +301,17 @@
         </Frame>
         <Popup StaysOpen="False"
                PlacementTarget="{Binding ElementName=ProfileButton}"
-               Placement="Left"
+               Placement="Center"
                IsOpen="{Binding ShowUserProfile}"
+               IsHitTestVisible="False"
                Height="120" 
-               Width="150">
-            <uc:UserProfilePopup/>
+               Width="150"
+               AllowsTransparency="True">
+            <uc:UserProfilePopup Background="Transparent"/>
+            <Popup.Effect>
+                <DropShadowEffect ShadowDepth="2"
+                                  BlurRadius="2"/>
+            </Popup.Effect>
         </Popup>
     </Grid>
 </Window>

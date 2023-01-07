@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace PinusPengger.Repository
@@ -24,9 +25,9 @@ namespace PinusPengger.Repository
             Debug.WriteLine("Json Start");
             string json = File.ReadAllText("config.json");
             Debug.WriteLine("Converting to object");
-            dynamic appData = JsonConvert.DeserializeObject(json);
+            JsonElement appData = JsonSerializer.Deserialize<JsonElement>(json);
             Debug.WriteLine("Reading Data");
-            string cs = appData.PinusPengger.connectionString;
+            string cs = appData.GetProperty("PinusPengger").GetProperty("connectionString").GetString();
             Debug.WriteLine(cs);
             // membuat koneksi ke database
             string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=db_hotel;Integrated Security=True";
