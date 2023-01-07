@@ -10,7 +10,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Mekanisme CRUD tabel fasilitas lainnya
     /// </summary>
-    internal class RoomFacilityOtherDAL : IRepository, IDisposable
+    public class RoomFacilityOtherDAL : IRepository, IDisposable
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomFacilityOtherDAL"/>

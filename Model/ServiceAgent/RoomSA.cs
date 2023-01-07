@@ -10,7 +10,7 @@ namespace PinusPengger.Model.ServiceAgent
     /// <summary>
     /// Layanan mengakses model <see cref="CombinedModel.RoomWithFacilities"/>
     /// </summary>
-    internal class RoomSA : ServiceAgent, IDisposable
+    public class RoomSA : ServiceAgent, IDisposable
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomSA"/>
@@ -58,7 +58,7 @@ namespace PinusPengger.Model.ServiceAgent
         /// <inheritdoc/>
         /// </summary>
         /// <returns><inheritdoc/></returns>
-        public override IEnumerable<object> GetData()
+        public override IEnumerable<object> GetData(object target)
         {
             FetchData();
 
@@ -71,6 +71,11 @@ namespace PinusPengger.Model.ServiceAgent
                              RoomFacilityBathrooms = _roomFacilityBathrooms.Where(data => data.RoomType == roomFacility.RoomType).ToList(),
                              RoomFacilityOthers = _roomFacilityOthers.Where(data => data.RoomType == roomFacility.RoomType).ToList()
                          };
+
+            if (target != null)
+            {
+                result = result.Where(x => x.Room.RoomType == (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), target.ToString()));
+            }
 
             return result;
         }

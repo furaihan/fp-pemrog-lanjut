@@ -5,7 +5,7 @@ namespace PinusPengger.Model.EntityModel
     /// <summary>
     /// Merepresentasikan data sebuah riwayat di database
     /// </summary>
-    internal class History
+    public class History
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="History"/>

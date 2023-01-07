@@ -10,7 +10,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Mekanisme CRUD untuk tabel riwayat
     /// </summary>
-    internal class HistoryDAL : IRepository, IDisposable
+    public class HistoryDAL : IRepository, IDisposable
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="HistoryDAL"/>

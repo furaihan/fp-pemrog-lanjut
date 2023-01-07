@@ -5,7 +5,7 @@ namespace PinusPengger.Model.EntityModel
     /// <summary>
     /// Meresentasikan data sebuah reservasi di database
     /// </summary>
-    internal class Reservation
+    public class Reservation
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="Reservation"/>

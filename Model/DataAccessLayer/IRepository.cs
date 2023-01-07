@@ -6,7 +6,7 @@ namespace PinusPengger.Model.DataAccessLayer
     /// <summary>
     /// Menyediakan mekanisme CRUD 
     /// </summary>
-    internal interface IRepository
+    public interface IRepository
     {
         /// <summary>
         /// Merepresentasikan koneksi database

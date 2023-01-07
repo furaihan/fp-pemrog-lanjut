@@ -6,7 +6,7 @@ namespace PinusPengger.Model.CombinedModel
     /// <summary>
     /// Merepresentasikan kamar beserta fasilitas lengkapnya
     /// </summary>
-    internal class RoomWithFacilities
+    public class RoomWithFacilities
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomWithFacilities"/>

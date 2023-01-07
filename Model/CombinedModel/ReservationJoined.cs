@@ -5,7 +5,7 @@ namespace PinusPengger.Model.CombinedModel
     /// <summary>
     /// Merepresentasikan gabungan antara <see cref="EntityModel.Reservation"/> dengan <see cref="EntityModel.Customer"/> dan <see cref="EntityModel.Room"/>
     /// </summary>
-    internal class ReservationJoined
+    public class ReservationJoined
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="ReservationJoined"/>

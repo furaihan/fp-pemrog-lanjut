@@ -3,7 +3,7 @@
     /// <summary>
     /// Merepresentasikan data fasilitas kamar mandi di database
     /// </summary>
-    internal class RoomFacilityBathroom
+    public class RoomFacilityBathroom
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomFacilityBathroom"/>

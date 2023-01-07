@@ -3,7 +3,7 @@
     /// <summary>
     /// Merepresentasikan data fasilitas lainnya di database
     /// </summary>
-    internal class RoomFacilityOther
+    public class RoomFacilityOther
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomFacilityOther"/>

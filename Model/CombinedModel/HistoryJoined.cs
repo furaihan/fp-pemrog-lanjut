@@ -5,7 +5,7 @@ namespace PinusPengger.Model.CombinedModel
     /// <summary>
     /// Merepresentasikan gabungan antara <see cref="EntityModel.History"/> dengan <see cref="EntityModel.Customer"/> dan <see cref="EntityModel.Room"/>
     /// </summary>
-    internal class HistoryJoined
+    public class HistoryJoined
     {
         /// <summary>
         /// Menginisiasi objek <see cref="HistoryJoined"/>

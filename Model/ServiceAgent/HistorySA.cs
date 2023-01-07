@@ -10,7 +10,7 @@ namespace PinusPengger.Model.ServiceAgent
     /// <summary>
     /// Layanan mengakses model <see cref="CombinedModel.HistoryJoined"/>
     /// </summary>
-    internal class HistorySA : ServiceAgent, IDisposable
+    public class HistorySA : ServiceAgent, IDisposable
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="HistorySA"/>
@@ -51,7 +51,7 @@ namespace PinusPengger.Model.ServiceAgent
         /// <inheritdoc/>
         /// </summary>
         /// <returns><inheritdoc/></returns>
-        public override IEnumerable<object> GetData()
+        public override IEnumerable<object> GetData(object target)
         {
             var result = from history in _histories
                          join customer in _customers on history.CustomerID equals customer.CustomerID
@@ -62,6 +62,11 @@ namespace PinusPengger.Model.ServiceAgent
                              Room = room,
                              History = history
                          };
+
+            if (target != null)
+            {
+                result = result.Where(x => x.History.ReservationCode == target.ToString());
+            }
 
             return result;
         }

@@ -1,11 +1,11 @@
-﻿using PinusPengger.Model;
+﻿using PinusPengger.Model.EntityModel;
 
 namespace PinusPengger.ViewModel
 {
     /// <summary>
     /// Representasi dari join tabel
     /// </summary>
-    class ReservationJoined : ViewModelBase
+    public class ReservationJoined : ViewModelBase
     {
         private Reservation _reservationEntity;
         private Customer _customerEntity;

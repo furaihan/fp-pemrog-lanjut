@@ -3,7 +3,7 @@
     /// <summary>
     /// Merepresentasikan data seorang pelanggan di database
     /// </summary>
-    internal class Customer
+    public class Customer
     {
         /// <summary>
         /// Menginisialisasi objek <see cref="Customer"/>
