@@ -3,7 +3,7 @@
     /// <summary>
     /// Kelas yang berisi penanda
     /// </summary>
-    internal static class Tag
+    public static class Tag
     {
         /// <summary>
         /// Penanda tipe kamar
