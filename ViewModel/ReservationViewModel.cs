@@ -33,9 +33,9 @@ namespace PinusPengger.ViewModel
                         {
                             Room = RoomObservable.FromEntity(x.Room),
                             RoomFacility = RoomFacilityObservable.FromEntity(x.RoomFacility),
-                            RoomFacilityBathrooms = x.RoomFacilityBathrooms.Select(y=> RoomFacilityBathroomObservable.FromEntity(y)),
-                            RoomFacilityOthers = x.RoomFacilityOthers.Select(y=> RoomFacilityOtherObservable.FromEntity(y))
-                        });
+                            RoomFacilityBathrooms = x.RoomFacilityBathrooms.Select(y => RoomFacilityBathroomObservable.FromEntity(y)).ToList(),
+                            RoomFacilityOthers = x.RoomFacilityOthers.Select(y => RoomFacilityOtherObservable.FromEntity(y)).ToList()
+                        }).ToList();
                     }
                 }
                 catch (Exception e)
@@ -128,14 +128,14 @@ namespace PinusPengger.ViewModel
         /// </param>
         public void Reserve(object status)
         {
-            
+
         }
         /// <summary>
         /// Membersihkan data
         /// </summary>
         public void Reset()
         {
-            
+
         }
         #endregion
     }
