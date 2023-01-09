@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using PinusPengger.Model.CombinedModel;
+﻿using PinusPengger.Model.CombinedModel;
 using PinusPengger.Model.DataAccessLayer;
 using PinusPengger.Model.EntityModel;
 using System;
@@ -47,12 +46,11 @@ namespace PinusPengger.Model.ServiceAgent
             // Fetch history datas
             _histories = _historyDAL.ReadData().Cast<History>().ToList();
         }
-
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <returns><inheritdoc/></returns>
-        public override IEnumerable<object> GetData(object target)
+        public override IEnumerable<object> GetData()
         {
             var result = from history in _histories
                          join customer in _customers on history.CustomerID equals customer.CustomerID
@@ -63,11 +61,6 @@ namespace PinusPengger.Model.ServiceAgent
                              Room = room,
                              History = history
                          };
-
-            if (target is string targetConverted && !targetConverted.IsNullOrEmpty())
-            {
-                result = result.Where(x => x.History.ReservationCode == targetConverted);
-            }
 
             return result;
         }

@@ -33,7 +33,7 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
                 OnPropertyChanged();
             }
         }
-        internal ReservationObservable Reservation
+        public ReservationObservable Reservation
         {
             get => _reservation;
             set

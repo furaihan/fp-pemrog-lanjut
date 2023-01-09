@@ -18,7 +18,7 @@ namespace PinusPengger.Model.ServiceAgent
         /// Mendapatkan data yang telah diambil oleh method <see cref="FetchData"/>
         /// </summary>
         /// <returns>Kumpulan data</returns>
-        public abstract IEnumerable<object> GetData(object target);
+        public abstract IEnumerable<object> GetData();
         /// <summary>
         /// Meneruskan data sementara yang telah ditampung oleh model ke database
         /// </summary>

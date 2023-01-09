@@ -1,39 +1,36 @@
-﻿using PinusPengger.Model;
+﻿using Microsoft.IdentityModel.Tokens;
+using PinusPengger.Model;
 using PinusPengger.Model.CombinedModel;
 using PinusPengger.Model.ServiceAgent;
 using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
-    public class DisplayRoomVM : ViewModelBase
+    public class DisplayRoomVM : ViewModelBase, IBasePage
     {
         public DisplayRoomVM()
         {
+            GetData();
+            _errorMessage = string.Empty;
+            _roomWithFacilities = Enumerable.Empty<RoomWithFacilities>();
             Options = new ObservableCollection<Tag.RoomType>() { Tag.RoomType.REG, Tag.RoomType.VIP };
-            RoomWithFacilities = new ObservableCollection<RoomWithFacilitiesObservable>();
+            RoomWithFacilitiesObservable = new ObservableCollection<RoomWithFacilitiesObservable>();
             PropertyChanged += OnSelectedOptionChanged;
         }
 
         #region Field
         private Tag.RoomType _selectedOption;
-        private string _errorMessage = string.Empty;
+        private string _errorMessage;
+        private IEnumerable<RoomWithFacilities> _roomWithFacilities;
         #endregion
 
         #region Properties
-        public Tag.RoomType SelectedOption
-        {
-            get => _selectedOption;
-            set
-            {
-                _selectedOption = value;
-                OnPropertyChanged();
-            }
-        }
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -43,16 +40,25 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        public Tag.RoomType SelectedOption
+        {
+            get => _selectedOption;
+            set
+            {
+                _selectedOption = value;
+                OnPropertyChanged();
+            }
+        }
         public ObservableCollection<Tag.RoomType> Options { get; set; }
-        public ObservableCollection<RoomWithFacilitiesObservable> RoomWithFacilities { get; set; }
+        public ObservableCollection<RoomWithFacilitiesObservable> RoomWithFacilitiesObservable { get; set; }
         #endregion
 
         #region Method
-        private void OnSelectedOptionChanged(object? sender, PropertyChangedEventArgs e)
+        public void OnSelectedOptionChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SelectedOption))
             {
-                GetData();
+                ProcessData();
             }
         }
         public void GetData()
@@ -62,31 +68,41 @@ namespace PinusPengger.ViewModel.BasePageVM
                 try
                 {
                     roomSA.FetchData();
-                    var datas = roomSA.GetData(_selectedOption).ToList();
-
-                    if (datas == null)
-                    {
-                        throw new Exception("Data tidak ditemukan");
-                    }
-
-                    foreach (var item in datas)
-                    {
-                        if (item is RoomWithFacilities itemConverted)
-                        {
-                            RoomWithFacilities.Add(new RoomWithFacilitiesObservable
-                            {
-                                Room = DataObservableConverter.FromRoomEntity(itemConverted.Room),
-                                RoomFacility = DataObservableConverter.FromRoomFacilityEntity(itemConverted.RoomFacility),
-                                RoomFacilityBathrooms = DataObservableConverter.FromRoomFacilityBathroomEntities(itemConverted.RoomFacilityBathrooms),
-                                RoomFacilityOthers = DataObservableConverter.FromRoomFacilityOtherEntities(itemConverted.RoomFacilityOthers)
-                            });
-                        }
-                    }
+                    _roomWithFacilities = roomSA.GetData().Cast<RoomWithFacilities>();
                 }
                 catch (Exception e)
                 {
                     ErrorMessage = e.Message;
                 }
+            }
+        }
+        public void ProcessData()
+        {
+            try
+            {
+                if (_roomWithFacilities.IsNullOrEmpty())
+                {
+                    throw new Exception("Data tidak ditemukan");
+                }
+
+                _roomWithFacilities = _roomWithFacilities.Where(x => x.Room.RoomType == _selectedOption);
+
+                RoomWithFacilitiesObservable.Clear();
+
+                foreach (var item in _roomWithFacilities)
+                {
+                    RoomWithFacilitiesObservable.Add(new RoomWithFacilitiesObservable
+                    {
+                        Room = DataObservableConverter.FromRoomEntity(item.Room),
+                        RoomFacility = DataObservableConverter.FromRoomFacilityEntity(item.RoomFacility),
+                        RoomFacilityBathrooms = DataObservableConverter.FromRoomFacilityBathroomEntities(item.RoomFacilityBathrooms),
+                        RoomFacilityOthers = DataObservableConverter.FromRoomFacilityOtherEntities(item.RoomFacilityOthers)
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
             }
         }
         #endregion

@@ -58,7 +58,7 @@ namespace PinusPengger.Model.ServiceAgent
         /// <inheritdoc/>
         /// </summary>
         /// <returns><inheritdoc/></returns>
-        public override IEnumerable<object> GetData(object target)
+        public override IEnumerable<object> GetData()
         {
             FetchData();
 
@@ -71,11 +71,6 @@ namespace PinusPengger.Model.ServiceAgent
                              RoomFacilityBathrooms = _roomFacilityBathrooms.Where(data => data.RoomType == roomFacility.RoomType).ToList(),
                              RoomFacilityOthers = _roomFacilityOthers.Where(data => data.RoomType == roomFacility.RoomType).ToList()
                          };
-
-            if (target != null)
-            {
-                result = result.Where(x => x.Room.RoomType == (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), target.ToString()));
-            }
 
             return result;
         }

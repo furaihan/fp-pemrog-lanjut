@@ -1,24 +1,33 @@
-﻿using PinusPengger.Model.CombinedModel;
+﻿using Microsoft.IdentityModel.Tokens;
+using PinusPengger.Model.CombinedModel;
 using PinusPengger.Model.ServiceAgent;
 using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
-    public class DisplayHistoriesVM : ViewModelBase
+    public class DisplayHistoriesVM : ViewModelBase, IBasePage
     {
         public DisplayHistoriesVM()
         {
-            _searchCommand = new ViewModelCommand(param => GetData());
-            HistoryJoineds = new ObservableCollection<HistoryJoinedObservable>();
+            _target = string.Empty;
+            _errorMessage = string.Empty;
+            _searchCommand = new ViewModelCommand(param => ProcessData());
+            _historyJoineds = Enumerable.Empty<HistoryJoined>();
+            HistoryJoinedsObservable = new ObservableCollection<HistoryJoinedObservable>();
+            GetData();
+            ProcessData();
         }
 
         #region Field
-        private string _target = string.Empty;
-        private string _errorMessage = string.Empty;
+        private string _target;
+        private string _errorMessage;
         private ViewModelCommand _searchCommand;
+        private IEnumerable<HistoryJoined> _historyJoineds;
         #endregion
 
         #region Properties
@@ -44,11 +53,11 @@ namespace PinusPengger.ViewModel.BasePageVM
         {
             get
             {
-                _searchCommand ??= new ViewModelCommand(param => GetData());
+                _searchCommand ??= new ViewModelCommand(param => ProcessData());
                 return _searchCommand;
             }
         }
-        public ObservableCollection<HistoryJoinedObservable> HistoryJoineds { get; set; }
+        public ObservableCollection<HistoryJoinedObservable> HistoryJoinedsObservable { get; set; }
         #endregion
 
         #region Method
@@ -59,34 +68,46 @@ namespace PinusPengger.ViewModel.BasePageVM
                 try
                 {
                     historySA.FetchData();
-                    var datas = historySA.GetData(_target);
-
-                    if (datas == null)
-                    {
-                        throw new Exception("Data tidak ditemukan");
-                    }
-
-                    foreach (var item in datas)
-                    {
-                        if (item is HistoryJoined itemConverted)
-                        {
-                            HistoryJoineds.Add(new HistoryJoinedObservable
-                            {
-                                Customer = DataObservableConverter.FromCustomerEntity(itemConverted.Customer),
-                                Room = DataObservableConverter.FromRoomEntity(itemConverted.Room),
-                                History = DataObservableConverter.FromHistoryEntity(itemConverted.History)
-                            });
-                        }
-                    }
+                    _historyJoineds = historySA.GetData().Cast<HistoryJoined>();
                 }
                 catch (Exception e)
                 {
                     ErrorMessage = e.Message;
                 }
             }
-
-            Target = string.Empty;
         }
-        #endregion
+        public void ProcessData()
+        {
+            try
+            {
+                if (_historyJoineds.IsNullOrEmpty())
+                {
+                    throw new Exception("Data tidak ditemukan");
+                }
+                if (!_target.IsNullOrEmpty())
+                {
+                    _historyJoineds = _historyJoineds.Where(x => x.History.ReservationCode == _target);
+                }
+
+                HistoryJoinedsObservable.Clear();
+
+                foreach (var item in _historyJoineds)
+                {
+                    HistoryJoinedsObservable.Add(new HistoryJoinedObservable
+                    {
+                        Customer = DataObservableConverter.FromCustomerEntity(item.Customer),
+                        Room = DataObservableConverter.FromRoomEntity(item.Room),
+                        History = DataObservableConverter.FromHistoryEntity(item.History)
+                    });
+                }
+
+                Target = string.Empty;
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
+            #endregion
+        }
     }
 }

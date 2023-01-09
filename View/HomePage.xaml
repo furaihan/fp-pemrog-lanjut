@@ -71,7 +71,7 @@
                   Grid.Row="3"
                   CanUserAddRows="False"
                   IsReadOnly="True"
-                  ItemsSource="{Binding ReservationJoineds}">
+                  ItemsSource="{Binding ReservationJoinedsObservable}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kode Pemesanan" 
                                     Binding="{Binding Reservation.ReservationCode}"/>
