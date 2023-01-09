@@ -80,8 +80,46 @@
                                     Stretch="UniformToFill"/>
                         </Border.Background>
                     </Border>
-                </Border> 
+                </Border>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" 
+                               Grid.Column="0" 
+                               Text="Deskripsi"
+                               FontWeight="Bold"
+                               FontSize="20"
+                               FontFamily="Inter"/>
+                </Grid>
             </Grid>
+            <Line Grid.Row="2"
+                  Stroke="Black"
+                  StrokeThickness="5"
+                  VerticalAlignment="Top"
+                  Width="780"/>
+            <TextBlock Grid.Row="2" 
+                       Margin="10,2,10,2" 
+                       TextWrapping="WrapWithOverflow"
+                       FontFamily="Calibri"
+                       FontSize="17">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                culpa qui officia deserunt mollit anim id est laborum.
+            </TextBlock>
         </Grid>
     </Grid>
 </Window>
