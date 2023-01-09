@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModel\Ignored\**" />
+    <EmbeddedResource Remove="ViewModel\Ignored\**" />
+    <None Remove="ViewModel\Ignored\**" />
+    <Page Remove="ViewModel\Ignored\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\room1.png" />
     <None Remove="Images\room2.png" />
     <None Remove="Images\room3.png" />

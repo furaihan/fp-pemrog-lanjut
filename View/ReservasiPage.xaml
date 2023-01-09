@@ -2,12 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helper="clr-namespace:PinusPengger.ViewModel.Helper"
+             xmlns:viewModel="clr-namespace:PinusPengger.ViewModel.BasePageVM"
              xmlns:local="clr-namespace:PinusPengger.View"
              xmlns:uc="clr-namespace:PinusPengger.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="420" 
              d:DesignWidth="920">
+    <Page.DataContext>
+        <viewModel:DisplayRoomVM/>
+    </Page.DataContext>
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -23,15 +28,35 @@
                        FontWeight="Bold"/>
             <ComboBox Height="25" 
                       Width="200"
-                      Text="Pilih Kategori">
-                <ComboBoxItem>Reguler</ComboBoxItem>
-                <ComboBoxItem>Presidential Suite / VIP</ComboBoxItem>
+                      ItemsSource="{Binding Options}"
+                      SelectedItem="{Binding SelectedOption}"
+                      Text="{Binding SelectedOption}">
             </ComboBox>
         </StackPanel>
+        <!--
+        <ItemsControl ItemsSource="{Binding RoomWithFacilities}" 
+                      Grid.Row="2" 
+                      Margin="15">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DataTemplate.Resources>
+                        <Style TargetType="uc:RoomRepresentation" 
+                               BasedOn="{StaticResource {x:Type uc:RoomRepresentation}}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding }"
+                            </Style.Triggers>
+                        </Style>
+                    </DataTemplate.Resources>
+                    <uc:RoomRepresentation/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+-->
+        <!--
         <WrapPanel Grid.Row="2" 
                    Margin="15">
             <WrapPanel.Resources>
-                <Style TargetType="{x:Type uc:RegularRoom}">
+                <Style TargetType="{x:Type uc:RoomRepresentation}">
                     <Setter Property="Margin" Value="10,0,10,0" />
                 </Style>
             </WrapPanel.Resources>
@@ -42,5 +67,6 @@
             <uc:RegularRoom ButtonColor="Lime"/>
             <uc:RegularRoom ButtonColor="Lime"/>
         </WrapPanel>
+        -->
     </Grid>
 </Page>

@@ -5,8 +5,8 @@ namespace PinusPengger.ViewModel
 {
     public class ViewModelCommand : ICommand
     {
-        private Action<object>? _execute;
-        private Func<object, bool>? _canExecute;
+        private Action<object> _execute;
+        private Func<object, bool> _canExecute;
 
         public ViewModelCommand(Action<object> execute, Func<object, bool>? canExecute = null)
         {
@@ -14,7 +14,7 @@ namespace PinusPengger.ViewModel
             _canExecute = canExecute;
         }
 
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }

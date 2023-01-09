@@ -32,7 +32,7 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
-        internal Tag.RoomType RoomType
+        public Tag.RoomType RoomType
         {
             get => _roomType;
             set

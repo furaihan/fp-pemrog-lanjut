@@ -1,4 +1,5 @@
-﻿using PinusPengger.Model.CombinedModel;
+﻿using Microsoft.IdentityModel.Tokens;
+using PinusPengger.Model.CombinedModel;
 using PinusPengger.Model.DataAccessLayer;
 using PinusPengger.Model.EntityModel;
 using System;
@@ -63,9 +64,9 @@ namespace PinusPengger.Model.ServiceAgent
                              Reservation = reservation
                          };
 
-            if (target != null)
+            if (target is string targetConverted && !targetConverted.IsNullOrEmpty())
             {
-                result = result.Where(x => x.Reservation.ReservationCode == target.ToString());
+                result = result.Where(x => x.Reservation.ReservationCode == targetConverted);
             }
 
             return result;
