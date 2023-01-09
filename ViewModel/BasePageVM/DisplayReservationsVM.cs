@@ -1,7 +1,8 @@
-﻿using PinusPengger.Model.ServiceAgent;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.ServiceAgent;
+using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace PinusPengger.ViewModel.BasePageVM
@@ -12,6 +13,7 @@ namespace PinusPengger.ViewModel.BasePageVM
         {
             _searchCommand = new ViewModelCommand(param => GetData());
             ReservationJoineds = new ObservableCollection<ReservationJoinedObservable>();
+            GetData();
         }
 
         #region Field
@@ -58,15 +60,24 @@ namespace PinusPengger.ViewModel.BasePageVM
                 try
                 {
                     reservationSA.FetchData();
-                    var data = reservationSA.GetData(_target);
+                    var datas = reservationSA.GetData(_target);
 
-                    if (data is IEnumerable<ReservationJoinedObservable> convertedData)
-                    {
-                        ReservationJoineds = new ObservableCollection<ReservationJoinedObservable>(convertedData);
-                    }
-                    else
+                    if (datas == null)
                     {
                         throw new Exception("Data tidak ditemukan");
+                    }
+
+                    foreach (var item in datas)
+                    {
+                        if (item is ReservationJoined itemConverted)
+                        {
+                            ReservationJoineds.Add(new ReservationJoinedObservable
+                            {
+                                Customer = DataObservableConverter.FromCustomerEntity(itemConverted.Customer),
+                                Room = DataObservableConverter.FromRoomEntity(itemConverted.Room),
+                                Reservation = DataObservableConverter.FromReservationEntity(itemConverted.Reservation)
+                            });
+                        }
                     }
                 }
                 catch (Exception e)

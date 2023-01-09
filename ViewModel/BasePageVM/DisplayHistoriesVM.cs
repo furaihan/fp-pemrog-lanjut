@@ -1,7 +1,8 @@
-﻿using PinusPengger.Model.ServiceAgent;
+﻿using PinusPengger.Model.CombinedModel;
+using PinusPengger.Model.ServiceAgent;
+using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace PinusPengger.ViewModel.BasePageVM
@@ -58,15 +59,24 @@ namespace PinusPengger.ViewModel.BasePageVM
                 try
                 {
                     historySA.FetchData();
-                    var data = historySA.GetData(_target);
+                    var datas = historySA.GetData(_target);
 
-                    if (data is IEnumerable<HistoryJoinedObservable> convertedData)
-                    {
-                        HistoryJoineds = new ObservableCollection<HistoryJoinedObservable>(convertedData);
-                    }
-                    else
+                    if (datas == null)
                     {
                         throw new Exception("Data tidak ditemukan");
+                    }
+
+                    foreach (var item in datas)
+                    {
+                        if (item is HistoryJoined itemConverted)
+                        {
+                            HistoryJoineds.Add(new HistoryJoinedObservable
+                            {
+                                Customer = DataObservableConverter.FromCustomerEntity(itemConverted.Customer),
+                                Room = DataObservableConverter.FromRoomEntity(itemConverted.Room),
+                                History = DataObservableConverter.FromHistoryEntity(itemConverted.History)
+                            });
+                        }
                     }
                 }
                 catch (Exception e)

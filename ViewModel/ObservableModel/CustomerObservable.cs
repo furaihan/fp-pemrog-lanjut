@@ -45,6 +45,10 @@
                 OnPropertyChanged();
             }
         }
+        public string FullName
+        {
+            get => _firstName + " " + LastName;
+        }
         public string Nik
         {
             get => _nik;
