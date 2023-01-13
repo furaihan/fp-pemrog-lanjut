@@ -33,25 +33,36 @@
                       Text="{Binding SelectedOption}">
             </ComboBox>
         </StackPanel>
-        <!--
         <ItemsControl ItemsSource="{Binding RoomWithFacilities}" 
                       Grid.Row="2" 
                       Margin="15">
-            <ItemsControl.ItemTemplate>
+            <ItemsControl.Resources>
+                <Style TargetType="uc:RoomRepresentation">
+                    <!--
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBooked}" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsBooked}" Value="False">
+                            <Setter Property="Background" Value="Green"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    -->
+                    <Setter Property="Background" Value="Green"/>
+                </Style>
+            </ItemsControl.Resources>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+           <!--- <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <DataTemplate.Resources>
-                        <Style TargetType="uc:RoomRepresentation" 
-                               BasedOn="{StaticResource {x:Type uc:RoomRepresentation}}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding }"
-                            </Style.Triggers>
-                        </Style>
-                    </DataTemplate.Resources>
                     <uc:RoomRepresentation/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
+            -->
         </ItemsControl>
--->
         <!--
         <WrapPanel Grid.Row="2" 
                    Margin="15">
