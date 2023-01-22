@@ -33,36 +33,20 @@
                       Text="{Binding SelectedOption}">
             </ComboBox>
         </StackPanel>
-        <ItemsControl ItemsSource="{Binding RoomWithFacilities}" 
-                      Grid.Row="2" 
-                      Margin="15">
-            <ItemsControl.Resources>
-                <Style TargetType="uc:RoomRepresentation">
-                    <!--
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsBooked}" Value="True">
-                            <Setter Property="Background" Value="Red"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsBooked}" Value="False">
-                            <Setter Property="Background" Value="Green"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                    -->
-                    <Setter Property="Background" Value="Green"/>
-                </Style>
-            </ItemsControl.Resources>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-           <!--- <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <uc:RoomRepresentation/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            -->
-        </ItemsControl>
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding RoomWithFacilitiesObservable}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <uc:RoomRepresentation/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         <!--
         <WrapPanel Grid.Row="2" 
                    Margin="15">

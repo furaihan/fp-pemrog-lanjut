@@ -85,11 +85,11 @@ namespace PinusPengger.ViewModel.BasePageVM
                     throw new Exception("Data tidak ditemukan");
                 }
 
-                _roomWithFacilities = _roomWithFacilities.Where(x => x.Room.RoomType == _selectedOption);
+                var temp = _roomWithFacilities.Where(x => x.Room.RoomType == _selectedOption);
 
                 RoomWithFacilitiesObservable.Clear();
 
-                foreach (var item in _roomWithFacilities)
+                foreach (var item in temp)
                 {
                     RoomWithFacilitiesObservable.Add(new RoomWithFacilitiesObservable
                     {
