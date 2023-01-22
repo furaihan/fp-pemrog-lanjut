@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:PinusPengger"
              xmlns:model="clr-namespace:PinusPengger.Model"
              xmlns:view="clr-namespace:PinusPengger.View"
-             xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+             xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
+             xmlns:uc="clr-namespace:PinusPengger.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="/View/LoginWindow.xaml">
     <Application.Resources>
@@ -12,14 +13,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Purple" SecondaryColor="Orange" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="/UserControls/RoomButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type controller:HomePageViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
                 <view:HomePage/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type controller:ReservationPageViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:ReservationPageViewModel}">
                 <view:ReservasiPage/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type controller:HistoryPageViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:HistoryPageViewModel}">
                 <view:HistoryPage/>
             </DataTemplate>
         </ResourceDictionary>

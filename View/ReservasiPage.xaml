@@ -13,6 +13,9 @@
     <Page.DataContext>
         <viewModel:DisplayRoomVM/>
     </Page.DataContext>
+    <Page.Resources>
+        <helper:RoomTypeConverter x:Key="RoomTypeConverter"/>
+    </Page.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -31,10 +34,15 @@
                       ItemsSource="{Binding Options}"
                       SelectedItem="{Binding SelectedOption}"
                       Text="{Binding SelectedOption}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource RoomTypeConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
         <ScrollViewer Grid.Row="2">
-            <ItemsControl ItemsSource="{Binding RoomWithFacilitiesObservable}">
+            <ItemsControl ItemsSource="{Binding RoomWithFacilities}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -42,7 +50,12 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <uc:RoomRepresentation/>
+                        <Button Width="70"
+                                Height="70"
+                                Background="Lime"
+                                Cursor="Hand"
+                                Margin="5,5,5,5"
+                                Style="{DynamicResource RoomButton}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

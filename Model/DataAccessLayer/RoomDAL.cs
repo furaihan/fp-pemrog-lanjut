@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 
 namespace PinusPengger.Model.DataAccessLayer
@@ -55,7 +56,7 @@ namespace PinusPengger.Model.DataAccessLayer
                     }
                 }
             }
-
+            Debug.WriteLine($"RoomDAL Count: {result.Count}");
             return result.Select(x => (object)x).ToList();
         }
         /// <summary>

@@ -3,6 +3,7 @@ using PinusPengger.Model.DataAccessLayer;
 using PinusPengger.Model.EntityModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace PinusPengger.Model.ServiceAgent
@@ -71,7 +72,7 @@ namespace PinusPengger.Model.ServiceAgent
                              RoomFacilityBathrooms = _roomFacilityBathrooms.Where(data => data.RoomType == roomFacility.RoomType).ToList(),
                              RoomFacilityOthers = _roomFacilityOthers.Where(data => data.RoomType == roomFacility.RoomType).ToList()
                          };
-
+            Debug.WriteLine($"RoomSA GetData Count: {result.Count()}");
             return result;
         }
         /// <summary>

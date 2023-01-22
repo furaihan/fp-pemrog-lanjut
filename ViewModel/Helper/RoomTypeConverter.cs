@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using PinusPengger.Model;
 
 namespace PinusPengger.ViewModel.Helper
 {
@@ -12,7 +13,14 @@ namespace PinusPengger.ViewModel.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            var type = (Tag.RoomType)value;
+            var ret = type switch
+            {
+                Tag.RoomType.REG => "Reguler",
+                Tag.RoomType.VIP => "Presidential Suite / VIP",
+                _ => ""
+            };
+            return ret;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
