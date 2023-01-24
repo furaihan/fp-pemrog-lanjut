@@ -17,8 +17,20 @@
                                     BorderThickness="0"
                                     BorderBrush="Transparent"
                                     Effect="{TemplateBinding Effect}">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center"/>
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       FontWeight="Bold"
+                                       FontSize="18"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="Black" 
+                                                      BlurRadius="5"
+                                                      ShadowDepth="0.1" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -28,8 +40,8 @@
                 <Setter Property="Effect">
                     <Setter.Value>
                         <DropShadowEffect BlurRadius="6"
-                                                  ShadowDepth="3"
-                                                  Color="Black"/>
+                                          ShadowDepth="3"
+                                          Color="Black"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>

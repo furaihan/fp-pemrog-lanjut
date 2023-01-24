@@ -15,15 +15,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="/UserControls/RoomButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
-                <view:HomePage/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:ReservationPageViewModel}">
-                <view:ReservasiPage/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:HistoryPageViewModel}">
-                <view:HistoryPage/>
-            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

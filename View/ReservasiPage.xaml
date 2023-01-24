@@ -42,7 +42,7 @@
             </ComboBox>
         </StackPanel>
         <ScrollViewer Grid.Row="2">
-            <ItemsControl ItemsSource="{Binding RoomWithFacilities}">
+            <ItemsControl ItemsSource="{Binding RoomWithFacilitiesObservable}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -56,6 +56,7 @@
                                 Cursor="Hand"
                                 Margin="5,5,5,5"
                                 Style="{DynamicResource RoomButton}"
+                                Content="{Binding Room.RoomCode}"
                                 Command=""/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
