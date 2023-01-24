@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Input;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
@@ -31,6 +32,7 @@ namespace PinusPengger.ViewModel.BasePageVM
         private string _errorMessage;
         private IEnumerable<RoomWithFacilities> _roomWithFacilities;
         private ObservableCollection<RoomWithFacilities> roomWithFacilities;
+        private ICommand _roomButtonCommand;
         #endregion
 
         #region Properties
@@ -63,9 +65,27 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+
+        public ICommand RoomButtonCommand
+        {
+            get
+            {
+                if (_roomButtonCommand == null)
+                {
+                    _roomButtonCommand = new ViewModelCommand(ExecuteRoomButtonCommand);
+                }
+                return _roomButtonCommand;
+            }
+
+            set => _roomButtonCommand = value;
+        }
         #endregion
 
         #region Method
+        private void ExecuteRoomButtonCommand(object parameter)
+        {
+            if (parameter is not Model.CombinedModel.RoomWithFacilities) return;
+        }
         public void OnSelectedOptionChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SelectedOption))
@@ -105,7 +125,7 @@ namespace PinusPengger.ViewModel.BasePageVM
                 RoomWithFacilities.Clear();
                 RoomWithFacilities = new ObservableCollection<RoomWithFacilities>(temp);
 
-                /*foreach (var item in temp)
+                foreach (var item in temp)
                 {
                     RoomWithFacilitiesObservable.Add(new RoomWithFacilitiesObservable
                     {
@@ -114,7 +134,7 @@ namespace PinusPengger.ViewModel.BasePageVM
                         RoomFacilityBathrooms = DataObservableConverter.FromRoomFacilityBathroomEntities(item.RoomFacilityBathrooms),
                         RoomFacilityOthers = DataObservableConverter.FromRoomFacilityOtherEntities(item.RoomFacilityOthers)
                     });
-                }*/
+                }
             }
             catch (Exception e)
             {

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Timers;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
@@ -18,6 +19,12 @@ namespace PinusPengger.ViewModel.BasePageVM
             _errorMessage = string.Empty;
             _searchCommand = new ViewModelCommand(param => ProcessData());
             _reservationJoineds = Enumerable.Empty<ReservationJoined>();
+            _timer = new Timer(1000);
+            _timer.Elapsed += (o, e) =>
+            {
+                TimeNow = DateTime.Now;
+            };
+            _timer.Start();
             ReservationJoinedsObservable = new ObservableCollection<ReservationJoinedObservable>();
             GetData();
             ProcessData();
@@ -28,6 +35,8 @@ namespace PinusPengger.ViewModel.BasePageVM
         private string _errorMessage;
         private ViewModelCommand _searchCommand;
         private IEnumerable<ReservationJoined> _reservationJoineds;
+        private Timer _timer;
+        private DateTime _timeNow = DateTime.Now;
         #endregion
 
         #region Properties
@@ -46,7 +55,7 @@ namespace PinusPengger.ViewModel.BasePageVM
             set
             {
                 _errorMessage = value;
-                OnPropertyChanged();
+                OnPropertyChanged();    
             }
         }
         public ViewModelCommand SearchCommand
@@ -58,6 +67,15 @@ namespace PinusPengger.ViewModel.BasePageVM
             }
         }
         public ObservableCollection<ReservationJoinedObservable> ReservationJoinedsObservable { get; set; }
+        public DateTime TimeNow
+        {
+            get => _timeNow;
+            set
+            {
+                _timeNow = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Method

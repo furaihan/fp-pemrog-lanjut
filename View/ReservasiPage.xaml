@@ -33,7 +33,7 @@
                       Width="200"
                       ItemsSource="{Binding Options}"
                       SelectedItem="{Binding SelectedOption}"
-                      Text="{Binding SelectedOption}">
+                      Text="Select Category">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Converter={StaticResource RoomTypeConverter}}"/>
@@ -55,7 +55,8 @@
                                 Background="Lime"
                                 Cursor="Hand"
                                 Margin="5,5,5,5"
-                                Style="{DynamicResource RoomButton}"/>
+                                Style="{DynamicResource RoomButton}"
+                                Command=""/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
