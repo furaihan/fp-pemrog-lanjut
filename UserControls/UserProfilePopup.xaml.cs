@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PinusPengger.View
+namespace PinusPengger.UserControls
 {
     /// <summary>
-    /// Interaction logic for DataKamarPopUp.xaml
+    /// Interaction logic for UserProfilePopup.xaml
     /// </summary>
-    public partial class DataKamarPopUp : Window
+    public partial class UserProfilePopup : UserControl
     {
-        public DataKamarPopUp()
+        public UserProfilePopup()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

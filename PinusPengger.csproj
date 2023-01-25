@@ -3,33 +3,23 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Aviva\**" />
-    <EmbeddedResource Remove="Aviva\**" />
-    <None Remove="Aviva\**" />
-    <Page Remove="Aviva\**" />
+    <Compile Remove="ViewModel\Ignored\**" />
+    <EmbeddedResource Remove="ViewModel\Ignored\**" />
+    <None Remove="ViewModel\Ignored\**" />
+    <Page Remove="ViewModel\Ignored\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="View\BookingVIP.xaml.cs" />
-    <Compile Remove="View\Customer_data.xaml.cs" />
-    <Compile Remove="View\DetailPemesananBooking.xaml.cs" />
-    <Compile Remove="View\DetailPemesananCheckIn.xaml.cs" />
-    <Compile Remove="View\Kamar_reguler.xaml.cs" />
-    <Compile Remove="View\reservasi_reguler.xaml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Remove="View\BookingVIP.xaml" />
-    <Page Remove="View\Customer_data.xaml" />
-    <Page Remove="View\DetailPemesananBooking.xaml" />
-    <Page Remove="View\DetailPemesananCheckIn.xaml" />
-    <Page Remove="View\Kamar_reguler.xaml" />
-    <Page Remove="View\reservasi_reguler.xaml" />
+    <None Remove="Images\room1.png" />
+    <None Remove="Images\room2.png" />
+    <None Remove="Images\room3.png" />
+    <None Remove="Images\room4.png" />
+    <None Remove="Images\userProfile.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +34,20 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\room1.png" />
+    <Resource Include="Images\room2.png" />
+    <Resource Include="Images\room3.png" />
+    <Resource Include="Images\room4.png" />
+    <Resource Include="Images\userProfile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

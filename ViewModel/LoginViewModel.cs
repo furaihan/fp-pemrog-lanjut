@@ -1,25 +1,23 @@
 ﻿using PinusPengger.View;
 using System;
 using System.Diagnostics;
-using System.Windows.Input;
 
 namespace PinusPengger.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        /*
         public LoginViewModel()
         {
+            _username = string.Empty;
+            _password = string.Empty;
+            _errorMessage = string.Empty;
             _loginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-            Debug.WriteLine($"HOOOI");
         }
-        */
         #region Field
         private string _username;
         private string _password;
         private string _errorMessage;
-        private ICommand _loginCommand;
-        private ICommand _showPasswordCommand;
+        private ViewModelCommand _loginCommand;
         #endregion
 
         #region Properties
@@ -59,17 +57,10 @@ namespace PinusPengger.ViewModel
                 OnPropertyChanged();
             }
         }
-        /*
-        public ICommand LoginCommand
-        {
-            get => _loginCommand;
-            set => _loginCommand = value;
-        } 
-        */
         /// <summary>
         /// Gets or sets the login command
         /// </summary>
-        public ICommand LoginCommand
+        public ViewModelCommand LoginCommand
         {
             get
             {
@@ -77,15 +68,10 @@ namespace PinusPengger.ViewModel
                 return _loginCommand;
             }
         }
-        public ICommand ShowPasswordCommand
-        {
-            get => _showPasswordCommand;
-            set => _showPasswordCommand = value;
-        }
         public Action CloseWindow { get; set; }
         #endregion
 
-        //Command
+        #region Method
         /// <summary>
         /// Determines whether the <see cref="ExecuteLoginCommand(object)"/> can be executed
         /// </summary>
@@ -114,7 +100,7 @@ namespace PinusPengger.ViewModel
             {
                 ErrorMessage = "Invalid username or password";
             }
-
         }
+        #endregion
     }
 }

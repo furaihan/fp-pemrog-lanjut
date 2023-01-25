@@ -2,12 +2,20 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helper="clr-namespace:PinusPengger.ViewModel.Helper"
+             xmlns:viewModel="clr-namespace:PinusPengger.ViewModel.BasePageVM"
              xmlns:local="clr-namespace:PinusPengger.View"
              xmlns:uc="clr-namespace:PinusPengger.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="420" 
              d:DesignWidth="920">
+    <Page.DataContext>
+        <viewModel:DisplayRoomVM/>
+    </Page.DataContext>
+    <Page.Resources>
+        <helper:RoomTypeConverter x:Key="RoomTypeConverter"/>
+    </Page.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -23,15 +31,42 @@
                        FontWeight="Bold"/>
             <ComboBox Height="25" 
                       Width="200"
-                      Text="Pilih Kategori">
-                <ComboBoxItem>Reguler</ComboBoxItem>
-                <ComboBoxItem>Presidential Suite / VIP</ComboBoxItem>
+                      ItemsSource="{Binding Options}"
+                      SelectedItem="{Binding SelectedOption}"
+                      Text="Select Category">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource RoomTypeConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding RoomWithFacilitiesObservable}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Width="70"
+                                Height="70"
+                                Cursor="Hand"
+                                Margin="5,5,5,5"
+                                Style="{DynamicResource RoomButton}"
+                                Content="{Binding Room.RoomCode}"
+                                Command="">
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <!--
         <WrapPanel Grid.Row="2" 
                    Margin="15">
             <WrapPanel.Resources>
-                <Style TargetType="{x:Type uc:RegularRoom}">
+                <Style TargetType="{x:Type uc:RoomRepresentation}">
                     <Setter Property="Margin" Value="10,0,10,0" />
                 </Style>
             </WrapPanel.Resources>
@@ -42,5 +77,6 @@
             <uc:RegularRoom ButtonColor="Lime"/>
             <uc:RegularRoom ButtonColor="Lime"/>
         </WrapPanel>
+        -->
     </Grid>
 </Page>

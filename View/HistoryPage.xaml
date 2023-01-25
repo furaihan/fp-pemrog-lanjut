@@ -3,16 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:controller="clr-namespace:PinusPengger.ViewModel"
+      xmlns:viewModel="clr-namespace:PinusPengger.ViewModel.BasePageVM"
+      xmlns:local="clr-namespace:PinusPengger.View"
       xmlns:model="clr-namespace:PinusPengger.Model"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
       d:DesignHeight="420" 
       d:DesignWidth="920">
-    <Page.Resources>
-        <controller:Ticker x:Key="ticker"/>
-    </Page.Resources>
+    <Page.DataContext>
+        <viewModel:DisplayHistoriesVM/>
+    </Page.DataContext>
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -34,7 +35,7 @@
                        Grid.Column="0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="{Binding Source={StaticResource ticker},Path=Now, Mode=OneWay, StringFormat='dd MMMM yyyy  hh:mm:ss' }"/>
+                       Text="{Binding TimeNow, StringFormat='G'}"/>
             </Grid>
         </Border>
         <StackPanel Grid.Row="2"
@@ -47,10 +48,11 @@
                          Height="25"
                          FontSize="14"
                          Foreground="DarkGray"
-                         Text="Kode"/>
+                         Text="{Binding Path=Target, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Button Height="25"
                         Width="40"
-                        Padding="-8">
+                        Padding="-8"
+                        Command="{Binding SearchCommand}">
                     <icon:PackIconMaterial Kind="Magnify"
                           Width="18"
                           Height="18"
@@ -65,18 +67,20 @@
                   Height="290"
                   AutoGenerateColumns="False"
                   Grid.Row="3"
-                  CanUserAddRows="False">
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding HistoryJoinedsObservable}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kode Pemesanan" 
-                                    Binding="{Binding KodePemesanan}"/>
+                                    Binding="{Binding History.ReservationCode}"/>
                 <DataGridTextColumn Header="Nama" Width="200" 
-                                    Binding="{Binding Person}"/>
+                                    Binding="{Binding Customer.FullName}"/>
                 <DataGridTextColumn Header="Nomor Kamar" Width="*"  
-                                    Binding="{Binding Room}"/>
+                                    Binding="{Binding Room.RoomCode}"/>
                 <DataGridTextColumn Header="Tanggal Checkin" Width="*" 
-                                    Binding="{Binding CheckIn, StringFormat='dd/MM/yyyy'}"/>
+                                    Binding="{Binding History.Checkin, StringFormat='dd/MM/yyyy'}"/>
                 <DataGridTextColumn Header="Tanggal Checkout" Width="*"  
-                                    Binding="{Binding CheckOut, StringFormat='dd/MM/yyyy'}"/>
+                                    Binding="{Binding History.Checkout, StringFormat='dd/MM/yyyy'}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -4,9 +4,260 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="DataKamarPopUp" Height="450" Width="800">
+        Title="DataKamarPopUp"
+        Height="400"
+        Width="860"
+        WindowStyle="None"
+        ResizeMode="CanMinimize">   
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.105*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.205*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="K.2.3"
+                   VerticalAlignment="Center"
+                   FontFamily="Inter"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="5,0,0,0"/>
+        <Button Grid.Row="0"
+                BorderThickness="0"
+                Foreground="White"
+                Cursor="Hand"
+                Margin="5"
+                HorizontalAlignment="Right"
+                Click="Button_Click">
+            <Button.Content>
+                <icon:PackIconMaterial Kind="WindowClose"
+                                       Width="10" 
+                                       Height="10"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Margin="1,0,0,0"/>
+            </Button.Content>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Red"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="IndianRed"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.4*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Margin="5"
+                        BorderThickness="2"
+                        BorderBrush="Black">
+                    <Border Margin="5"
+                            BorderThickness="0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="\Images\room2.png"
+                                    Stretch="UniformToFill"/>
+                        </Border.Background>
+                    </Border>
+                </Border>
+                <Grid Grid.Column="1" Margin="10,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="0.65*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.35*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1" 
+                               Grid.Column="0" 
+                               Text="Fasilitas"
+                               FontWeight="Bold"
+                               FontSize="20"
+                               FontFamily="Inter"/>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Lantai: "
+                               FontWeight="Bold"
+                               FontSize="18"
+                               VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               Text="Nomor: "
+                               FontWeight="Bold"
+                               FontSize="18"
+                               VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="2"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Wifi"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="Wi-Fi"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Width="80"
+                                   FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2"
+                                Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="FoodDrumstick"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="Breakfast"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Width="80"
+                                   FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="BedKing"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="King Bed"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"
+                                   Width="80"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3"
+                                Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Bathtub"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="Bath Tub"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"
+                                   Width="80"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="Safe"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="Safe"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"
+                                   Width="80"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4"
+                                Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial Kind="HairDryer"
+                                               Foreground="MediumPurple"
+                                               Width="30"
+                                               Height="30"/>
+                        <TextBlock Text="HairDryer"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"
+                                   Width="80"/>
+                    </StackPanel>
+                    <ItemsControl Grid.Row="2"
+                                  Grid.RowSpan="3"
+                                  Grid.ColumnSpan="2">
+                        
+                    </ItemsControl>
+                </Grid>
+            </Grid>
+            <Line Grid.Row="2"
+                  Stroke="Black"
+                  StrokeThickness="5"
+                  VerticalAlignment="Top"
+                  Width="780"/>
+            <TextBlock Grid.Row="2" 
+                       Margin="20,2,20,2" 
+                       TextWrapping="WrapWithOverflow"
+                       TextAlignment="Justify"
+                       FontFamily="Calibri"
+                       FontSize="17">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                culpa qui officia deserunt mollit anim id est laborum.
+            </TextBlock>
+        </Grid>
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,15,20,0"
+                    Orientation="Horizontal"
+                    FlowDirection="RightToLeft">
+            <Button Content="Next" 
+                    Height="30" 
+                    Width="100"
+                    Background="MediumPurple"
+                    BorderThickness="0"/>
+            <Button Content="Previous" 
+                    Height="30" 
+                    Width="100"
+                    Margin="20,0,20,0"
+                    Background="Orange"
+                    BorderThickness="0"/>
+            <Button Content="Close"
+                    Height="30"
+                    Width="100"
+                    Background="Red"
+                    BorderThickness="0"/>
+        </StackPanel>
     </Grid>
 </Window>

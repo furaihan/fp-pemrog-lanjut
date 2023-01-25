@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:PinusPengger.View"
         xmlns:viewModel="clr-namespace:PinusPengger.ViewModel"
-        xmlns:record="clr-namespace:PinusPengger.Records"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Hotel Jaya Abadi - Login Page" 
+        Title="Hotel Pinus Pengger - Login Page" 
         Height="540" 
         Width="960"
         ResizeMode="CanMinimize"
@@ -191,6 +190,6 @@
                HorizontalAlignment="Center" 
                VerticalAlignment="Center" 
                FontFamily="Leelawadee"
-               Text="Hotel Jaya Abadi"/>
+               Text="Hotel Pinus Pengger"/>
     </Grid>
 </Window>
