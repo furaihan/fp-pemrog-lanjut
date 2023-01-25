@@ -45,6 +45,12 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                <Setter Property="Background" Value="Tomato"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                <Setter Property="Background" Value="Lime"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 

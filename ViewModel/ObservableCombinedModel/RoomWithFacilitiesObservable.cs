@@ -17,6 +17,7 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
         private RoomFacilityObservable _roomFacility;
         private List<RoomFacilityBathroomObservable> _roomFacilityBathrooms;
         private List<RoomFacilityOtherObservable> _roomFacilityOthers;
+        private bool _isBusy;
 
         public RoomObservable Room
         {
@@ -51,6 +52,16 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
             set
             {
                 _roomFacilityOthers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
                 OnPropertyChanged();
             }
         }

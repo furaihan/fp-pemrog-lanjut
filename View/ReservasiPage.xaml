@@ -52,12 +52,12 @@
                     <DataTemplate>
                         <Button Width="70"
                                 Height="70"
-                                Background="Lime"
                                 Cursor="Hand"
                                 Margin="5,5,5,5"
                                 Style="{DynamicResource RoomButton}"
                                 Content="{Binding Room.RoomCode}"
-                                Command=""/>
+                                Command="">
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
