@@ -14,7 +14,7 @@
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
                                     CornerRadius="10"
-                                    BorderThickness="0"
+                                    BorderThickness="0" 
                                     BorderBrush="Transparent"
                                     Effect="{TemplateBinding Effect}">
                         <Grid>
