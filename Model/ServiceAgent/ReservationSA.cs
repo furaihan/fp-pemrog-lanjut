@@ -70,10 +70,10 @@ namespace PinusPengger.Model.ServiceAgent
         /// </summary>
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
             _customerDAL.Dispose();
             _roomDAL.Dispose();
             _reservationDAL.Dispose();
-            GC.SuppressFinalize(this);
         }
     }
 }

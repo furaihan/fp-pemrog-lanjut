@@ -80,11 +80,11 @@ namespace PinusPengger.Model.ServiceAgent
         /// </summary>
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
             _roomDAL.Dispose();
             _roomFacilityDAL.Dispose();
             _roomFacilityBathroomDAL.Dispose();
             _roomFacilityOtherDAL.Dispose();
-            GC.SuppressFinalize(this);
         }
     }
 }
