@@ -396,7 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/App.config
 /config.json
 
 # Ignored directory
