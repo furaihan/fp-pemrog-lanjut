@@ -137,6 +137,7 @@ namespace PinusPengger.Model.DataAccessLayer
         {
             Connection.Close();
             Connection.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

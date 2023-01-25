@@ -84,6 +84,7 @@ namespace PinusPengger.Model.ServiceAgent
             _roomFacilityDAL.Dispose();
             _roomFacilityBathroomDAL.Dispose();
             _roomFacilityOtherDAL.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

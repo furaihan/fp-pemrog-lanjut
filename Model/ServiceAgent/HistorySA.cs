@@ -72,6 +72,7 @@ namespace PinusPengger.Model.ServiceAgent
             _customerDAL.Dispose();
             _roomDAL.Dispose();
             _historyDAL.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }
