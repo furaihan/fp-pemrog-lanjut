@@ -3,22 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD tabel fasilitas kamar mandi
+    /// Mekanisme CRUD tabel kamar
     /// </summary>
-    public class RoomFacilityBathroomDAL : IRepository
+    public class RoomDAL : IRepository
     {
-        /// <summary>
-        /// Menginisialisasi objek <see cref="RoomFacilityBathroomDAL"/>
-        /// </summary>
-        public RoomFacilityBathroomDAL()
+        private void Connect(ConnectionStringSettingsCollection settingsCollection, int index)
         {
-            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
-            Connection.Open();
+            try
+            {
+                Connection = new SqlConnection(settingsCollection[index].ConnectionString);
+                Connection.Open();
+            }
+            catch (Exception)
+            {
+                Connect(settingsCollection, index + 1);
+            }
+        }
+        /// <summary>
+        /// Menginisialisasi objek <see cref="RoomDAL"/>
+        /// </summary>
+        public RoomDAL()
+        {
+            Connect(ConfigurationManager.ConnectionStrings, 0);
         }
 
         /// <summary>
@@ -32,9 +44,9 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <returns><inheritdoc/></returns>
         public List<object> ReadData()
         {
-            var result = new List<RoomFacilityBathroom>();
+            var result = new List<Room>();
 
-            string query = ConfigurationManager.AppSettings["RoomFacilityBathroomDAL:ReadData"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["RoomDAL:ReadData"] ?? string.Empty;
 
             using (var cmd = new SqlCommand(query, Connection))
             {
@@ -42,28 +54,31 @@ namespace PinusPengger.Model.DataAccessLayer
                 {
                     while (rdr.Read())
                     {
-                        var roomFacilityBathroom = new RoomFacilityBathroom()
+                        var room = new Room
                         {
-                            NameOfFacility = rdr.GetString(0),
-                            RoomType = (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), rdr.GetString(1))
+                            RoomID = rdr.GetInt32(0),
+                            RoomCode = rdr.GetString(1),
+                            RoomFloor = rdr.GetByte(2),
+                            RoomNumber = rdr.GetByte(3),
+                            SquareMeter = rdr.GetByte(4),
+                            RoomType = (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), rdr.GetString(5))
                         };
-                        result.Add(roomFacilityBathroom);
+                        result.Add(room);
                     }
                 }
             }
-
+            Debug.WriteLine($"RoomDAL Count: {result.Count}");
             return result.Select(x => (object)x).ToList();
         }
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj"><inheritdoc/></param>
         /// <exception cref="NotImplementedException"></exception>
         public void InsertRecord(object obj)
         {
             throw new NotImplementedException();
         }
-
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -73,7 +88,6 @@ namespace PinusPengger.Model.DataAccessLayer
         {
             throw new NotImplementedException();
         }
-
         /// <summary>
         /// <inheritdoc/>
         /// </summary>

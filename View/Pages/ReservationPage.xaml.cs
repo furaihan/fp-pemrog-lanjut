@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PinusPengger.View
+namespace PinusPengger.View.Pages
 {
     /// <summary>
-    /// Interaction logic for HomePage.xaml
+    /// Interaction logic for ReservationPage.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class ReservationPage : Page
     {
-        public HomePage()
+        public ReservationPage()
         {
             InitializeComponent();
         }

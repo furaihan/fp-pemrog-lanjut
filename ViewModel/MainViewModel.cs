@@ -1,4 +1,4 @@
-﻿using PinusPengger.View;
+﻿using PinusPengger.View.Pages;
 
 namespace PinusPengger.ViewModel
 {
@@ -14,7 +14,7 @@ namespace PinusPengger.ViewModel
         private bool showUserProfile;
 
         public HomePage HomeView { get; set; }
-        public ReservasiPage ReservasiView { get; set; }
+        public ReservationPage ReservasiView { get; set; }
         public HistoryPage HistoryView { get; set; }
 
         public object CurrentView
@@ -38,7 +38,7 @@ namespace PinusPengger.ViewModel
         public MainViewModel()
         {
             HomeView = new HomePage();
-            ReservasiView = new ReservasiPage();
+            ReservasiView = new ReservationPage();
             HistoryView = new HistoryPage();
 
             _currentView = HomeView;

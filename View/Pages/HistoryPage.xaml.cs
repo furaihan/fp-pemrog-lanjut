@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PinusPengger.View
+namespace PinusPengger.View.Pages
 {
     /// <summary>
-    /// Interaction logic for ProfileWindowPopup.xaml
+    /// Interaction logic for HistoryPage.xaml
     /// </summary>
-    public partial class ProfileWindowPopup : Window
+    public partial class HistoryPage : Page
     {
-        public ProfileWindowPopup()
+        public HistoryPage()
         {
             InitializeComponent();
         }

@@ -1,12 +1,12 @@
-﻿using PinusPengger.Model.CombinedModel;
-using PinusPengger.Model.DataAccessLayer;
+﻿using PinusPengger.DataAccessLayer;
+using PinusPengger.Model.CombinedModel;
 using PinusPengger.Model.EntityModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace PinusPengger.Model.ServiceAgent
+namespace PinusPengger.ServiceAgent
 {
     /// <summary>
     /// Layanan mengakses model <see cref="CombinedModel.RoomWithFacilities"/>

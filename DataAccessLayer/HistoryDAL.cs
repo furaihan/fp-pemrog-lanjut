@@ -5,20 +5,31 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
     /// Mekanisme CRUD untuk tabel riwayat
     /// </summary>
     public class HistoryDAL : IRepository
     {
+        private void Connect(ConnectionStringSettingsCollection settingsCollection, int index)
+        {
+            try
+            {
+                Connection = new SqlConnection(settingsCollection[index].ConnectionString);
+                Connection.Open();
+            }
+            catch (Exception)
+            {
+                Connect(settingsCollection, index + 1);
+            }
+        }
         /// <summary>
         /// Menginisialisasi objek <see cref="HistoryDAL"/>
         /// </summary>
         public HistoryDAL()
         {
-            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
-            Connection.Open();
+            Connect(ConfigurationManager.ConnectionStrings, 0);
         }
 
         /// <summary>

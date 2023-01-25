@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using PinusPengger.Model;
 using PinusPengger.Model.CombinedModel;
-using PinusPengger.Model.ServiceAgent;
+using PinusPengger.ServiceAgent;
+using PinusPengger.View;
 using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
@@ -18,26 +18,25 @@ namespace PinusPengger.ViewModel.BasePageVM
     {
         public DisplayRoomVM()
         {
+            //_roomWithFacilities = new ObservableCollection<RoomWithFacilitiesObservable>();
             _errorMessage = string.Empty;
-            _roomPool = Enumerable.Empty<RoomWithFacilities>();
-            _roomWithFacilities = new ObservableCollection<RoomWithFacilitiesObservable>();
             SelectedOption = Tag.RoomType.REG;
+            _roomPool = Enumerable.Empty<RoomWithFacilities>();
+            _reservations = Enumerable.Empty<ReservationJoined>();
             Options = new List<Tag.RoomType>() { Tag.RoomType.REG, Tag.RoomType.VIP };
             RoomWithFacilitiesObservable = new ObservableCollection<RoomWithFacilitiesObservable>();
-            //_roomPool = new List<RoomWithFacilitiesObservable>();
             PropertyChanged += OnSelectedOptionChanged;
             GetData();
             ProcessData();
         }
 
         #region Field
-        private Tag.RoomType _selectedOption;
+        //private ObservableCollection<RoomWithFacilitiesObservable> _roomWithFacilities;
         private string _errorMessage;
+        private Tag.RoomType _selectedOption;
         private IEnumerable<RoomWithFacilities> _roomPool;
         private IEnumerable<ReservationJoined> _reservations;
-        //private List<RoomWithFacilitiesObservable> _roomPool;
         private ICommand _roomButtonCommand;
-        private ObservableCollection<RoomWithFacilitiesObservable> _roomWithFacilities;
         #endregion
 
         #region Properties
@@ -60,16 +59,13 @@ namespace PinusPengger.ViewModel.BasePageVM
             }
         }
         public List<Tag.RoomType> Options { get; set; }
-        public ObservableCollection<RoomWithFacilitiesObservable> RoomWithFacilitiesObservable
-        {
-            get => _roomWithFacilities;
-            set
-            {
-                _roomWithFacilities = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public ObservableCollection<RoomWithFacilitiesObservable> RoomWithFacilitiesObservable { get; set; }
+        //get => _roomWithFacilities;
+        //set
+        //{
+        //    _roomWithFacilities = value;
+        //    OnPropertyChanged();
+        //}
         public ICommand RoomButtonCommand
         {
             get
@@ -88,7 +84,12 @@ namespace PinusPengger.ViewModel.BasePageVM
         #region Method
         private void ExecuteRoomButtonCommand(object parameter)
         {
-            if (parameter is not RoomWithFacilities) return;
+            if (parameter is RoomWithFacilities obj)
+            {
+                var DetailRoomWindow = new DataKamarPopUp();
+                Mediator.NotifyColleagues("ShowDetailRoom", obj);
+                DetailRoomWindow.Show();
+            }
         }
         public void OnSelectedOptionChanged(object? sender, PropertyChangedEventArgs e)
         {
@@ -118,16 +119,6 @@ namespace PinusPengger.ViewModel.BasePageVM
                 {
                     roomSA.FetchData();
                     _roomPool = roomSA.GetData().Cast<RoomWithFacilities>();
-                    //foreach (var item in _roomPool)
-                    //{
-                    //    _roomPool.Add(new RoomWithFacilitiesObservable
-                    //    {
-                    //        Room = DataObservableConverter.FromRoomEntity(item.Room),
-                    //        RoomFacility = DataObservableConverter.FromRoomFacilityEntity(item.RoomFacility),
-                    //        RoomFacilityBathrooms = DataObservableConverter.FromRoomFacilityBathroomEntities(item.RoomFacilityBathrooms),
-                    //        RoomFacilityOthers = DataObservableConverter.FromRoomFacilityOtherEntities(item.RoomFacilityOthers)
-                    //    });
-                    //}
                 }
                 catch (Exception e)
                 {
@@ -147,7 +138,6 @@ namespace PinusPengger.ViewModel.BasePageVM
 
                 var temp = _roomPool.Where(x => x.Room.RoomType == _selectedOption);
                 RoomWithFacilitiesObservable.Clear();
-                //RoomWithFacilitiesObservable = new ObservableCollection<RoomWithFacilitiesObservable>(_roomPool.Where(x => x.Room.RoomType == _selectedOption));
                 foreach (var item in temp)
                 {
                     RoomWithFacilitiesObservable.Add(new RoomWithFacilitiesObservable

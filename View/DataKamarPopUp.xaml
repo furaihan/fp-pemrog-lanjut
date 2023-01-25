@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:vm="clr-namespace:PinusPengger.ViewModel.PopUpVM"
         mc:Ignorable="d"
         Title="DataKamarPopUp"
         Height="400"
         Width="860"
         WindowStyle="None"
-        ResizeMode="CanMinimize">   
+        ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <vm:DataKamarPopUpVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.105*"/>
@@ -212,16 +216,16 @@
                     <ItemsControl Grid.Row="2"
                                   Grid.RowSpan="3"
                                   Grid.ColumnSpan="2">
-                        
+
                     </ItemsControl>
                 </Grid>
             </Grid>
-            <Line Grid.Row="2"
+            <Line Grid.Row="1"
                   Stroke="Black"
                   StrokeThickness="5"
                   VerticalAlignment="Top"
                   Width="780"/>
-            <TextBlock Grid.Row="2" 
+            <TextBlock Grid.Row="1" 
                        Margin="20,2,20,2" 
                        TextWrapping="WrapWithOverflow"
                        TextAlignment="Justify"

@@ -5,20 +5,31 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD tabel fasilitas lainnya
+    /// Mekanisme CRUD tabel fasilitas kamar
     /// </summary>
-    public class RoomFacilityOtherDAL : IRepository
+    public class RoomFacilityDAL : IRepository
     {
-        /// <summary>
-        /// Menginisialisasi objek <see cref="RoomFacilityOtherDAL"/>
-        /// </summary>
-        public RoomFacilityOtherDAL()
+        private void Connect(ConnectionStringSettingsCollection settingsCollection, int index)
         {
-            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
-            Connection.Open();
+            try
+            {
+                Connection = new SqlConnection(settingsCollection[index].ConnectionString);
+                Connection.Open();
+            }
+            catch (Exception)
+            {
+                Connect(settingsCollection, index + 1);
+            }
+        }
+        /// <summary>
+        /// Menginisiasi objek <see cref="RoomFacilityDAL"/>
+        /// </summary>
+        public RoomFacilityDAL()
+        {
+            Connect(ConfigurationManager.ConnectionStrings, 0);
         }
 
         /// <summary>
@@ -32,9 +43,9 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <returns><inheritdoc/></returns>
         public List<object> ReadData()
         {
-            var result = new List<RoomFacilityOther>();
+            var result = new List<RoomFacility>();
 
-            string query = ConfigurationManager.AppSettings["RoomFacilityOtherDAL:ReadData"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["RoomFacilityDAL:ReadData"] ?? string.Empty;
 
             using (var cmd = new SqlCommand(query, Connection))
             {
@@ -42,18 +53,20 @@ namespace PinusPengger.Model.DataAccessLayer
                 {
                     while (rdr.Read())
                     {
-                        var roomFacilityOther = new RoomFacilityOther()
+                        var roomFacility = new RoomFacility()
                         {
-                            NameOfFacility = rdr.GetString(0),
-                            RoomType = (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), rdr.GetString(1))
+                            RoomType = (Tag.RoomType)Enum.Parse(typeof(Tag.RoomType), rdr.GetString(0)),
+                            Bed = rdr.GetString(1),
+                            Internet = rdr.GetString(2)
                         };
-                        result.Add(roomFacilityOther);
+                        result.Add(roomFacility);
                     }
                 }
             }
 
             return result.Select(x => (object)x).ToList();
         }
+
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -63,6 +76,7 @@ namespace PinusPengger.Model.DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -72,6 +86,7 @@ namespace PinusPengger.Model.DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -81,6 +96,7 @@ namespace PinusPengger.Model.DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
