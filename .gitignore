@@ -400,3 +400,4 @@ FodyWeavers.xsd
 
 # Ignored directory
 Ignored/
+/App.config

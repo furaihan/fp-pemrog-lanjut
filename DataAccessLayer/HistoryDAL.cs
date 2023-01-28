@@ -12,24 +12,13 @@ namespace PinusPengger.DataAccessLayer
     /// </summary>
     public class HistoryDAL : IRepository
     {
-        private void Connect(ConnectionStringSettingsCollection settingsCollection, int index)
-        {
-            try
-            {
-                Connection = new SqlConnection(settingsCollection[index].ConnectionString);
-                Connection.Open();
-            }
-            catch (Exception)
-            {
-                Connect(settingsCollection, index + 1);
-            }
-        }
         /// <summary>
         /// Menginisialisasi objek <see cref="HistoryDAL"/>
         /// </summary>
         public HistoryDAL()
         {
-            Connect(ConfigurationManager.ConnectionStrings, 0);
+            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
+            Connection.Open();
         }
 
         /// <summary>
