@@ -36,7 +36,8 @@
                 Cursor="Hand"
                 Margin="5"
                 HorizontalAlignment="Right"
-                Click="Button_Click">
+                Click="Button_Click"
+                Command="{Binding OnClose}">
             <Button.Content>
                 <icon:PackIconMaterial Kind="WindowClose"
                                        Width="10" 
@@ -262,7 +263,9 @@
                     Height="30"
                     Width="100"
                     Background="Red"
-                    BorderThickness="0"/>
+                    BorderThickness="0"
+                    Click="Button_Click"
+                    Command="{Binding OnClose}"/>
         </StackPanel>
     </Grid>
 </Window>
