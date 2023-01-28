@@ -12,24 +12,13 @@ namespace PinusPengger.DataAccessLayer
     /// </summary>
     public class RoomFacilityBathroomDAL : IRepository
     {
-        private void Connect(ConnectionStringSettingsCollection settingsCollection, int index)
-        {
-            try
-            {
-                Connection = new SqlConnection(settingsCollection[index].ConnectionString);
-                Connection.Open();
-            }
-            catch (Exception)
-            {
-                Connect(settingsCollection, index + 1);
-            }
-        }
         /// <summary>
         /// Menginisialisasi objek <see cref="RoomFacilityBathroomDAL"/>
         /// </summary>
         public RoomFacilityBathroomDAL()
         {
-            Connect(ConfigurationManager.ConnectionStrings, 0);
+            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
+            Connection.Open();
         }
 
         /// <summary>
