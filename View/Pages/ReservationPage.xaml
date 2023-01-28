@@ -56,7 +56,7 @@
                                 Margin="5,5,5,5"
                                 Style="{DynamicResource RoomButton}"
                                 Content="{Binding Room.RoomCode}"
-                                Command="{Binding DataContext.ExecuteRoomButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Command="{Binding DataContext.RoomButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
                                 CommandParameter="{Binding}">
                         </Button>
                     </DataTemplate>

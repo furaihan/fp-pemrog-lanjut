@@ -23,6 +23,7 @@ namespace PinusPengger.ViewModel.BasePageVM
             SelectedOption = Tag.RoomType.REG;
             _roomPool = Enumerable.Empty<RoomWithFacilities>();
             _reservations = Enumerable.Empty<ReservationJoined>();
+            _roomButtonCommand = new ViewModelCommand(ExecuteRoomButtonCommand);
             Options = new List<Tag.RoomType>() { Tag.RoomType.REG, Tag.RoomType.VIP };
             RoomWithFacilitiesObservable = new ObservableCollection<RoomWithFacilitiesObservable>();
             PropertyChanged += OnSelectedOptionChanged;
@@ -68,15 +69,7 @@ namespace PinusPengger.ViewModel.BasePageVM
         //}
         public ICommand RoomButtonCommand
         {
-            get
-            {
-                if (_roomButtonCommand == null)
-                {
-                    _roomButtonCommand = new ViewModelCommand(ExecuteRoomButtonCommand);
-                }
-                return _roomButtonCommand;
-            }
-
+            get => _roomButtonCommand;
             set => _roomButtonCommand = value;
         }
         #endregion
@@ -84,7 +77,7 @@ namespace PinusPengger.ViewModel.BasePageVM
         #region Method
         private void ExecuteRoomButtonCommand(object parameter)
         {
-            if (parameter is RoomWithFacilities obj)
+            if (parameter is RoomWithFacilitiesObservable obj)
             {
                 var DetailRoomWindow = new DataKamarPopUp();
                 Mediator.NotifyColleagues("ShowDetailRoom", obj);
