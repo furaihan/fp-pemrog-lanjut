@@ -4,13 +4,23 @@ namespace PinusPengger.ViewModel.PopUpVM
 {
     public class DataKamarPopUpVM : ViewModelBase
     {
+        private RoomWithFacilitiesObservable _roomDetails;
+
         public DataKamarPopUpVM()
         {
-            RoomDetails = new RoomWithFacilitiesObservable();
+            _roomDetails = new RoomWithFacilitiesObservable();
             Mediator.Register("ShowDetailRoom", ShowDetailRoomWindow);
         }
 
-        public RoomWithFacilitiesObservable RoomDetails { get; set; }
+        public RoomWithFacilitiesObservable RoomDetails
+        {
+            get => _roomDetails;
+            set
+            {
+                _roomDetails = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void ShowDetailRoomWindow(object obj)
         {
