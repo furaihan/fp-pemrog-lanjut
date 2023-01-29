@@ -20,6 +20,9 @@ jobs:
      
       - name: Restore NuGet Packages
         run: nuget restore PinusPengger.sln
+        
+      - name: Create app.config file
+        run: echo ${{ secrets.APP_CONFIG }} > App.config
       
       - name: Build Release Library
         run:  msbuild PinusPengger.sln /p:Configuration=Release
