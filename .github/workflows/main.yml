@@ -17,12 +17,12 @@ jobs:
         
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.1.1
+        
+      - name: Create app.config file
+        run: Set-Content -Value "${{ secrets.APP_CONFIG }}" -Path App.config
      
       - name: Restore NuGet Packages
         run: nuget restore PinusPengger.sln
-        
-      - name: Create app.config file
-        run: Set-Content -Value @"${{ secrets.APP_CONFIG }}"@ -Path App.config
       
       - name: Build Release Library
         run:  msbuild PinusPengger.sln /p:Configuration=Release
