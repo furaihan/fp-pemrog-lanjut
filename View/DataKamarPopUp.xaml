@@ -5,32 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinusPengger.View"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:vm="clr-namespace:PinusPengger.ViewModel.PopUpVM"
         mc:Ignorable="d"
         Title="DataKamarPopUp"
         Height="400"
         Width="860"
         WindowStyle="None"
-        ResizeMode="CanMinimize">   
+        ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <vm:DataKamarPopUpVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.105*"/>
+            <RowDefinition Height="0.093*"/>
             <RowDefinition/>
             <RowDefinition Height="0.205*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Text="K.2.3"
+        <Grid Grid.Row="0" Background="Orange" MouseDown="Grid_MouseDown">
+            <TextBlock Grid.Row="0"
+                   Text="{Binding RoomDetails.Room.RoomCode}"
                    VerticalAlignment="Center"
                    FontFamily="Inter"
                    FontSize="18"
                    FontWeight="Bold"
                    Margin="5,0,0,0"/>
+        </Grid>
         <Button Grid.Row="0"
                 BorderThickness="0"
                 Foreground="White"
                 Cursor="Hand"
                 Margin="5"
                 HorizontalAlignment="Right"
-                Click="Button_Click">
+                Click="Button_Click"
+                Command="{Binding OnClose}">
             <Button.Content>
                 <icon:PackIconMaterial Kind="WindowClose"
                                        Width="10" 
@@ -91,7 +98,6 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.35*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -103,13 +109,13 @@
                                FontFamily="Inter"/>
                     <TextBlock Grid.Row="0"
                                Grid.Column="0"
-                               Text="Lantai: "
+                               Text="{Binding RoomDetails.Room.RoomFloor, StringFormat='Lantai: {0}'}"
                                FontWeight="Bold"
                                FontSize="18"
                                VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="0"
                                Grid.Column="1"
-                               Text="Nomor: "
+                               Text="{Binding RoomDetails.Room.RoomNumber, StringFormat='Nomor: {0}'}"
                                FontWeight="Bold"
                                FontSize="18"
                                VerticalAlignment="Center"/>
@@ -212,16 +218,16 @@
                     <ItemsControl Grid.Row="2"
                                   Grid.RowSpan="3"
                                   Grid.ColumnSpan="2">
-                        
+
                     </ItemsControl>
                 </Grid>
             </Grid>
-            <Line Grid.Row="2"
+            <Line Grid.Row="1"
                   Stroke="Black"
                   StrokeThickness="5"
                   VerticalAlignment="Top"
                   Width="780"/>
-            <TextBlock Grid.Row="2" 
+            <TextBlock Grid.Row="1" 
                        Margin="20,2,20,2" 
                        TextWrapping="WrapWithOverflow"
                        TextAlignment="Justify"
@@ -257,7 +263,9 @@
                     Height="30"
                     Width="100"
                     Background="Red"
-                    BorderThickness="0"/>
+                    BorderThickness="0"
+                    Click="Button_Click"
+                    Command="{Binding OnClose}"/>
         </StackPanel>
     </Grid>
 </Window>

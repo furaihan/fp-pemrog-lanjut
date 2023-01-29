@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
     /// Mekanisme CRUD tabel fasilitas lainnya

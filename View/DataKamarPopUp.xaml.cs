@@ -28,5 +28,10 @@ namespace PinusPengger.View
         {
             Close();
         }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

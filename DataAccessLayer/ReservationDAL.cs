@@ -5,17 +5,17 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD untuk tabel pelanggan
+    /// Mekanisme CRUD untuk tabel reservasi
     /// </summary>
-    public class CustomerDAL : IRepository
+    public class ReservationDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="CustomerDAL"/>
+        /// Menginisialisasi objek <see cref="ReservationDAL"/>
         /// </summary>
-        public CustomerDAL()
+        public ReservationDAL()
         {
             Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
             Connection.Open();
@@ -63,9 +63,9 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <returns><inheritdoc/></returns>
         public List<object> ReadData()
         {
-            var result = new List<Customer>();
+            var result = new List<Reservation>();
 
-            string query = ConfigurationManager.AppSettings["CustomerDAL:ReadData"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["ReservationDAL:ReadData"] ?? string.Empty;
 
             using (var cmd = new SqlCommand(query, Connection))
             {
@@ -73,16 +73,19 @@ namespace PinusPengger.Model.DataAccessLayer
                 {
                     while (rdr.Read())
                     {
-                        var customer = new Customer
+                        var reservation = new Reservation
+
                         {
-                            CustomerID = rdr.GetInt32(0),
-                            FirstName = rdr.GetString(1),
-                            LastName = rdr.GetString(2),
-                            NIK = rdr.GetString(3),
-                            PhoneNumber = rdr.GetString(4),
-                            Email = rdr.GetString(5)
+                            ReservationID = rdr.GetInt32(0),
+                            ReservationCode = rdr.GetString(1),
+                            NumberOfGuests = rdr.GetByte(2),
+                            Checkin = rdr.GetDateTime(3),
+                            Checkout = rdr.GetDateTime(4),
+                            ReservationStatus = (Tag.ReservationStatus)Enum.Parse(typeof(Tag.ReservationStatus), rdr.GetString(5)),
+                            CustomerID = rdr.GetInt32(6),
+                            RoomID = rdr.GetInt32(7)
                         };
-                        result.Add(customer);
+                        result.Add(reservation);
                     }
                 }
             }
@@ -95,18 +98,19 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <param name="obj"><inheritdoc/></param>
         public void InsertRecord(object obj)
         {
-            string query = ConfigurationManager.AppSettings["CustomerDAL:InsertRecord"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["ReservationDAL:InsertRecord"] ?? string.Empty;
 
-            if (obj is Customer customer)
+            if (obj is Reservation reservation)
             {
                 var args = new Dictionary<string, object>
                 {
-                    {"@firstName", customer.FirstName },
-                    {"@lastName", customer.LastName },
-                    {"@nik", customer.NIK },
-                    {"@phoneNumber", customer.PhoneNumber },
-                    {"@email", customer.Email }
-
+                    {"@reservationCode", reservation.ReservationCode },
+                    {"@numberOfGuests", reservation.NumberOfGuests },
+                    {"@checkin", reservation.Checkin },
+                    {"@checkout", reservation.Checkout },
+                    {"@reservationStatus", reservation.ReservationStatus.ToString() },
+                    {"@customerID", reservation.CustomerID },
+                    {"@roomID", reservation.RoomID }
                 };
                 ExecuteDMLCommand(query, args);
             }
@@ -115,19 +119,42 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <inheritdoc/>
         /// </summary>
         /// <param name="obj"><inheritdoc/></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void UpdateRecord(object obj)
         {
-            throw new NotImplementedException();
+            string query = ConfigurationManager.AppSettings["ReservationDAL:UpdateRecord"] ?? string.Empty;
+
+            if (obj is Reservation reservation)
+            {
+                var args = new Dictionary<string, object>
+                {
+                    {"@reservationID", reservation.ReservationID },
+                    {"@reservationCode", reservation.ReservationCode },
+                    {"@numberOfGuests", reservation.NumberOfGuests },
+                    {"@checkin", reservation.Checkin },
+                    {"@checkout", reservation.Checkout },
+                    {"@reservationStatus", reservation.ReservationStatus.ToString() },
+                    {"@customerID", reservation.CustomerID },
+                    {"@roomID", reservation.RoomID }
+                };
+                ExecuteDMLCommand(query, args);
+            }
         }
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <param name="obj"><inheritdoc/></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void DeleteRecord(object obj)
         {
-            throw new NotImplementedException();
+            string query = ConfigurationManager.AppSettings["ReservationDAL:DeleteRecord"] ?? string.Empty;
+
+            if (obj is Reservation reservation)
+            {
+                var args = new Dictionary<string, object>
+                {
+                    {"@reservationID", reservation.ReservationID }
+                };
+                ExecuteDMLCommand(query, args);
+            }
         }
         /// <summary>
         /// <inheritdoc/>

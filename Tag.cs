@@ -1,4 +1,4 @@
-﻿namespace PinusPengger.Model
+﻿namespace PinusPengger
 {
     /// <summary>
     /// Kelas yang berisi penanda

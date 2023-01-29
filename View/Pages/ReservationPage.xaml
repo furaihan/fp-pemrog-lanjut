@@ -1,15 +1,15 @@
-﻿<Page x:Class="PinusPengger.View.ReservasiPage"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:helper="clr-namespace:PinusPengger.ViewModel.Helper"
-             xmlns:viewModel="clr-namespace:PinusPengger.ViewModel.BasePageVM"
-             xmlns:local="clr-namespace:PinusPengger.View"
-             xmlns:uc="clr-namespace:PinusPengger.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="420" 
-             d:DesignWidth="920">
+﻿<Page x:Class="PinusPengger.View.Pages.ReservationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PinusPengger.View.Pages"
+      xmlns:helper="clr-namespace:PinusPengger.ViewModel.Helper"
+      xmlns:viewModel="clr-namespace:PinusPengger.ViewModel.BasePageVM"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="920"
+      Title="ReservationPage">
+
     <Page.DataContext>
         <viewModel:DisplayRoomVM/>
     </Page.DataContext>
@@ -56,27 +56,12 @@
                                 Margin="5,5,5,5"
                                 Style="{DynamicResource RoomButton}"
                                 Content="{Binding Room.RoomCode}"
-                                Command="">
+                                Command="{Binding DataContext.RoomButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                CommandParameter="{Binding}">
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <!--
-        <WrapPanel Grid.Row="2" 
-                   Margin="15">
-            <WrapPanel.Resources>
-                <Style TargetType="{x:Type uc:RoomRepresentation}">
-                    <Setter Property="Margin" Value="10,0,10,0" />
-                </Style>
-            </WrapPanel.Resources>
-            <uc:RegularRoom ButtonColor="Red"/>
-            <uc:RegularRoom ButtonColor="Red"/> 
-            <uc:RegularRoom ButtonColor="Red"/>
-            <uc:RegularRoom ButtonColor="Lime"/>
-            <uc:RegularRoom ButtonColor="Lime"/>
-            <uc:RegularRoom ButtonColor="Lime"/>
-        </WrapPanel>
-        -->
     </Grid>
 </Page>

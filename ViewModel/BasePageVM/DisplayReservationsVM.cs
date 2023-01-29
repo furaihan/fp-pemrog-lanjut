@@ -1,6 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using PinusPengger.Model.CombinedModel;
-using PinusPengger.Model.ServiceAgent;
+using PinusPengger.ServiceAgent;
 using PinusPengger.ViewModel.Helper;
 using PinusPengger.ViewModel.ObservableCombinedModel;
 using System;
@@ -55,7 +55,7 @@ namespace PinusPengger.ViewModel.BasePageVM
             set
             {
                 _errorMessage = value;
-                OnPropertyChanged();    
+                OnPropertyChanged();
             }
         }
         public ViewModelCommand SearchCommand

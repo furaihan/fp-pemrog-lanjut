@@ -1,9 +1,9 @@
-﻿using PinusPengger.Model.DataAccessLayer;
+﻿using PinusPengger.DataAccessLayer;
 using PinusPengger.Model.EntityModel;
 using System;
 using System.Collections.Generic;
 
-namespace PinusPengger.Model.ServiceAgent
+namespace PinusPengger.ServiceAgent
 {
     /// <summary>
     /// Menyediakan layanan untuk mengakses model

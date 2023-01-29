@@ -5,17 +5,17 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PinusPengger.Model.DataAccessLayer
+namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD untuk tabel riwayat
+    /// Mekanisme CRUD untuk tabel pelanggan
     /// </summary>
-    public class HistoryDAL : IRepository
+    public class CustomerDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="HistoryDAL"/>
+        /// Menginisialisasi objek <see cref="CustomerDAL"/>
         /// </summary>
-        public HistoryDAL()
+        public CustomerDAL()
         {
             Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnString"].ToString());
             Connection.Open();
@@ -63,9 +63,9 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <returns><inheritdoc/></returns>
         public List<object> ReadData()
         {
-            var result = new List<History>();
+            var result = new List<Customer>();
 
-            string query = ConfigurationManager.AppSettings["HistoryDAL:ReadData"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["CustomerDAL:ReadData"] ?? string.Empty;
 
             using (var cmd = new SqlCommand(query, Connection))
             {
@@ -73,17 +73,16 @@ namespace PinusPengger.Model.DataAccessLayer
                 {
                     while (rdr.Read())
                     {
-                        var history = new History()
+                        var customer = new Customer
                         {
-                            HistoryID = rdr.GetInt32(0),
-                            ReservationCode = rdr.GetString(1),
-                            NumberOfGuests = rdr.GetByte(2),
-                            Checkin = rdr.GetDateTime(3),
-                            Checkout = rdr.GetDateTime(4),
-                            CustomerID = rdr.GetInt32(5),
-                            RoomID = rdr.GetInt32(6)
+                            CustomerID = rdr.GetInt32(0),
+                            FirstName = rdr.GetString(1),
+                            LastName = rdr.GetString(2),
+                            NIK = rdr.GetString(3),
+                            PhoneNumber = rdr.GetString(4),
+                            Email = rdr.GetString(5)
                         };
-                        result.Add(history);
+                        result.Add(customer);
                     }
                 }
             }
@@ -96,18 +95,18 @@ namespace PinusPengger.Model.DataAccessLayer
         /// <param name="obj"><inheritdoc/></param>
         public void InsertRecord(object obj)
         {
-            string query = ConfigurationManager.AppSettings["HistoryDAL:InsertRecord"] ?? string.Empty;
+            string query = ConfigurationManager.AppSettings["CustomerDAL:InsertRecord"] ?? string.Empty;
 
-            if (obj is History history)
+            if (obj is Customer customer)
             {
                 var args = new Dictionary<string, object>
                 {
-                    {"@reservationCode", history.ReservationCode },
-                    {"@numberOfGuests", history.NumberOfGuests },
-                    {"@checkin", history.Checkin },
-                    {"@checkout", history.Checkout },
-                    {"@customerID", history.CustomerID },
-                    {"@roomID", history.RoomID }
+                    {"@firstName", customer.FirstName },
+                    {"@lastName", customer.LastName },
+                    {"@nik", customer.NIK },
+                    {"@phoneNumber", customer.PhoneNumber },
+                    {"@email", customer.Email }
+
                 };
                 ExecuteDMLCommand(query, args);
             }
