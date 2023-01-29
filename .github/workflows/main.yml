@@ -22,7 +22,7 @@ jobs:
         run: nuget restore PinusPengger.sln
         
       - name: Create app.config file
-        run: ${{ secrets.APP_CONFIG }} | Out-File App.config
+        run: echo ${{ secrets.APP_CONFIG }} | cat > App.config
       
       - name: Build Release Library
         run:  msbuild PinusPengger.sln /p:Configuration=Release
