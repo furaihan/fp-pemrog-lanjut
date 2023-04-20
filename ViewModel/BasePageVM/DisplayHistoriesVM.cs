@@ -11,8 +11,14 @@ using System.Timers;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
+    /// <summary>
+    /// View model for displaying histories data on a page.
+    /// </summary>
     public class DisplayHistoriesVM : ViewModelBase, IBasePage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DisplayHistoriesVM"/> class.
+        /// </summary>
         public DisplayHistoriesVM()
         {
             _target = string.Empty;
@@ -41,6 +47,9 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the search target.
+        /// </summary>
         public string Target
         {
             get => _target;
@@ -50,6 +59,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -80,6 +92,11 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Method
+        ///<summary>
+        /// Retrieves data from the database through the HistorySA object.
+        /// Stores the retrieved data in the _historyJoineds field.
+        /// In case of an exception, sets the error message in the ErrorMessage property.
+        ///</summary>
         public void GetData()
         {
             using (var historySA = new HistorySA())
@@ -95,6 +112,12 @@ namespace PinusPengger.ViewModel.BasePageVM
                 }
             }
         }
+        ///<summary>
+        /// Processes the data stored in the _historyJoineds field.
+        /// Filters the data based on the value of the _target field.
+        /// Clears the <see cref="HistoryJoinedsObservable"/> and populates it with new data based on the filtered results.
+        /// In case of an exception, sets the error message in the <see cref="ErrorMessage"/> property.
+        ///</summary>
         public void ProcessData()
         {
             try

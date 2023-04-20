@@ -27,11 +27,11 @@ namespace PinusPengger.DataAccessLayer
         public SqlConnection Connection { get; set; }
 
         /// <summary>
-        /// Mengeksekusi perintah untuk method <see cref="InsertRecord(object)"/>,
-        /// <see cref="UpdateRecord(object)"/>, dan <see cref="DeleteRecord(object)"/>
+        /// Executes commands for the methods <see cref="InsertRecord(object)"/>,
+        /// <see cref="UpdateRecord(object)"/>, and <see cref="DeleteRecord(object)"/>.
         /// </summary>
-        /// <param name="query">Kueri yang akan dieksekusi oleh database</param>
-        /// <param name="args">Argumen yang dibutuhkan oleh kueri</param>
+        /// <param name="query">The query to be executed by the database.</param>
+        /// <param name="args">The arguments required by the query.</param>
         private void ExecuteDMLCommand(string query, Dictionary<string, object> args)
         {
             SqlTransaction tran = Connection.BeginTransaction();

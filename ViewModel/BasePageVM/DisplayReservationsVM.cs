@@ -11,8 +11,14 @@ using System.Timers;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
+    /// <summary>
+    /// The DisplayReservationsVM class represents the view model for a page
+    /// </summary>
     public class DisplayReservationsVM : ViewModelBase, IBasePage
     {
+        /// <summary>
+        /// Initializes a new instance of the DisplayReservationsVM class.
+        /// </summary>
         public DisplayReservationsVM()
         {
             _target = string.Empty;
@@ -40,6 +46,9 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the search target.
+        /// </summary>
         public string Target
         {
             get => _target;
@@ -49,6 +58,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets the error message to be displayed to the user.
+        /// </summary>
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -58,6 +70,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets the search command, which executes the ProcessData method.
+        /// </summary>
         public ViewModelCommand SearchCommand
         {
             get
@@ -66,7 +81,13 @@ namespace PinusPengger.ViewModel.BasePageVM
                 return _searchCommand;
             }
         }
+        /// <summary>
+        /// Gets or sets the list of reservation joineds.
+        /// </summary>
         public ObservableCollection<ReservationJoinedObservable> ReservationJoinedsObservable { get; set; }
+        /// <summary>
+        /// Gets or sets the time now.
+        /// </summary>
         public DateTime TimeNow
         {
             get => _timeNow;
@@ -79,6 +100,9 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Method
+        /// <summary>
+        /// Retrieves data from the database and sets the _reservationJoineds field to the result.
+        /// </summary>
         public void GetData()
         {
             using (var reservationSA = new ReservationSA())
@@ -94,6 +118,11 @@ namespace PinusPengger.ViewModel.BasePageVM
                 }
             }
         }
+        /// <summary>
+        /// Processes the data retrieved from the database by filtering based on <see cref="Target"/>, 
+        /// and converts the result into an <see cref="ObservableCollection{ReservationJoinedObservable}"/>
+        /// and sets <see cref="ReservationJoinedsObservable"/> to the result.
+        /// </summary>
         public void ProcessData()
         {
             try

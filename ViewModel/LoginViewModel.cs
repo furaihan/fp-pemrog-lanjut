@@ -4,8 +4,14 @@ using System.Diagnostics;
 
 namespace PinusPengger.ViewModel
 {
+    ///<summary>
+    ///The ViewModel for the Login page.
+    ///</summary>
     public class LoginViewModel : ViewModelBase
     {
+        ///<summary>
+        ///Initializes a new instance of the LoginViewModel class with default values.
+        ///</summary>
         public LoginViewModel()
         {
             _username = string.Empty;
@@ -88,6 +94,9 @@ namespace PinusPengger.ViewModel
             Debug.WriteLine($"Valid: {valid}");
             return valid;
         }
+        /// <summary>
+        /// Executes the login command
+        /// </summary>
         private void ExecuteLoginCommand(object obj)
         {
             if (Password.ToLower() == "admin" && Username.ToLower() == "admin")

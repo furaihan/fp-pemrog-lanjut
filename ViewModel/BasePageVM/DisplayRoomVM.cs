@@ -14,8 +14,17 @@ using System.Windows.Input;
 
 namespace PinusPengger.ViewModel.BasePageVM
 {
+    /// <summary>
+    /// The DisplayRoomVM class represents the view model for a page 
+    /// that displays a list of available rooms with their associated 
+    /// facilities and allows for reservation management. 
+    /// It inherits from ViewModelBase and implements the IBasePage interface.
+    /// </summary>
     public class DisplayRoomVM : ViewModelBase, IBasePage
     {
+        /// <summary>
+        /// Initializes a new instance of the DisplayRoomVM class with default values for its properties and fields.
+        /// </summary>
         public DisplayRoomVM()
         {
             //_roomWithFacilities = new ObservableCollection<RoomWithFacilitiesObservable>();
@@ -44,6 +53,9 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the error message to be displayed to the user.
+        /// </summary>
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -53,6 +65,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets the currently selected room type.
+        /// </summary>
         public Tag.RoomType SelectedOption
         {
             get => _selectedOption;
@@ -62,11 +77,17 @@ namespace PinusPengger.ViewModel.BasePageVM
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Gets or sets a value indicating whether the "Detail Kamar" window is open.
+        /// </summary>
         public bool IsDetailKamarWindowOpen 
         { 
             get => _isDetailKamarWindowOpen; 
             set => _isDetailKamarWindowOpen = value; 
         }
+        /// <summary>
+        /// Gets or sets the list of available room types.
+        /// </summary>
         public List<Tag.RoomType> Options { get; set; }
         public ObservableCollection<RoomWithFacilitiesObservable> RoomWithFacilitiesObservable { get; set; }
         //get => _roomWithFacilities;
@@ -75,6 +96,9 @@ namespace PinusPengger.ViewModel.BasePageVM
         //    _roomWithFacilities = value;
         //    OnPropertyChanged();
         //}
+        /// <summary>
+        /// Gets or sets the command to be executed when the Room button is clicked.
+        /// </summary>
         public ICommand RoomButtonCommand
         {
             get => _roomButtonCommand;
@@ -112,6 +136,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 ProcessData();
             }
         }
+        /// <summary>
+        /// Gets the data from the service agent.
+        /// </summary>
         public void GetData()
         {
             using (var reservationSA = new ReservationSA())
@@ -141,6 +168,9 @@ namespace PinusPengger.ViewModel.BasePageVM
                 }
             }
         }
+        /// <summary>
+        /// Processes the data to display in the view.
+        /// </summary>
         public void ProcessData()
         {
             try
