@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.ServiceAgent
 {
     /// <summary>
-    /// Layanan mengakses model <see cref="CombinedModel.HistoryJoined"/>
+    /// Provides a service for accessing the <see cref="CombinedModel.HistoryJoined"/> model
     /// </summary>
     public class HistorySA : ServiceAgent, IDisposable
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="HistorySA"/>
+        /// Initializes an instance of the <see cref="HistorySA"/> class
         /// </summary>
         public HistorySA()
         {

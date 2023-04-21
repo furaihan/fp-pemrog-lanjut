@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD untuk tabel reservasi
+    /// Provides CRUD mechanism for Reservation table
     /// </summary>
     public class ReservationDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="ReservationDAL"/>
+        /// Initializes an instance of <see cref="ReservationDAL"/> class
         /// </summary>
         public ReservationDAL()
         {
@@ -27,11 +27,11 @@ namespace PinusPengger.DataAccessLayer
         public SqlConnection Connection { get; set; }
 
         /// <summary>
-        /// Mengeksekusi perintah untuk method <see cref="InsertRecord(object)"/>,
-        /// <see cref="UpdateRecord(object)"/>, dan <see cref="DeleteRecord(object)"/>
+        /// Executes a DML (Data Manipulation Language) command for the methods <see cref="InsertRecord(object)"/>,
+        /// <see cref="UpdateRecord(object)"/>, and <see cref="DeleteRecord(object)"/>
         /// </summary>
-        /// <param name="query">Kueri yang akan dieksekusi oleh database</param>
-        /// <param name="args">Argumen yang dibutuhkan oleh kueri</param>
+        /// <param name="query">The query to be executed by the database</param>
+        /// <param name="args">Arguments required by the query</param>
         private void ExecuteDMLCommand(string query, Dictionary<string, object> args)
         {
             SqlTransaction tran = Connection.BeginTransaction();

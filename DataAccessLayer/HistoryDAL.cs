@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD untuk tabel riwayat
+    /// CRUD mechanism for the history table
     /// </summary>
     public class HistoryDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="HistoryDAL"/>
+        /// Initializes a new instance of the <see cref="HistoryDAL"/> class.
         /// </summary>
         public HistoryDAL()
         {
@@ -27,11 +27,11 @@ namespace PinusPengger.DataAccessLayer
         public SqlConnection Connection { get; set; }
 
         /// <summary>
-        /// Mengeksekusi perintah untuk method <see cref="InsertRecord(object)"/>,
-        /// <see cref="UpdateRecord(object)"/>, dan <see cref="DeleteRecord(object)"/>
+        /// Executes the command for the <see cref="InsertRecord(object)"/>,
+        /// <see cref="UpdateRecord(object)"/>, and <see cref="DeleteRecord(object)"/> methods
         /// </summary>
-        /// <param name="query">Kueri yang akan dieksekusi oleh database</param>
-        /// <param name="args">Argumen yang dibutuhkan oleh kueri</param>
+        /// <param name="query">The query that will be executed by the database</param>
+        /// <param name="args">The arguments required by the query</param>
         private void ExecuteDMLCommand(string query, Dictionary<string, object> args)
         {
             SqlTransaction tran = Connection.BeginTransaction();

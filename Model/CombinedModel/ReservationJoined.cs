@@ -3,12 +3,12 @@
 namespace PinusPengger.Model.CombinedModel
 {
     /// <summary>
-    /// Merepresentasikan gabungan antara <see cref="EntityModel.Reservation"/> dengan <see cref="EntityModel.Customer"/> dan <see cref="EntityModel.Room"/>
+    /// Represents a combination of <see cref="EntityModel.Reservation"/> with <see cref="EntityModel.Customer"/> and <see cref="EntityModel.Room"/>.
     /// </summary>
     public class ReservationJoined
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="ReservationJoined"/>
+        /// Initializes an instance of <see cref="ReservationJoined"/>.
         /// </summary>
         public ReservationJoined()
         {
@@ -22,23 +22,25 @@ namespace PinusPengger.Model.CombinedModel
         private Reservation _reservation;
 
         /// <summary>
-        /// Merepresentasikan data seorang pelanggan yang sedang melakukan reservasi
+        /// Represents the data of a customer who is currently making a reservation.
         /// </summary>
         public Customer Customer
         {
             get => _customer;
             set => _customer = value;
         }
+
         /// <summary>
-        /// Merepresentasikan data kamar yang sedang dipesan oleh pelanggan 
+        /// Represents the data of a room that is currently being reserved by the customer.
         /// </summary>
         public Room Room
         {
             get => _room;
             set => _room = value;
         }
+
         /// <summary>
-        /// Merepresentasikan data reservasi pelanggan
+        /// Represents the data of a reservation made by the customer.
         /// </summary>
         public Reservation Reservation
         {

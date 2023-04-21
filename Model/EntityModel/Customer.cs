@@ -1,12 +1,12 @@
 ﻿namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Merepresentasikan data seorang pelanggan di database
+    /// Represents customer data in the database.
     /// </summary>
     public class Customer
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="Customer"/>
+        /// Initializes a new instance of the <see cref="Customer"/> class.
         /// </summary>
         public Customer()
         {
@@ -25,7 +25,7 @@
         private string _email;
 
         /// <summary>
-        /// Merepresentasikan kolom id pelanggan pada tabel pelanggan di database
+        /// Gets or sets the customer ID column in the customer table in the database.
         /// </summary>
         public int CustomerID
         {
@@ -33,7 +33,7 @@
             set => _customerID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom nama awal pada tabel pelanggan di database
+        /// Gets or sets the first name column in the customer table in the database.
         /// </summary>
         public string FirstName
         {
@@ -41,7 +41,7 @@
             set => _firstName = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom nama akhir pada tabel pelanggan di database
+        /// Gets or sets the last name column in the customer table in the database.
         /// </summary>
         public string LastName
         {
@@ -49,7 +49,7 @@
             set => _lastName = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom NIK pada tabel pelanggan di database
+        /// Gets or sets the NIK column in the customer table in the database.
         /// </summary>
         public string NIK
         {
@@ -57,7 +57,7 @@
             set => _nik = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom nomor telepon pada tabel pelanggan di database
+        /// Gets or sets the phone number column in the customer table in the database.
         /// </summary>
         public string PhoneNumber
         {
@@ -65,7 +65,7 @@
             set => _phoneNumber = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom email pada tabel pelanggan di database
+        /// Gets or sets the email column in the customer table in the database.
         /// </summary>
         public string Email
         {

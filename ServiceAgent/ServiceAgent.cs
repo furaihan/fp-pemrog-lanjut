@@ -1,35 +1,37 @@
 ﻿using PinusPengger.DataAccessLayer;
 using PinusPengger.Model.EntityModel;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace PinusPengger.ServiceAgent
 {
     /// <summary>
-    /// Menyediakan layanan untuk mengakses model
+    /// Provides services for accessing the model.
     /// </summary>
     public abstract class ServiceAgent
     {
         /// <summary>
-        /// Mengambil data dari database
+        /// Retrieves data from the database.
         /// </summary>
         public abstract void FetchData();
+
         /// <summary>
-        /// Mendapatkan data yang telah diambil oleh method <see cref="FetchData"/>
+        /// Gets the data that has been retrieved by the <see cref="FetchData"/> method.
         /// </summary>
-        /// <returns>Kumpulan data</returns>
+        /// <returns>A collection of data.</returns>
         public abstract IEnumerable<object> GetData();
+
         /// <summary>
-        /// Meneruskan data sementara yang telah ditampung oleh model ke database
+        /// Flushes the temporary data that has been stored by the model to the database.
         /// </summary>
-        /// <typeparam name="T">Class yang merupakan turunan dari <see cref="DataAccessLayer.IRepository"/></typeparam>
-        /// <param name="repo">Data access layer dari tiap entitas</param>
-        /// <param name="obj">Record yang ingin dimasukkan, dirubah, atau dihapus</param>
-        /// <param name="mode">Mode penerusan record</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <typeparam name="T">A class that is derived from <see cref="DataAccessLayer.IRepository"/>.</typeparam>
+        /// <param name="repo">The data access layer for each entity.</param>
+        /// <param name="obj">The record that you want to insert, update, or delete.</param>
+        /// <param name="mode">The mode for flushing the record.</param>
+        /// <exception cref="ArgumentException">Thrown when the input arguments are invalid.</exception>
         public static void FlushData<T>(T repo, object obj, Tag.FlushMode mode) where T : IRepository
         {
-            // cek kondisi argumen
+            // Check the argument conditions.
             if (!(repo is CustomerDAL || repo is HistoryDAL || repo is ReservationDAL))
             {
                 throw new ArgumentException("Invalid Argument: repo must be of CustomerDAL, HistoryDAL, or Reservation DAL type", nameof(repo));
@@ -38,7 +40,8 @@ namespace PinusPengger.ServiceAgent
             {
                 throw new ArgumentException("Invalid Argument: obj must be of Customer, History, or Reservation type", nameof(obj));
             }
-            // melaukan perubahan data berdasarkan penanda
+
+            // Perform the data changes based on the tag.
             switch (mode)
             {
                 case Tag.FlushMode.add:
@@ -53,6 +56,7 @@ namespace PinusPengger.ServiceAgent
                 default:
                     break;
             }
+
             repo.Dispose();
         }
     }

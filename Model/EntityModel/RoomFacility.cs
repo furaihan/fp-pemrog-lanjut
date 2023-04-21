@@ -1,12 +1,12 @@
 ﻿namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Merepresentasikan data fasilitas kamar di database
+    /// Represents room facility data in the database
     /// </summary>
     public class RoomFacility
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="RoomFacility"/>
+        /// Initializes an instance of <see cref="RoomFacility"/>
         /// </summary>
         public RoomFacility()
         {
@@ -19,7 +19,7 @@
         private string _internet;
 
         /// <summary>
-        /// Merepresentasikan kolom tipe kamar pada tabel fasilitas kamar di database
+        /// Represents the room type column in the room facility table in the database
         /// </summary>
         public Tag.RoomType RoomType
         {
@@ -27,7 +27,7 @@
             set => _roomType = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom spesifikasi tempat tidur pada tabel fasilitas kamar di database
+        /// Represents the bed specification column in the room facility table in the database
         /// </summary>
         public string Bed
         {
@@ -35,7 +35,7 @@
             set => _bed = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom kecepatan internet pada tabel fasilitas kamar di database
+        /// Represents the internet speed column in the room facility table in the database
         /// </summary>
         public string Internet
         {
@@ -43,4 +43,5 @@
             set => _internet = value;
         }
     }
+
 }

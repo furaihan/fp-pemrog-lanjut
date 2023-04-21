@@ -3,12 +3,12 @@
 namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Meresentasikan data sebuah reservasi di database
+    /// Represents a reservation data in the database
     /// </summary>
     public class Reservation
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="Reservation"/>
+        /// Initializes a new instance of the <see cref="Reservation"/> class
         /// </summary>
         public Reservation()
         {
@@ -25,7 +25,7 @@ namespace PinusPengger.Model.EntityModel
         private int _roomID;
 
         /// <summary>
-        /// Merepresentasikan kolom id reservasi pada tabel reservasi di database
+        /// Represents the reservation ID column in the reservation table in the database
         /// </summary>
         public int ReservationID
         {
@@ -33,7 +33,7 @@ namespace PinusPengger.Model.EntityModel
             set => _reservationID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom kode reservasi pada tabel reservasi di database
+        /// Represents the reservation code column in the reservation table in the database
         /// </summary>
         public string ReservationCode
         {
@@ -41,7 +41,7 @@ namespace PinusPengger.Model.EntityModel
             set => _reservationCode = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom jumlah tamu pada tabel reservasi di database
+        /// Represents the number of guests column in the reservation table in the database
         /// </summary>
         public byte NumberOfGuests
         {
@@ -49,7 +49,7 @@ namespace PinusPengger.Model.EntityModel
             set => _numberOfGuests = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom tanggal dan waktu checkin pada tabel reservasi di database
+        /// Represents the check-in date and time column in the reservation table in the database
         /// </summary>
         public DateTime Checkin
         {
@@ -57,7 +57,7 @@ namespace PinusPengger.Model.EntityModel
             set => _checkin = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom tanggal dan waktu checkout pada tabel reservasi di database
+        /// Represents the check-out date and time column in the reservation table in the database
         /// </summary>
         public DateTime Checkout
         {
@@ -65,7 +65,7 @@ namespace PinusPengger.Model.EntityModel
             set => _checkout = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom status reservasi pada tabel reservasi di database
+        /// Represents the reservation status column in the reservation table in the database
         /// </summary>
         public Tag.ReservationStatus ReservationStatus
         {
@@ -73,7 +73,7 @@ namespace PinusPengger.Model.EntityModel
             set => _reservationStatus = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom id pelanggan pada tabel reservasi di database
+        /// Represents the customer ID column in the reservation table in the database
         /// </summary>
         public int CustomerID
         {
@@ -81,7 +81,7 @@ namespace PinusPengger.Model.EntityModel
             set => _customerID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom id kamar pada tabel reservasi di database
+        /// Represents the room ID column in the reservation table in the database
         /// </summary>
         public int RoomID
         {

@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD untuk tabel pelanggan
+    /// This class implements the CRUD mechanism for the customer table.
     /// </summary>
     public class CustomerDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="CustomerDAL"/>
+        /// Initializes an instance of <see cref="CustomerDAL"/>.
         /// </summary>
         public CustomerDAL()
         {

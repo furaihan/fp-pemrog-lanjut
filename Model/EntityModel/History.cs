@@ -3,12 +3,12 @@
 namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Merepresentasikan data sebuah riwayat di database
+    /// Represents a data of a history in the database
     /// </summary>
     public class History
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="History"/>
+        /// Initializes an object of <see cref="History"/>
         /// </summary>
         public History()
         {
@@ -24,7 +24,7 @@ namespace PinusPengger.Model.EntityModel
         private int _roomID;
 
         /// <summary>
-        /// Merepresentasikan kolom id riwayat pada tabel riwayat di database
+        /// Represents the column of history ID in the history table in the database
         /// </summary>
         public int HistoryID
         {
@@ -32,7 +32,7 @@ namespace PinusPengger.Model.EntityModel
             set => _historyID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom kode reservasi pada tabel riwayat di database
+        /// Represents the column of reservation code in the history table in the database
         /// </summary>
         public string ReservationCode
         {
@@ -40,7 +40,7 @@ namespace PinusPengger.Model.EntityModel
             set => _reservationCode = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom jumlah tamu pada tabel riwayat di database
+        /// Represents the column of number of guests in the history table in the database
         /// </summary>
         public byte NumberOfGuests
         {
@@ -48,7 +48,7 @@ namespace PinusPengger.Model.EntityModel
             set => _numberOfGuests = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom tanggal dan waktu checkin pada tabel riwayat di database
+        /// Represents the column of check-in date and time in the history table in the database
         /// </summary>
         public DateTime Checkin
         {
@@ -56,7 +56,7 @@ namespace PinusPengger.Model.EntityModel
             set => _checkin = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom tanggal dan waktu checkout pada tabel riwayat di database
+        /// Represents the column of check-out date and time in the history table in the database
         /// </summary>
         public DateTime Checkout
         {
@@ -64,7 +64,7 @@ namespace PinusPengger.Model.EntityModel
             set => _checkout = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom id pelanggan pada tabel riwayat di database
+        /// Represents the column of customer ID in the history table in the database
         /// </summary>
         public int CustomerID
         {
@@ -72,7 +72,7 @@ namespace PinusPengger.Model.EntityModel
             set => _customerID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom id kamar pada tabel riwayat di database
+        /// Represents the column of room ID in the history table in the database
         /// </summary>
         public int RoomID
         {
@@ -80,4 +80,5 @@ namespace PinusPengger.Model.EntityModel
             set => _roomID = value;
         }
     }
+
 }

@@ -3,12 +3,12 @@
 namespace PinusPengger.Model.CombinedModel
 {
     /// <summary>
-    /// Merepresentasikan gabungan antara <see cref="EntityModel.History"/> dengan <see cref="EntityModel.Customer"/> dan <see cref="EntityModel.Room"/>
+    /// Represents a combination of <see cref="EntityModel.History"/>, <see cref="EntityModel.Customer"/>, and <see cref="EntityModel.Room"/>.
     /// </summary>
     public class HistoryJoined
     {
         /// <summary>
-        /// Menginisiasi objek <see cref="HistoryJoined"/>
+        /// Initializes a new instance of the <see cref="HistoryJoined"/> class.
         /// </summary>
         public HistoryJoined()
         {
@@ -22,7 +22,7 @@ namespace PinusPengger.Model.CombinedModel
         private History _history;
 
         /// <summary>
-        /// Merepresentasikan data seorang pelanggan yang telah melakukan checkout
+        /// Represents data about a customer who has checked out.
         /// </summary>
         public Customer Customer
         {
@@ -30,7 +30,7 @@ namespace PinusPengger.Model.CombinedModel
             set => _customer = value;
         }
         /// <summary>
-        /// Merepresentasikan data kamar yang dipesan pelanggan
+        /// Represents data about the room that a customer has reserved.
         /// </summary>
         public Room Room
         {
@@ -38,7 +38,7 @@ namespace PinusPengger.Model.CombinedModel
             set => _room = value;
         }
         /// <summary>
-        /// Merepresentasikan data riwayat reservasi pelanggan
+        /// Represents data about a customer's reservation history.
         /// </summary>
         public History History
         {

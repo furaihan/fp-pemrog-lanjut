@@ -1,12 +1,12 @@
 ﻿namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Merepresentasikan data sebuah kamar di database
+    /// Represents the data of a room in the database
     /// </summary>
     public class Room
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="Room"/>
+        /// Initializes an object of type <see cref="Room"/>
         /// </summary>
         public Room()
         {
@@ -18,10 +18,10 @@
         private byte _roomFloor;
         private byte _roomNumber;
         private byte _squareMeter;
-        Tag.RoomType _roomType;
+        private Tag.RoomType _roomType;
 
         /// <summary>
-        /// Merepresentasikan kolom id kamar pada tabel kamar di database
+        /// Represents the room ID column in the room table in the database
         /// </summary>
         public int RoomID
         {
@@ -29,7 +29,7 @@
             set => _roomID = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom kode kamar pada tabel kamar di database
+        /// Represents the room code column in the room table in the database
         /// </summary>
         public string RoomCode
         {
@@ -37,7 +37,7 @@
             set => _roomCode = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom letak lantai kamar pada tabel kamar di database
+        /// Represents the room floor column in the room table in the database
         /// </summary>
         public byte RoomFloor
         {
@@ -45,7 +45,7 @@
             set => _roomFloor = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom nomor kamar tiap lantai pada tabel kamar di database
+        /// Represents the room number column for each floor in the room table in the database
         /// </summary>
         public byte RoomNumber
         {
@@ -53,7 +53,7 @@
             set => _roomNumber = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom luas kamar pada tabel kamar di database
+        /// Represents the room square meter column in the room table in the database
         /// </summary>
         public byte SquareMeter
         {
@@ -61,7 +61,7 @@
             set => _squareMeter = value;
         }
         /// <summary>
-        /// Merepresentasikan kolom tipe kamar pada tabel kamar di database
+        /// Represents the room type column in the room table in the database
         /// </summary>
         public Tag.RoomType RoomType
         {
@@ -69,4 +69,5 @@
             set => _roomType = value;
         }
     }
+
 }

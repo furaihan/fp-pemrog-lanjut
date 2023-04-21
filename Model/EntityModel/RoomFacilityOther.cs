@@ -1,12 +1,12 @@
 ﻿namespace PinusPengger.Model.EntityModel
 {
     /// <summary>
-    /// Merepresentasikan data fasilitas lainnya di database
+    /// Represents the data of other facilities in the database.
     /// </summary>
     public class RoomFacilityOther
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="RoomFacilityOther"/>
+        /// Initializes an instance of <see cref="RoomFacilityOther"/>.
         /// </summary>
         public RoomFacilityOther()
         {
@@ -17,15 +17,16 @@
         private Tag.RoomType _roomType;
 
         /// <summary>
-        /// Merepresentasikan kolom nama fasilitas pada tabel fasilitas lainnya di database
+        /// Represents the facility name column in the other facilities table in the database.
         /// </summary>
         public string NameOfFacility
         {
             get => _nameOfFacility;
             set => _nameOfFacility = value;
         }
+
         /// <summary>
-        /// Merepresentasikan kolom tipe kamar pada tabel fasilitas lainnya di database
+        /// Represents the room type column in the other facilities table in the database.
         /// </summary>
         public Tag.RoomType RoomType
         {

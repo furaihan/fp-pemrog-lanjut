@@ -4,8 +4,16 @@ using System.Collections.Generic;
 
 namespace PinusPengger.ViewModel.Helper
 {
+    /// <summary>
+    /// A static class that provides methods to convert between entity model objects and observable model objects.
+    /// </summary>
     public static class DataObservableConverter
     {
+        /// <summary>
+        /// Converts a <see cref="Customer"/> entity object into a <see cref="CustomerObservable"/> observable object.
+        /// </summary>
+        /// <param name="customer">The <see cref="Customer"/> entity object to convert.</param>
+        /// <returns>The converted <see cref="CustomerObservable"/> observable object.</returns>
         public static CustomerObservable FromCustomerEntity(Customer customer)
         {
             CustomerObservable result = new CustomerObservable()
@@ -20,6 +28,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return result;
         }
+        /// <summary>
+        /// Converts a <see cref="Reservation"/> entity object into a <see cref="ReservationObservable"/> observable object.
+        /// </summary>
+        /// <param name="reservation">The <see cref="Reservation"/> entity object to convert.</param>
+        /// <returns>The converted <see cref="ReservationObservable"/> observable object.</returns>
         public static ReservationObservable FromReservationEntity(Reservation reservation)
         {
             ReservationObservable result = new ReservationObservable()
@@ -36,6 +49,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return result;
         }
+        /// <summary>
+        /// Converts a <see cref="History"/> entity object into a <see cref="HistoryObservable"/> observable object.
+        /// </summary>
+        /// <param name="history">The <see cref="History"/> entity object to convert.</param>
+        /// <returns>The converted <see cref="HistoryObservable"/> observable object.</returns>
         public static HistoryObservable FromHistoryEntity(History history)
         {
             HistoryObservable result = new HistoryObservable()
@@ -51,6 +69,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return result;
         }
+        /// <summary>
+        /// Converts a <see cref="Room"/> entity object into a <see cref="RoomObservable"/> observable object.
+        /// </summary>
+        /// <param name="room">The <see cref="Room"/> entity object to convert.</param>
+        /// <returns>The converted <see cref="RoomObservable"/> observable object.</returns>
         public static RoomObservable FromRoomEntity(Room room)
         {
             RoomObservable result = new RoomObservable()
@@ -65,6 +88,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return result;
         }
+        /// <summary>
+        /// Converts a <see cref="Room"/> entity object into a <see cref="RoomObservable"/> observable object.
+        /// </summary>
+        /// <param name="room">The <see cref="Room"/> entity object to convert.</param>
+        /// <returns>The converted <see cref="RoomObservable"/> observable object.</returns>
         public static RoomFacilityObservable FromRoomFacilityEntity(RoomFacility roomFacility)
         {
             RoomFacilityObservable result = new RoomFacilityObservable()
@@ -76,6 +104,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return result;
         }
+        /// <summary>
+        /// Converts a list of <see cref="RoomFacilityBathroom"/> entity objects into a list of <see cref="RoomFacilityBathroomObservable"/> observable objects.
+        /// </summary>
+        /// <param name="roomFacilityBathrooms">The list of <see cref="RoomFacilityBathroom"/> entity objects to convert.</param>
+        /// <returns>The converted list of <see cref="RoomFacilityBathroomObservable"/> observable objects.</returns>
         public static List<RoomFacilityBathroomObservable> FromRoomFacilityBathroomEntities(List<RoomFacilityBathroom> roomFacilityBathrooms)
         {
             List<RoomFacilityBathroomObservable> roomFacilityBathroomObservables = new List<RoomFacilityBathroomObservable>();
@@ -91,6 +124,11 @@ namespace PinusPengger.ViewModel.Helper
 
             return roomFacilityBathroomObservables;
         }
+        /// <summary>
+        /// Converts a list of <see cref="RoomFacilityOther"/> entity objects into a list of <see cref="RoomFacilityOtherObservable"/> observable objects.
+        /// </summary>
+        /// <param name="roomFacilityOthers">The list of <see cref="RoomFacilityOther"/> entity objects to convert.</param>
+        /// <returns>The converted list of <see cref="RoomFacilityOtherObservable"/> observable objects.</returns>
         public static List<RoomFacilityOtherObservable> FromRoomFacilityOtherEntities(List<RoomFacilityOther> roomFacilityOthers)
         {
             List<RoomFacilityOtherObservable> roomFacilityOtherObservables = new List<RoomFacilityOtherObservable>();
@@ -105,73 +143,6 @@ namespace PinusPengger.ViewModel.Helper
             }
 
             return roomFacilityOtherObservables;
-        }
-        /*
-         * internal static Random Random = new();
-        public static void Shuffle<T>(this IList<T> list)
-        {
-            int n = list.Count;
-            while (n > 1)
-            {
-                int k = Random.Next(n--);
-                (list[k], list[n]) = (list[n], list[k]);
-            }
-        }
-        public static T GetRandomElement<T>(this IList<T> list, bool shuffle = false)
-        {
-            if (list == null || list.Count <= 0)
-                return default;
-
-            if (shuffle) list.Shuffle();
-            return list[Random.Next(list.Count)];
-        }
-
-        public static T GetRandomElement<T>(this IEnumerable<T> enumarable, bool shuffle = false)
-        {
-            if (enumarable == null || !enumarable.Any())
-                return default;
-
-            T[] array = enumarable.ToArray();
-            return array.GetRandomElement(shuffle);
-        }
-
-        public static T GetRandomElement<T>(this Enum items)
-        {
-            if (typeof(T).BaseType != typeof(Enum))
-                throw new InvalidCastException();
-            Array types = Enum.GetValues(typeof(T));
-            return types.Cast<T>().GetRandomElement();
-        }
-        public static T GetRandomElement<T>(this IEnumerable<T> items, Predicate<T> predicate, bool shuffle = false)
-        {
-            List<T> sorted = items.ToList().FindAll(predicate);
-            return sorted.GetRandomElement(shuffle);
-        }
-
-        public static IList<T> GetRandomNumberOfElements<T>(this IList<T> list, int numOfElements, bool shuffle = false)
-        {
-            List<T> givenList = new(list);
-            List<T> l = new();
-            for (int i = 0; i < numOfElements; i++)
-            {
-                T t = givenList.GetRandomElement(shuffle);
-                givenList.Remove(t);
-                l.Add(t);
-            }
-            return l;
-        }
-
-        public static IEnumerable<T> GetRandomNumberOfElements<T>(this IEnumerable<T> enumarable, int numOfElements, bool shuffle = false)
-        {
-            List<T> givenList = new(enumarable);
-            List<T> l = new();
-            for (int i = 0; i < numOfElements; i++)
-            {
-                T t = givenList.Except(l).GetRandomElement(shuffle);
-                l.Add(t);
-            }
-            return l;
-        }
-         * */
+        }       
     }
 }

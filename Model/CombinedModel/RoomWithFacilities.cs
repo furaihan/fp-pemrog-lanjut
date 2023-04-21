@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace PinusPengger.Model.CombinedModel
 {
     /// <summary>
-    /// Merepresentasikan kamar beserta fasilitas lengkapnya
+    /// Represents a room along with its facilities
     /// </summary>
     public class RoomWithFacilities
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="RoomWithFacilities"/>
+        /// Initializes a new instance of the <see cref="RoomWithFacilities"/> class
         /// </summary>
         public RoomWithFacilities()
         {
@@ -25,7 +25,7 @@ namespace PinusPengger.Model.CombinedModel
         private List<RoomFacilityOther> _roomFacilityOthers;
 
         /// <summary>
-        /// Merepresentasikan data sebuah ruangan
+        /// Gets or sets the room data
         /// </summary>
         public Room Room
         {
@@ -33,7 +33,7 @@ namespace PinusPengger.Model.CombinedModel
             set => _room = value;
         }
         /// <summary>
-        /// Merepresentasikan data fasilitas kamar
+        /// Gets or sets the room facility data
         /// </summary>
         public RoomFacility RoomFacility
         {
@@ -41,7 +41,7 @@ namespace PinusPengger.Model.CombinedModel
             set => _roomFacility = value;
         }
         /// <summary>
-        /// Merepresentasikan data fasilitas kamar mandi
+        /// Gets or sets the bathroom facility data
         /// </summary>
         public List<RoomFacilityBathroom> RoomFacilityBathrooms
         {
@@ -49,7 +49,7 @@ namespace PinusPengger.Model.CombinedModel
             set => _roomFacilityBathrooms = value;
         }
         /// <summary>
-        /// Merepresentasikan data fasilitas lainnya
+        /// Gets or sets other facilities data
         /// </summary>
         public List<RoomFacilityOther> RoomFacilityOthers
         {

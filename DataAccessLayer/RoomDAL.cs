@@ -9,12 +9,12 @@ using System.Linq;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD tabel kamar
+    /// Provides CRUD mechanism for Room table
     /// </summary>
     public class RoomDAL : IRepository
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="RoomDAL"/>
+        /// Initializes a new instance of the <see cref="RoomDAL"/> class
         /// </summary>
         public RoomDAL()
         {

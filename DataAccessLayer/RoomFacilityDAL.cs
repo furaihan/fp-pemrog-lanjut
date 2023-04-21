@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Mekanisme CRUD tabel fasilitas kamar
+    /// Provides CRUD mechanism for room facilities table
     /// </summary>
     public class RoomFacilityDAL : IRepository
     {
         /// <summary>
-        /// Menginisiasi objek <see cref="RoomFacilityDAL"/>
+        /// Initializes an instance of <see cref="RoomFacilityDAL"/> class
         /// </summary>
         public RoomFacilityDAL()
         {

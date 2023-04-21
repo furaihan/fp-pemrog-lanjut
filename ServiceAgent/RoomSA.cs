@@ -9,12 +9,12 @@ using System.Linq;
 namespace PinusPengger.ServiceAgent
 {
     /// <summary>
-    /// Layanan mengakses model <see cref="CombinedModel.RoomWithFacilities"/>
+    /// Service for accessing the <see cref="CombinedModel.RoomWithFacilities"/> model
     /// </summary>
     public class RoomSA : ServiceAgent, IDisposable
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="RoomSA"/>
+        /// Initializes an instance of <see cref="RoomSA"/> class
         /// </summary>
         public RoomSA()
         {

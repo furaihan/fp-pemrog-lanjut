@@ -8,12 +8,12 @@ using System.Linq;
 namespace PinusPengger.ServiceAgent
 {
     /// <summary>
-    /// Layanan mengakses model <see cref="CombinedModel.ReservationJoined"/>
+    /// A service to access the <see cref="CombinedModel.ReservationJoined"/> model
     /// </summary>
     public class ReservationSA : ServiceAgent, IDisposable
     {
         /// <summary>
-        /// Menginisialisasi objek <see cref="ReservationSA"/>
+        /// Initializes a new instance of the <see cref="ReservationSA"/> class
         /// </summary>
         public ReservationSA()
         {

@@ -5,34 +5,38 @@ using System.Data.SqlClient;
 namespace PinusPengger.DataAccessLayer
 {
     /// <summary>
-    /// Menyediakan mekanisme CRUD 
+    /// Provides CRUD mechanism.
     /// </summary>
     public interface IRepository : IDisposable
     {
         /// <summary>
-        /// Merepresentasikan koneksi database
+        /// Represents database connection.
         /// </summary>
         SqlConnection Connection { get; set; }
 
         /// <summary>
-        /// Membaca data dari database
+        /// Reads data from database.
         /// </summary>
-        /// <returns>Daftar data</returns>
+        /// <returns>List of data.</returns>
         List<object> ReadData();
+
         /// <summary>
-        /// Memasukkan record ke database
+        /// Inserts record into database.
         /// </summary>
-        /// <param name="obj">Record yang akan dimasukkan</param>
+        /// <param name="obj">Record to be inserted.</param>
         void InsertRecord(object obj);
+
         /// <summary>
-        /// Memperbarui record ke database
+        /// Updates record in database.
         /// </summary>
-        /// <param name="obj">Record yang akan diperbarui</param>
+        /// <param name="obj">Record to be updated.</param>
         void UpdateRecord(object obj);
+
         /// <summary>
-        /// Menghapus record dari database
+        /// Deletes record from database.
         /// </summary>
-        /// <param name="obj">Record yang akan dihapus</param>
+        /// <param name="obj">Record to be deleted.</param>
         void DeleteRecord(object obj);
     }
+
 }
