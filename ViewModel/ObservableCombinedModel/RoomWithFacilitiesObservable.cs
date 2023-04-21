@@ -3,8 +3,14 @@ using System.Collections.Generic;
 
 namespace PinusPengger.ViewModel.ObservableCombinedModel
 {
+    /// <summary>
+    /// Represents an observable object for a room with its facilities.
+    /// </summary>
     public class RoomWithFacilitiesObservable : ViewModelBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomWithFacilitiesObservable"/> class.
+        /// </summary>
         public RoomWithFacilitiesObservable()
         {
             _room = new RoomObservable();
@@ -19,6 +25,9 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
         private List<RoomFacilityOtherObservable> _roomFacilityOthers;
         private bool _isBusy;
 
+        /// <summary>
+        /// Gets or sets the observable object for a room.
+        /// </summary>
         public RoomObservable Room
         {
             get => _room;
@@ -28,6 +37,10 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the observable object for the room facility.
+        /// </summary>
         public RoomFacilityObservable RoomFacility
         {
             get => _roomFacility;
@@ -37,6 +50,10 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the list of observable objects for room bathroom facilities.
+        /// </summary>
         public List<RoomFacilityBathroomObservable> RoomFacilityBathrooms
         {
             get => _roomFacilityBathrooms;
@@ -46,6 +63,10 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the list of observable objects for other room facilities.
+        /// </summary>
         public List<RoomFacilityOtherObservable> RoomFacilityOthers
         {
             get => _roomFacilityOthers;
@@ -56,6 +77,9 @@ namespace PinusPengger.ViewModel.ObservableCombinedModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the room is busy.
+        /// </summary>
         public bool IsBusy
         {
             get => _isBusy;

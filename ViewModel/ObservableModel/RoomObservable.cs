@@ -2,6 +2,9 @@
 
 namespace PinusPengger.ViewModel.ObservableModel
 {
+    /// <summary>
+    /// Represents an observable object of a room in the Model namespace, which can be used in the ViewModel.
+    /// </summary>
     public class RoomObservable : ViewModelBase
     {
         private int _roomID;
@@ -11,11 +14,17 @@ namespace PinusPengger.ViewModel.ObservableModel
         private byte _squareMeter;
         Tag.RoomType _roomType;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomObservable"/> class.
+        /// </summary>
         public RoomObservable()
         {
             _roomCode = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the ID of the room.
+        /// </summary>
         public int RoomID
         {
             get => _roomID;
@@ -25,6 +34,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the code of the room.
+        /// </summary>
         public string RoomCode
         {
             get => _roomCode;
@@ -34,6 +47,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the floor number of the room.
+        /// </summary>
         public byte RoomFloor
         {
             get => _roomFloor;
@@ -43,6 +60,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the room number of the room.
+        /// </summary>
         public byte RoomNumber
         {
             get => _roomNumber;
@@ -52,6 +73,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the square meter of the room.
+        /// </summary>
         public byte SquareMeter
         {
             get => _squareMeter;
@@ -61,6 +86,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the type of the room.
+        /// </summary>
         public Tag.RoomType RoomType
         {
             get => _roomType;
@@ -70,5 +99,6 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
     }
 }

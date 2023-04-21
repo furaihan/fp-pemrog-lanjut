@@ -2,6 +2,9 @@
 
 namespace PinusPengger.ViewModel.ObservableModel
 {
+    /// <summary>
+    /// Represents an observable model for a hotel history entry.
+    /// </summary>
     public class HistoryObservable : ViewModelBase
     {
         private int _historyID;
@@ -12,11 +15,17 @@ namespace PinusPengger.ViewModel.ObservableModel
         private int _customerID;
         private int _roomID;
 
+        /// <summary>
+        /// Initializes a new instance of the HistoryObservable class.
+        /// </summary>
         public HistoryObservable()
         {
             _reservationCode = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the ID of the history entry.
+        /// </summary>
         public int HistoryID
         {
             get => _historyID;
@@ -26,6 +35,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the reservation code of the history entry.
+        /// </summary>
         public string ReservationCode
         {
             get => _reservationCode;
@@ -35,6 +48,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the number of guests for the history entry.
+        /// </summary>
         public byte NumberOfGuests
         {
             get => _numberOfGuests;
@@ -44,6 +61,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the check-in date and time of the history entry.
+        /// </summary>
         public DateTime Checkin
         {
             get => _checkin;
@@ -53,6 +74,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the check-out date and time of the history entry.
+        /// </summary>
         public DateTime Checkout
         {
             get => _checkout;
@@ -62,6 +87,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the ID of the customer associated with the history entry.
+        /// </summary>
         public int CustomerID
         {
             get => _customerID;
@@ -71,6 +100,10 @@ namespace PinusPengger.ViewModel.ObservableModel
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets or sets the ID of the room associated with the history entry.
+        /// </summary>
         public int RoomID
         {
             get => _roomID;

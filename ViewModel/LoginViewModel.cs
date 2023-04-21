@@ -101,7 +101,7 @@ namespace PinusPengger.ViewModel
         {
             if (Password.ToLower() == "admin" && Username.ToLower() == "admin")
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new();
                 CloseWindow();
                 mainWindow.Show();
             }

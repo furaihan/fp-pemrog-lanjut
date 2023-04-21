@@ -16,7 +16,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted <see cref="CustomerObservable"/> observable object.</returns>
         public static CustomerObservable FromCustomerEntity(Customer customer)
         {
-            CustomerObservable result = new CustomerObservable()
+            CustomerObservable result = new()
             {
                 CustomerID = customer.CustomerID,
                 FirstName = customer.FirstName,
@@ -35,7 +35,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted <see cref="ReservationObservable"/> observable object.</returns>
         public static ReservationObservable FromReservationEntity(Reservation reservation)
         {
-            ReservationObservable result = new ReservationObservable()
+            ReservationObservable result = new()
             {
                 ReservationID = reservation.ReservationID,
                 ReservationCode = reservation.ReservationCode,
@@ -56,7 +56,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted <see cref="HistoryObservable"/> observable object.</returns>
         public static HistoryObservable FromHistoryEntity(History history)
         {
-            HistoryObservable result = new HistoryObservable()
+            HistoryObservable result = new()
             {
                 HistoryID = history.HistoryID,
                 ReservationCode = history.ReservationCode,
@@ -76,7 +76,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted <see cref="RoomObservable"/> observable object.</returns>
         public static RoomObservable FromRoomEntity(Room room)
         {
-            RoomObservable result = new RoomObservable()
+            RoomObservable result = new()
             {
                 RoomID = room.RoomID,
                 RoomCode = room.RoomCode,
@@ -95,7 +95,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted <see cref="RoomObservable"/> observable object.</returns>
         public static RoomFacilityObservable FromRoomFacilityEntity(RoomFacility roomFacility)
         {
-            RoomFacilityObservable result = new RoomFacilityObservable()
+            RoomFacilityObservable result = new()
             {
                 RoomType = roomFacility.RoomType,
                 Bed = roomFacility.Bed,
@@ -111,7 +111,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted list of <see cref="RoomFacilityBathroomObservable"/> observable objects.</returns>
         public static List<RoomFacilityBathroomObservable> FromRoomFacilityBathroomEntities(List<RoomFacilityBathroom> roomFacilityBathrooms)
         {
-            List<RoomFacilityBathroomObservable> roomFacilityBathroomObservables = new List<RoomFacilityBathroomObservable>();
+            List<RoomFacilityBathroomObservable> roomFacilityBathroomObservables = new();
 
             foreach (var item in roomFacilityBathrooms)
             {
@@ -131,7 +131,7 @@ namespace PinusPengger.ViewModel.Helper
         /// <returns>The converted list of <see cref="RoomFacilityOtherObservable"/> observable objects.</returns>
         public static List<RoomFacilityOtherObservable> FromRoomFacilityOtherEntities(List<RoomFacilityOther> roomFacilityOthers)
         {
-            List<RoomFacilityOtherObservable> roomFacilityOtherObservables = new List<RoomFacilityOtherObservable>();
+            List<RoomFacilityOtherObservable> roomFacilityOtherObservables = new();
 
             foreach (var item in roomFacilityOthers)
             {
