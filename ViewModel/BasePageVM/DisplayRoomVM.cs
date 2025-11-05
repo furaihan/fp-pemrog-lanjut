@@ -107,7 +107,7 @@ namespace PinusPengger.ViewModel.BasePageVM
         #endregion
 
         #region Method
-        private void ExecuteRoomButtonCommand(object parameter)
+        private void ExecuteRoomButtonCommand(object? parameter)
         {
             if (parameter is RoomWithFacilitiesObservable obj)
             {
@@ -117,7 +117,7 @@ namespace PinusPengger.ViewModel.BasePageVM
                 DetailRoomWindow.Show();
             }
         }
-        private bool CanExecuteRoomButtonCommand(object obj)
+        private bool CanExecuteRoomButtonCommand(object? obj)
         {
             return !_isDetailKamarWindowOpen;
         }

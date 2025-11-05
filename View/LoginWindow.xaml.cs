@@ -14,7 +14,8 @@ namespace PinusPengger.View
         {
             InitializeComponent();
             Debug.WriteLine("AFTER IC");
-            (DataContext as LoginViewModel).CloseWindow = () => Close();
+            if (DataContext is LoginViewModel vm)
+                vm.CloseWindow = () => Close();
         }
 
 

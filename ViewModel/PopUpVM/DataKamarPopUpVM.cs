@@ -36,7 +36,7 @@ namespace PinusPengger.ViewModel.PopUpVM
                 OnPropertyChanged();
             }
         }
-        private void ExecuteOnCloseCommand(object obj)
+        private void ExecuteOnCloseCommand(object? obj)
         {
             Mediator.NotifyColleagues("IsDetailKamarWindowOpenChanged", false);
             Debug.WriteLine("Closing DataKamarPopUp");
