@@ -74,7 +74,7 @@ namespace PinusPengger.ViewModel
                 return _loginCommand;
             }
         }
-        public Action CloseWindow { get; set; }
+        public Action CloseWindow { get; set; } = null!;
         #endregion
 
         #region Method
@@ -83,7 +83,7 @@ namespace PinusPengger.ViewModel
         /// </summary>
         /// <param name="obj">CommandParam object</param>
         /// <returns><c>true</c> if the <see cref="ExecuteLoginCommand(object)"/> can be executed, otherwise <c>false</c></returns>
-        private bool CanExecuteLoginCommand(object obj)
+        private bool CanExecuteLoginCommand(object? obj)
         {
             bool valid = !string.IsNullOrWhiteSpace(Username) &&
                 !string.IsNullOrWhiteSpace(Password) &&
@@ -97,7 +97,7 @@ namespace PinusPengger.ViewModel
         /// <summary>
         /// Executes the login command
         /// </summary>
-        private void ExecuteLoginCommand(object obj)
+        private void ExecuteLoginCommand(object? obj)
         {
             if (Password.ToLower() == "admin" && Username.ToLower() == "admin")
             {

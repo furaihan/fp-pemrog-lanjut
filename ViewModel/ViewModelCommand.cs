@@ -9,15 +9,15 @@ namespace PinusPengger.ViewModel
     ///</summary>
     public class ViewModelCommand : ICommand
     {
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute;
+        private Action<object?> _execute;
+        private Func<object?, bool>? _canExecute;
         ///<summary>
         ///Creates an instance of a ViewModelCommand with an action to be executed 
         ///and an optional function to determine if the command can be executed.
         ///</summary>
         ///<param name="execute">The action to execute when the command is invoked.</param>
         ///<param name="canExecute">The function to determine if the command can be executed.</param>
-        public ViewModelCommand(Action<object> execute, Func<object, bool>? canExecute = null)
+        public ViewModelCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
